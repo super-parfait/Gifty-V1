@@ -36,7 +36,7 @@ const MyAccount = ({ location }) => {
                       <Card.Header className="panel-heading">
                         <Accordion.Toggle variant="link" eventKey="0">
                           <h3 className="panel-title">
-                            <span>1 .</span> Modifier les informations du compte{" "}
+                            <span>1 .</span> Mes Informations{" "}
                           </h3>
                         </Accordion.Toggle>
                       </Card.Header>
@@ -44,7 +44,7 @@ const MyAccount = ({ location }) => {
                         <Card.Body>
                           <div className="myaccount-info-wrapper">
                             <div className="account-info-wrapper">
-                              <h4>Mes Informations</h4>
+                              <h4>Modifier mes informations personnelles</h4>
                               {/* <h5>Your Personal Details</h5> */}
                             </div>
                             <div className="row">
@@ -92,7 +92,7 @@ const MyAccount = ({ location }) => {
                       <Card.Header className="panel-heading">
                         <Accordion.Toggle variant="link" eventKey="1">
                           <h3 className="panel-title">
-                            <span>2 .</span> Modifier votre Mot de Passe
+                            <span>2 .</span>Sécurité
                           </h3>
                         </Accordion.Toggle>
                       </Card.Header>
@@ -100,7 +100,7 @@ const MyAccount = ({ location }) => {
                         <Card.Body>
                           <div className="myaccount-info-wrapper">
                             <div className="account-info-wrapper">
-                              <h4>Mon Mot de Passe</h4>
+                              <h4>Modifier mon Mot de Passe</h4>
                               {/* <h5>Your Password</h5> */}
                             </div>
                             <div className="row">

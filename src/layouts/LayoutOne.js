@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import React, { Fragment } from "react";
-// import HeaderOne from "../wrappers/header/HeaderOne";
+import HeaderOne from "../wrappers/header/HeaderOne";
 import FooterOne from "../wrappers/footer/FooterOne";
 
 const LayoutOne = ({
@@ -13,20 +13,20 @@ const LayoutOne = ({
   return (
     <Fragment>
 
-      {/* j'ai mis le HeaderOne en commantaire */}
+      
 
-      {/* <HeaderOne
+      <HeaderOne
         layout={headerContainerClass}
         top={headerTop}
         headerPaddingClass={headerPaddingClass}
         headerPositionClass={headerPositionClass}
-      /> */}
+      />
       
       {children}
       <FooterOne
         backgroundColorClass="bg-gray"
-        spaceTopClass="pt-100"
-        spaceBottomClass="pb-70"
+        spaceTopClass="pt-5"
+        spaceBottomClass="pb-3"
       />
     </Fragment>
   );

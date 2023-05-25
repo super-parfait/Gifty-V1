@@ -227,7 +227,7 @@ const Cart = ({
                         <Link
                           to={process.env.PUBLIC_URL + "/shop-grid-standard"}
                         >
-                          Ajouter
+                          Ajouter 
                         </Link>
                       </div>
                       <div className="cart-clear">
@@ -307,18 +307,18 @@ const Cart = ({
                     <div className="grand-totall">
                       <div className="title-wrap">
                         <h4 className="cart-bottom-title section-bg-gary-cart">
-                          Panier Total
+                        Total Panier 
                         </h4>
                       </div>
                       <h5>
-                        Total produits{" "}
+                        Total Produits{" "}
                         <span>
                           {currency.currencySymbol + cartTotalPrice.toFixed(2)}
                         </span>
                       </h5>
 
                       <h4 className="grand-totall-title">
-                        Grand Total{" "}
+                         Total{" "}
                         <span>
                           {currency.currencySymbol + cartTotalPrice.toFixed(2)}
                         </span>

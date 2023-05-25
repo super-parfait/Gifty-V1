@@ -30,7 +30,7 @@
 
   border-bottom: 0 solid #4a90e2;
   background-color: #fff;
-  box-shadow: 0 0 25px 0 rgb(252, 59, 59);
+  box-shadow: 0 0 25px 0 rgb(0, 0, 0);
 
   .center-menu-logo {
     display: none;
@@ -45,7 +45,7 @@
   .header-right-wrap-white {
     .same-style {
       > a {
-        color: rgb(252, 59, 59);
+        color: rgb(0, 0, 0);
       }
 
       &.cart-wrap,
@@ -55,11 +55,11 @@
       &.header-search {
         > button,
         & > a {
-          color: rgb(252, 59, 59);
+          color: rgb(0, 0, 0);
           span {
             &.count-style {
               color: #fff;
-              background-color: rgb(252, 59, 59);
+              background-color: rgb(0, 0, 0);
             }
           }
         }
@@ -169,7 +169,7 @@
           transform-origin: center top 0;
 
           background: #fff none repeat scroll 0 0;
-          box-shadow: 0 0 7px 0.5px rgb(252, 59, 59);
+          box-shadow: 0 1px 7px -2px rgba(0, 0, 0, 0.3);
           li {
             display: block;
 
@@ -187,7 +187,7 @@
               text-align: left;
               text-transform: capitalize;
 
-              color: #e10e0e;
+              color: #7e7e7e;
               &:hover {
                 color: $theme-color;
               }
@@ -284,7 +284,7 @@
                   text-align: left;
                   text-transform: capitalize;
 
-                  color: #e10e0e;
+                  color: #7e7e7e;
                   &:hover {
                     color: $theme-color;
                   }
@@ -356,7 +356,7 @@
 
           letter-spacing: 0.8px;
 
-          color: #e10e0e;
+          color: #000000;
           i {
             font-size: 15px;
 
@@ -398,7 +398,7 @@
   }
 }
 .stick .main-menu.menu-white nav ul li a {
-  color: #e10e0e;
+  color: #000000;
   &:hover {
     color: $theme-color;
   }
@@ -468,7 +468,7 @@
     button {
       font-size: 23px;
 
-      color: rgb(252, 59, 59);
+      color: rgb(0, 0, 0);
     }
     > button {
       border: none;
@@ -499,7 +499,7 @@
 
       opacity: 0;
       background: #fff none repeat scroll 0 0;
-      box-shadow: 0 1px 7px -2px rgba(252, 59, 59);
+      box-shadow: 0 1px 7px -2px rgb(0, 0, 0);
       &.active {
         visibility: visible;
 
@@ -535,7 +535,7 @@
 
             text-transform: capitalize;
 
-            color: rgb(252, 59, 59);
+            color: rgb(0, 0, 0);
             &:hover {
               padding-left: 5px;
 
@@ -580,7 +580,12 @@
 
       padding: 0;
 
-      color: rgb(252, 59, 59);
+      color: rgb(0, 0, 0);
+      &:hover {
+        padding-left: 5px;
+
+        color: $theme-color;
+      }
       border: none;
       background: transparent;
       span.count-style {
@@ -600,7 +605,7 @@
 
         color: #fff;
         border-radius: 100%;
-        background-color: rgb(252, 59, 59);
+        background-color: #ff1e1e;
         @media #{$xl-layout} {
           right: -5px;
         }
@@ -691,7 +696,7 @@
               a {
                 line-height: 1.2;
 
-                color: rgb(252, 59, 59);
+                color: rgb(0, 0, 0);
                 &:hover {
                   color: $theme-color;
                 }
@@ -764,7 +769,7 @@
           color: #fff;
           span {
             &.count-style {
-              color: rgb(252, 59, 59);
+              color: rgb(0, 0, 0);
               background-color: #fff;
             }
           }
@@ -777,7 +782,7 @@
 
       .same-style {
         > a {
-          color: rgb(252, 59, 59);
+          color: rgb(0, 0, 0);
         }
 
         &.cart-wrap,
@@ -787,11 +792,11 @@
         &.header-search {
           > button,
           & > a {
-            color: rgb(252, 59, 59);
+            color: rgb(255, 255, 255);
             span {
               &.count-style {
                 color: #fff;
-                background-color: rgb(252, 59, 59);
+                background-color: rgb(255, 255, 255);
               }
             }
           }
@@ -802,7 +807,7 @@
       margin-top: 3px;
       .same-style {
         > a {
-          color: rgb(252, 59, 59);
+          color: rgb(0, 0, 0);
         }
 
         &.cart-wrap,
@@ -812,11 +817,11 @@
         &.header-search {
           > button,
           & > a {
-            color: rgb(252, 59, 59);
+            color: rgb(0, 0, 0);
             span {
               &.count-style {
                 color: #fff;
-                background-color: rgb(252, 59, 59);
+                background-color: rgb(0, 0, 0);
               }
             }
           }
@@ -842,7 +847,7 @@
 
       opacity: 0;
       background: #ffffff none repeat scroll 0 0;
-      box-shadow: 0 1px 1px 1px rgba(252, 59, 59);
+      box-shadow: 0 1px 1px 1px rgb(134, 134, 134);
       &.active {
         visibility: visible;
 
@@ -867,8 +872,8 @@
 
           transition: all 0.4s ease 0s;
 
-          color: rgb(252, 59, 59);
-          border: 1px solid #d3d3d3;
+          color: rgb(0, 0, 0);
+          border: 1px solid #ebe8e8;
           outline: medium none;
           background: transparent;
         }
@@ -888,10 +893,10 @@
 
           color: #ffffff;
           border: none;
-          border-color: #e60d0d;
+          border-color: rgb(13, 13, 13);
           background: $theme-color;
           &:hover {
-            background-color: rgb(252, 59, 59);
+            background-color: #ff0000;
           }
         }
       }
@@ -1323,7 +1328,7 @@
           transform-origin: center top 0;
 
           background: #fff none repeat scroll 0 0;
-          box-shadow: 0 0 7px 0.5px rgba(252, 59, 59);
+          box-shadow: 0 0 7px 0.5px rgb(255, 255, 255);
           @media #{$lg-layout} {
             overflow-y: auto;
 
@@ -1398,7 +1403,7 @@
           text-align: left;
 
           background-color: #fff;
-          box-shadow: 0 1px 7px -2px rgba(252, 59, 59);
+          box-shadow: 0 1px 7px -2px rgb(255, 255, 255);
           @media #{$xx-layout} {
             top: -50px;
           }
@@ -2190,7 +2195,7 @@
   height: 100%;
 
   background-color: $white;
-  box-shadow: 0 0 87px 0 rgba(252, 59, 59);
+  box-shadow: 0 0 87px 0 rgb(204, 203, 203);
 }
 
 .offcanvas-mobile-search-area {

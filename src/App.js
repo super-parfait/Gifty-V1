@@ -141,7 +141,7 @@ const App = (props) => {
                 <Route
                   exact
                   path={process.env.PUBLIC_URL + "/"}
-                  component={HomeFashion}
+                  component={HomeFashionSix}
                 />
 
                 {/* Homepages */}
@@ -169,11 +169,11 @@ const App = (props) => {
                   path={process.env.PUBLIC_URL + "/home-fashion-six"}
                   component={HomeFashionSix}
                 />
-                {/* <Route
+                <Route
                   path={process.env.PUBLIC_URL + "/home-fashion-seven"}
                   component={HomeFashionSeven}
                 />
-                <Route
+                 {/*<Route
                   path={process.env.PUBLIC_URL + "/home-fashion-eight"}
                   component={HomeFashionEight}
                 />

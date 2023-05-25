@@ -26,14 +26,14 @@
         min-width: 143px;
         padding: 5px;
 
-        color: #e10e0e;
-        border: 1px solid #e6e6e6;
+        color: #000000;
+        border: 1px solid #060606;
       }
     }
     p {
       margin: 0;
 
-      color: #e10e0e;
+      color: #0b0a0a;
       @media #{$xs-layout} {
         margin: 5px 0 10px;
       }
@@ -50,14 +50,14 @@
       margin-left: 20px;
       padding: 0;
 
-      color: #e10e0e;
+      color: #a1a0a0;
       border: none;
       background: none;
       &:first-child {
         margin-left: 0;
       }
       &.active {
-        color: #e10e0e;
+        color: #a1a0a0;
       }
     }
   }
