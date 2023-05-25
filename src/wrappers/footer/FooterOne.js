@@ -46,23 +46,23 @@ const FooterOne = ({
     >
       <div className={`${containerClass ? containerClass : "container"}`}>
         <div className="row">
-          <div
+          {/* <div
             className={`${
               sideMenu ? "col-xl-2 col-sm-4" : "col-lg-2 col-sm-4"
             }`}
-          >
+          > */}
             {/* footer copyright */}
-            <FooterCopyright
+            {/* <FooterCopyright
               footerLogo="/assets/img/logo/logo.png"
               spaceBottomClass="mb-30"
-            />
-          </div>
-          <div
+            /> 
+          </div>*/}
+          {/* <div
             className={`${
               sideMenu ? "col-xl-2 col-sm-4" : "col-lg-2 col-sm-4"
             }`}
-          >
-            <div className="footer-widget mb-30 ml-30">
+          > */}
+            {/* <div className="footer-widget mb-30 ml-30">
               <div className="footer-title">
                 <h3>ABOUT US</h3>
               </div>
@@ -88,9 +88,9 @@ const FooterOne = ({
                   </li>
                 </ul>
               </div>
-            </div>
-          </div>
-          <div
+            </div> 
+          </div>*/}
+          {/* <div
             className={`${
               sideMenu ? "col-xl-2 col-sm-4" : "col-lg-2 col-sm-4"
             }`}
@@ -124,8 +124,8 @@ const FooterOne = ({
                 </ul>
               </div>
             </div>
-          </div>
-          <div
+          </div> */}
+          {/* <div
             className={`${
               sideMenu ? "col-xl-3 col-sm-4" : "col-lg-2 col-sm-6"
             }`}
@@ -181,19 +181,19 @@ const FooterOne = ({
                 </ul>
               </div>
             </div>
-          </div>
-          <div
+          </div> */}
+          {/* <div
             className={`${
               sideMenu ? "col-xl-3 col-sm-8" : "col-lg-4 col-sm-6"
             }`}
-          >
+          > */}
             {/* footer newsletter */}
-            <FooterNewsletter
+            {/* <FooterNewsletter
               spaceBottomClass="mb-30"
               spaceLeftClass="ml-70"
               sideMenu={sideMenu}
             />
-          </div>
+          </div> */}
         </div>
       </div>
       <button

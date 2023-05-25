@@ -12,7 +12,7 @@ const HomeFashionSeven = () => {
   return (
     <Fragment>
       <MetaTags>
-        <title>Flone | Fashion Home</title>
+        <title>Gifty | Produits</title>
         <meta
           name="description"
           content="Fashion home of flone react minimalist eCommerce template."
@@ -24,15 +24,15 @@ const HomeFashionSeven = () => {
         headerTop="visible"
       >
         {/* hero slider */}
-        <HeroSliderFifteen />
+        {/* <HeroSliderFifteen /> */}
         {/* tab product */}
-        <TabProductNine
+        {/* <TabProductNine
           category="fashion"
           spaceBottomClass="pb-100"
           spaceTopClass="pt-100"
-        />
+        /> */}
         {/* banner */}
-        <BannerEleven />
+        {/* <BannerEleven /> */}
         {/* countdown */}
         <CountDownThree
           spaceTopClass="pt-100"
