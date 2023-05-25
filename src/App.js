@@ -138,11 +138,11 @@ const App = (props) => {
               }
             >
               <Switch>
-                {/* <Route
+                <Route
                   exact
                   path={process.env.PUBLIC_URL + "/"}
-                  component={HomeFashion}
-                /> */}
+                  component={HomeFashionSix}
+                />
 
                 {/* Homepages */}
                 {/* <Route
