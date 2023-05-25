@@ -16,14 +16,21 @@ const HeroSliderFourteenSingle = ({ data, sliderClassName }) => {
             <div className="slider-content-6 slider-animated-1 text-center">
               <h1 className="animated">{data.title}</h1>
               <p className="animated">{data.subtitle}</p>
-              <div className="slider-btn-5 btn-hover">
-                <Link
-                  className="animated"
-                  to={process.env.PUBLIC_URL + data.url}
-                >
-                  SHOP NOW
-                </Link>
+              <div className="search-content">
+                <form action="#">
+                  
+                  <input type="text" placeholder="Search" />
+                  <div className="slider-btn-5 btn-hover">
+                    <Link
+                      className="animated"
+                      to={process.env.PUBLIC_URL + data.url}
+                    >
+                      Acheter
+                    </Link>
+                  </div>
+                </form>
               </div>
+              
             </div>
           </div>
         </div>

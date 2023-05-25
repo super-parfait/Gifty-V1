@@ -11,10 +11,10 @@ const HomeFashionSix = () => {
   return (
     <Fragment>
       <MetaTags>
-        <title>Flone | Fashion Home</title>
+        <title>Gifty Accueil</title>
         <meta
           name="description"
-          content="Fashion home of flone react minimalist eCommerce template."
+          content="Le meilleur choix de cadeau pour vos evenements"
         />
       </MetaTags>
       <LayoutSeven>
