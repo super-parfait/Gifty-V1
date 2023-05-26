@@ -54,7 +54,7 @@ const ProductGridListSingle = ({
                 ""
               )}
             </Link>
-            {product.discount || product.new ? (
+            {/* {product.discount || product.new ? (
               <div className="product-img-badges">
                 {product.discount ? (
                   <span className="pink">-{product.discount}%</span>
@@ -65,7 +65,7 @@ const ProductGridListSingle = ({
               </div>
             ) : (
               ""
-            )}
+            )} */}
 
             <div className="product-action">
               <div className="pro-same-action pro-wishlist">
@@ -74,8 +74,8 @@ const ProductGridListSingle = ({
                   disabled={wishlistItem !== undefined}
                   title={
                     wishlistItem !== undefined
-                      ? "Added to wishlist"
-                      : "Add to wishlist"
+                      ? "Ajouté aux favoris"
+                      : "Ajouter aux favoris"
                   }
                   onClick={() => addToWishlist(product, addToast)}
                 >
@@ -83,18 +83,21 @@ const ProductGridListSingle = ({
                 </button>
               </div>
               <div className="pro-same-action pro-cart">
-                {product.affiliateLink ? (
-                  <a
-                    href={product.affiliateLink}
-                    rel="noopener noreferrer"
-                    target="_blank"
-                  >
-                    {" "}
-                    Buy now{" "}
-                  </a>
-                ) : product.variation && product.variation.length >= 1 ? (
+                {
+                // product.affiliateLink ? (
+                //   <a
+                //     href={product.affiliateLink}
+                //     rel="noopener noreferrer"
+                //     target="_blank"
+                //   >
+                //     {" "}
+                //    Acheter ce Pack cadeau{" "}
+                //   </a>
+                // ) : 
+                
+                product.variation && product.variation.length >= 1 ? (
                   <Link to={`${process.env.PUBLIC_URL}/product/${product.id}`}>
-                    Select Option
+                    Voir le Pack Cadeau
                   </Link>
                 ) : product.stock && product.stock > 0 ? (
                   <button
@@ -106,18 +109,18 @@ const ProductGridListSingle = ({
                     }
                     disabled={cartItem !== undefined && cartItem.quantity > 0}
                     title={
-                      cartItem !== undefined ? "Added to cart" : "Add to cart"
+                      cartItem !== undefined ? "Le Cadeau a été ajouté au panier" : "Ajouter le Cadeau au panier" 
                     }
                   >
                     {" "}
                     <i className="pe-7s-cart"></i>{" "}
                     {cartItem !== undefined && cartItem.quantity > 0
-                      ? "Added"
-                      : "Add to cart"}
+                      ? "Pack Cadeau ajouté"
+                      : "Ajouter au panier"}
                   </button>
                 ) : (
                   <button disabled className="active">
-                    Out of Stock
+                    Pack cadeau indisponible
                   </button>
                 )}
               </div>
@@ -176,7 +179,7 @@ const ProductGridListSingle = ({
                       ""
                     )}
                   </Link>
-                  {product.discount || product.new ? (
+                  {/* {product.discount || product.new ? (
                     <div className="product-img-badges">
                       {product.discount ? (
                         <span className="pink">-{product.discount}%</span>
@@ -187,7 +190,7 @@ const ProductGridListSingle = ({
                     </div>
                   ) : (
                     ""
-                  )}
+                  )} */}
                 </div>
               </div>
             </div>
@@ -236,13 +239,13 @@ const ProductGridListSingle = ({
                         target="_blank"
                       >
                         {" "}
-                        Buy now{" "}
+                       Acheter le pack cadeau{" "}
                       </a>
                     ) : product.variation && product.variation.length >= 1 ? (
                       <Link
                         to={`${process.env.PUBLIC_URL}/product/${product.id}`}
                       >
-                        Select Option
+                        Voir le pack cadeau
                       </Link>
                     ) : product.stock && product.stock > 0 ? (
                       <button
@@ -257,19 +260,19 @@ const ProductGridListSingle = ({
                         }
                         title={
                           cartItem !== undefined
-                            ? "Added to cart"
-                            : "Add to cart"
+                            ? "Ajouté au panier"
+                            : "Ajouter au panier"
                         }
                       >
                         {" "}
                         <i className="pe-7s-cart"></i>{" "}
                         {cartItem !== undefined && cartItem.quantity > 0
-                          ? "Added"
-                          : "Add to cart"}
+                          ? "Ajouté au panier"
+                          : "Ajouter au panier"}
                       </button>
                     ) : (
                       <button disabled className="active">
-                        Out of Stock
+                        Pack cadeau indisponible
                       </button>
                     )}
                   </div>
@@ -280,8 +283,8 @@ const ProductGridListSingle = ({
                       disabled={wishlistItem !== undefined}
                       title={
                         wishlistItem !== undefined
-                          ? "Added to wishlist"
-                          : "Add to wishlist"
+                          ? "Ajouté aux favoris"
+                          : "Ajouter aux favoris"
                       }
                       onClick={() => addToWishlist(product, addToast)}
                     >
@@ -294,8 +297,8 @@ const ProductGridListSingle = ({
                       disabled={compareItem !== undefined}
                       title={
                         compareItem !== undefined
-                          ? "Added to compare"
-                          : "Add to compare"
+                          ? "Comparé"
+                          : "Ajouter pour comparer"
                       }
                       onClick={() => addToCompare(product, addToast)}
                     >

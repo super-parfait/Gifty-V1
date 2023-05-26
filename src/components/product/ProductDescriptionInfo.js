@@ -70,7 +70,7 @@ const ProductDescriptionInfo = ({
 
       {product.variation ? (
         <div className="pro-details-size-color">
-          <div className="pro-details-color-wrap">
+          {/* <div className="pro-details-color-wrap">
             <span>Color</span>
             <div className="pro-details-color-content">
               {product.variation.map((single, key) => {
@@ -132,12 +132,14 @@ const ProductDescriptionInfo = ({
                     : "";
                 })}
             </div>
-          </div>
+          </div> */}
         </div>
       ) : (
         ""
       )}
-      {product.affiliateLink ? (
+      {product.affiliateLink ? 
+      
+      (
         <div className="pro-details-quality">
           <div className="pro-details-cart btn-hover ml-0">
             <a
@@ -145,7 +147,7 @@ const ProductDescriptionInfo = ({
               rel="noopener noreferrer"
               target="_blank"
             >
-              Buy Now
+              Acheter 
             </a>
           </div>
         </div>
@@ -194,10 +196,10 @@ const ProductDescriptionInfo = ({
                 disabled={productCartQty >= productStock}
               >
                 {" "}
-                Add To Cart{" "}
+                Ajouter au cadeau{" "}
               </button>
             ) : (
-              <button disabled>Out of Stock</button>
+              <button disabled>Article indisponible</button>
             )}
           </div>
           <div className="pro-details-wishlist">
@@ -206,8 +208,8 @@ const ProductDescriptionInfo = ({
               disabled={wishlistItem !== undefined}
               title={
                 wishlistItem !== undefined
-                  ? "Added to wishlist"
-                  : "Add to wishlist"
+                  ? "Article ajouté aux favoris"
+                  : "Ajouter aux favoris"
               }
               onClick={() => addToWishlist(product, addToast)}
             >
@@ -220,8 +222,8 @@ const ProductDescriptionInfo = ({
               disabled={compareItem !== undefined}
               title={
                 compareItem !== undefined
-                  ? "Added to compare"
-                  : "Add to compare"
+                  ? "Article ajouté pour comparer"
+                  : "Ajouter pour comparer"
               }
               onClick={() => addToCompare(product, addToast)}
             >
@@ -230,7 +232,7 @@ const ProductDescriptionInfo = ({
           </div>
         </div>
       )}
-      {product.category ? (
+      {/* {product.category ? (
         <div className="pro-details-meta">
           <span>Categories :</span>
           <ul>
@@ -247,8 +249,8 @@ const ProductDescriptionInfo = ({
         </div>
       ) : (
         ""
-      )}
-      {product.tag ? (
+      )} */}
+      {/* {product.tag ? (
         <div className="pro-details-meta">
           <span>Tags :</span>
           <ul>
@@ -265,9 +267,9 @@ const ProductDescriptionInfo = ({
         </div>
       ) : (
         ""
-      )}
+      )} */}
 
-      <div className="pro-details-social">
+      {/* <div className="pro-details-social">
         <ul>
           <li>
             <a href="//facebook.com">
@@ -295,7 +297,7 @@ const ProductDescriptionInfo = ({
             </a>
           </li>
         </ul>
-      </div>
+      </div> */}
     </div>
   );
 };
