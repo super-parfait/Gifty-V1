@@ -39,13 +39,24 @@ const HeaderSix = ({ layout, headerPaddingClass, headerBgClass }) => {
         <div className="row">
           <div className="col-xl-5 col-lg-6 d-none d-lg-block">
             <div className="clickable-menu clickable-mainmenu-active">
-              <button
+              
+              {/* <button
                 onClick={() => {
                   setOffcanvasActive(true);
                 }}
               >
-                <i className="pe-7s-menu" />
+                <i className="pe-7s-home" />
+              </button> */}
+
+              <button>
+                <Link to={process.env.PUBLIC_URL + "/home-fashion-six"} >
+                  <i className="pe-7s-home" />
+                </Link>
               </button>
+              
+              
+
+
             </div>
           </div>
           <div className="col-xl-2 col-lg-2 col-md-6 col-6">

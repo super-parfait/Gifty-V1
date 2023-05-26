@@ -8,15 +8,9 @@ const HeroSliderFourteen = () => {
     effect: "fade",
     loop: true,
     speed: 1000,
-    autoplay: {
-      delay: 5000,
-      disableOnInteraction: false
-    },
+    autoplay: false,
     watchSlidesVisibility: true,
-    navigation: {
-      nextEl: ".swiper-button-next",
-      prevEl: ".swiper-button-prev"
-    },
+    navigation:false,
     renderPrevButton: () => (
       <button className="swiper-button-prev ht-swiper-button-nav">
         <i className="pe-7s-angle-left" />
@@ -43,8 +37,10 @@ const HeroSliderFourteen = () => {
                 />
               );
             })}
+            
         </Swiper>
       </div>
+      
     </div>
   );
 };

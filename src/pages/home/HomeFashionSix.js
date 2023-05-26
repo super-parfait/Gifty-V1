@@ -21,17 +21,17 @@ const HomeFashionSix = () => {
         {/* hero slider */}
         <HeroSliderFourteen />
         {/* section title */}
-        <SectionTitleWithText spaceTopClass="pt-95" spaceBottomClass="pb-90" />
+        {/* <SectionTitleWithText spaceTopClass="pt-95" spaceBottomClass="pb-90" /> */}
         {/* tab product */}
-        <TabProductEight
+        {/* <TabProductEight
           spaceBottomClass="pb-70"
           category="fashion"
           sectionTitle={false}
-        />
+        /> */}
         {/* newsletter */}
-        <NewsletterTwo spaceBottomClass="pb-100" />
+        {/* <NewsletterTwo spaceBottomClass="pb-100" /> */}
         {/* image slider */}
-        <ImageSliderOne />
+        {/* <ImageSliderOne /> */}
       </LayoutSeven>
     </Fragment>
   );

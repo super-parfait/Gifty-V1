@@ -6,6 +6,7 @@ import MobileWidgets from "./sub-components/MobileWidgets";
 
 const MobileMenu = () => {
   useEffect(() => {
+
     const offCanvasNav = document.querySelector("#offcanvas-navigation");
     const offCanvasNavSubMenu = offCanvasNav.querySelectorAll(".sub-menu");
     const anchorLinks = offCanvasNav.querySelectorAll("a");
@@ -62,10 +63,10 @@ const MobileMenu = () => {
           <MobileNavMenu />
 
           {/* mobile language and currency */}
-          <MobileLangCurChange />
+          {/* <MobileLangCurChange /> */}
 
           {/* mobile widgets */}
-          <MobileWidgets />
+          {/* <MobileWidgets /> */}
         </div>
       </div>
     </div>

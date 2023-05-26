@@ -46,21 +46,21 @@ const IconGroup = ({
           className="account-setting-active"
           onClick={e => handleClick(e)}
         >
-          <i className="pe-7s-user-female" />
+          <i className="pe-7s-user" />
         </button>
         <div className="account-dropdown">
           <ul>
             <li>
-              <Link to={process.env.PUBLIC_URL + "/login-register"}>Login</Link>
+              <Link to={process.env.PUBLIC_URL + "/login-register"}>Connexion</Link>
             </li>
             <li>
               <Link to={process.env.PUBLIC_URL + "/login-register"}>
-                Register
+                Inscription
               </Link>
             </li>
             <li>
               <Link to={process.env.PUBLIC_URL + "/my-account"}>
-                my account
+                Mon compte
               </Link>
             </li>
           </ul>
@@ -104,12 +104,37 @@ const IconGroup = ({
           </span>
         </Link>
       </div>
+      <div className="same-style cart-wrap d-block d-lg-none">
+      <button
+          className="account-setting-active"
+          onClick={e => handleClick(e)}
+        >
+          <i className="pe-7s-user" />
+        </button>
+        <div className="account-dropdown">
+          <ul>
+            <li>
+              <Link to={process.env.PUBLIC_URL + "/login-register"}>Connexion</Link>
+            </li>
+            <li>
+              <Link to={process.env.PUBLIC_URL + "/login-register"}>
+                Inscription
+              </Link>
+            </li>
+            <li>
+              <Link to={process.env.PUBLIC_URL + "/my-account"}>
+                Mon compte
+              </Link>
+            </li>
+          </ul>
+        </div>
+      </div>
       <div className="same-style mobile-off-canvas d-block d-lg-none">
         <button
           className="mobile-aside-button"
           onClick={() => triggerMobileMenu()}
         >
-          <i className="pe-7s-menu" />
+          <i className="pe-7s-search" />
         </button>
       </div>
     </div>

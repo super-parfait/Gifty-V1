@@ -8,25 +8,22 @@ const HeroSliderOne = () => {
     effect: "fade",
     loop: true,
     speed: 1000,
-    autoplay: {
-      delay: 5000,
-      disableOnInteraction: false
-    },
+    autoplay: false,
     watchSlidesVisibility: true,
-    navigation: {
-      nextEl: ".swiper-button-next",
-      prevEl: ".swiper-button-prev"
-    },
-    renderPrevButton: () => (
-      <button className="swiper-button-prev ht-swiper-button-nav">
-        <i className="pe-7s-angle-left" />
-      </button>
-    ),
-    renderNextButton: () => (
-      <button className="swiper-button-next ht-swiper-button-nav">
-        <i className="pe-7s-angle-right" />
-      </button>
-    )
+    // navigation: {
+    //   nextEl: ".swiper-button-next",
+    //   prevEl: ".swiper-button-prev"
+    // },
+    // renderPrevButton: () => (
+    //   <button className="swiper-button-prev ht-swiper-button-nav">
+    //     <i className="pe-7s-angle-left" />
+    //   </button>
+    // ),
+    // renderNextButton: () => (
+    //   <button className="swiper-button-next ht-swiper-button-nav">
+    //     <i className="pe-7s-angle-right" />
+    //   </button>
+    // )
   };
 
   return (
