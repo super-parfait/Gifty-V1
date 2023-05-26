@@ -14,7 +14,7 @@ const LoginRegister = ({ location }) => {
   return (
     <Fragment>
       <MetaTags>
-        <title>Flone | Login</title>
+        <title>Gifty | Login</title>
         <meta
           name="description"
           content="Compare page of flone react minimalist eCommerce template."
@@ -22,7 +22,7 @@ const LoginRegister = ({ location }) => {
       </MetaTags>
       <BreadcrumbsItem to={process.env.PUBLIC_URL + "/"}>Home</BreadcrumbsItem>
       <BreadcrumbsItem to={process.env.PUBLIC_URL + pathname}>
-        Login Register
+      Authentification 
       </BreadcrumbsItem>
       <LayoutOne headerTop="visible">
         {/* breadcrumb */}
@@ -36,12 +36,12 @@ const LoginRegister = ({ location }) => {
                     <Nav variant="pills" className="login-register-tab-list">
                       <Nav.Item>
                         <Nav.Link eventKey="login">
-                          <h4>Login</h4>
+                          <h4>Connexion</h4>
                         </Nav.Link>
                       </Nav.Item>
                       <Nav.Item>
                         <Nav.Link eventKey="register">
-                          <h4>Register</h4>
+                          <h4>Inscription </h4>
                         </Nav.Link>
                       </Nav.Item>
                     </Nav>
@@ -53,23 +53,23 @@ const LoginRegister = ({ location }) => {
                               <input
                                 type="text"
                                 name="user-name"
-                                placeholder="Username"
+                                placeholder="Numéro de téléphone"
                               />
                               <input
                                 type="password"
                                 name="user-password"
-                                placeholder="Password"
+                                placeholder="Mot de passe"
                               />
                               <div className="button-box">
                                 <div className="login-toggle-btn">
                                   <input type="checkbox" />
-                                  <label className="ml-10">Remember me</label>
+                                  <label className="ml-10">Se Souvenir de Moi</label>
                                   <Link to={process.env.PUBLIC_URL + "/"}>
-                                    Forgot Password?
+                                    Mot de Passe oublié ?
                                   </Link>
                                 </div>
                                 <button type="submit">
-                                  <span>Login</span>
+                                  <span>Se Connecter</span>
                                 </button>
                               </div>
                             </form>
@@ -83,21 +83,32 @@ const LoginRegister = ({ location }) => {
                               <input
                                 type="text"
                                 name="user-name"
-                                placeholder="Username"
+                                placeholder="Nom & Prénoms"
                               />
                               <input
-                                type="password"
-                                name="user-password"
-                                placeholder="Password"
+                                type="text"
+                                name="phone-number"
+                                placeholder="Numéro de téléphone"
                               />
                               <input
                                 name="user-email"
                                 placeholder="Email"
                                 type="email"
                               />
+                              <input
+                                type="password"
+                                name="user-password"
+                                placeholder="Mot de Passe"
+                              />
+                              <input
+                                type="password"
+                                name="user-cpassword"
+                                placeholder="Confirmation Mot de Passe"
+                              />
+                              
                               <div className="button-box">
                                 <button type="submit">
-                                  <span>Register</span>
+                                  <span>S'Inscrire</span>
                                 </button>
                               </div>
                             </form>

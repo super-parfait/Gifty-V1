@@ -13,7 +13,7 @@ const MyAccount = ({ location }) => {
   return (
     <Fragment>
       <MetaTags>
-        <title>Flone | My Account</title>
+        <title>Gifty | Mon Compte</title>
         <meta
           name="description"
           content="Compare page of flone react minimalist eCommerce template."
@@ -21,7 +21,7 @@ const MyAccount = ({ location }) => {
       </MetaTags>
       <BreadcrumbsItem to={process.env.PUBLIC_URL + "/"}>Home</BreadcrumbsItem>
       <BreadcrumbsItem to={process.env.PUBLIC_URL + pathname}>
-        My Account
+        Mon Compte
       </BreadcrumbsItem>
       <LayoutOne headerTop="visible">
         {/* breadcrumb */}
@@ -36,7 +36,7 @@ const MyAccount = ({ location }) => {
                       <Card.Header className="panel-heading">
                         <Accordion.Toggle variant="link" eventKey="0">
                           <h3 className="panel-title">
-                            <span>1 .</span> Edit your account information{" "}
+                            <span>1 .</span> Mes Informations{" "}
                           </h3>
                         </Accordion.Toggle>
                       </Card.Header>
@@ -44,44 +44,44 @@ const MyAccount = ({ location }) => {
                         <Card.Body>
                           <div className="myaccount-info-wrapper">
                             <div className="account-info-wrapper">
-                              <h4>My Account Information</h4>
-                              <h5>Your Personal Details</h5>
+                              <h4>Modifier mes informations personnelles</h4>
+                              {/* <h5>Your Personal Details</h5> */}
                             </div>
                             <div className="row">
                               <div className="col-lg-6 col-md-6">
                                 <div className="billing-info">
-                                  <label>First Name</label>
+                                  <label>Nom & Prénoms</label>
                                   <input type="text" />
                                 </div>
                               </div>
                               <div className="col-lg-6 col-md-6">
                                 <div className="billing-info">
-                                  <label>Last Name</label>
+                                  <label>Numéro de téléphone</label>
                                   <input type="text" />
                                 </div>
                               </div>
                               <div className="col-lg-12 col-md-12">
                                 <div className="billing-info">
-                                  <label>Email Address</label>
+                                  <label>Email </label>
                                   <input type="email" />
                                 </div>
                               </div>
-                              <div className="col-lg-6 col-md-6">
+                              {/* <div className="col-lg-6 col-md-6">
                                 <div className="billing-info">
                                   <label>Telephone</label>
                                   <input type="text" />
                                 </div>
-                              </div>
-                              <div className="col-lg-6 col-md-6">
+                              </div>  */}
+                              {/* <div className="col-lg-6 col-md-6">
                                 <div className="billing-info">
                                   <label>Fax</label>
                                   <input type="text" />
                                 </div>
-                              </div>
+                              </div> */}
                             </div>
                             <div className="billing-back-btn">
                               <div className="billing-btn">
-                                <button type="submit">Continue</button>
+                                <button type="submit">Enregister</button>
                               </div>
                             </div>
                           </div>
@@ -92,7 +92,7 @@ const MyAccount = ({ location }) => {
                       <Card.Header className="panel-heading">
                         <Accordion.Toggle variant="link" eventKey="1">
                           <h3 className="panel-title">
-                            <span>2 .</span> Change your password
+                            <span>2 .</span>Sécurité
                           </h3>
                         </Accordion.Toggle>
                       </Card.Header>
@@ -100,33 +100,33 @@ const MyAccount = ({ location }) => {
                         <Card.Body>
                           <div className="myaccount-info-wrapper">
                             <div className="account-info-wrapper">
-                              <h4>Change Password</h4>
-                              <h5>Your Password</h5>
+                              <h4>Modifier mon Mot de Passe</h4>
+                              {/* <h5>Your Password</h5> */}
                             </div>
                             <div className="row">
                               <div className="col-lg-12 col-md-12">
                                 <div className="billing-info">
-                                  <label>Password</label>
+                                  <label>Mot de Passe</label>
                                   <input type="password" />
                                 </div>
                               </div>
                               <div className="col-lg-12 col-md-12">
                                 <div className="billing-info">
-                                  <label>Password Confirm</label>
+                                  <label>Confirmer Mot de Passe</label>
                                   <input type="password" />
                                 </div>
                               </div>
                             </div>
                             <div className="billing-back-btn">
                               <div className="billing-btn">
-                                <button type="submit">Continue</button>
+                                <button type="submit">Enregister</button>
                               </div>
                             </div>
                           </div>
                         </Card.Body>
                       </Accordion.Collapse>
                     </Card>
-                    <Card className="single-my-account mb-20">
+                    {/* <Card className="single-my-account mb-20">
                       <Card.Header className="panel-heading">
                         <Accordion.Toggle variant="link" eventKey="2">
                           <h3 className="panel-title">
@@ -168,7 +168,7 @@ const MyAccount = ({ location }) => {
                           </div>
                         </Card.Body>
                       </Accordion.Collapse>
-                    </Card>
+                    </Card> */}
                   </Accordion>
                 </div>
               </div>

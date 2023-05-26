@@ -60,7 +60,42 @@ const IconGroup = ({
             </li>
             <li>
               <Link to={process.env.PUBLIC_URL + "/my-account"}>
-                Mon compte
+                Mon Compte
+              </Link>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      
+      <div className="same-style mobile-off-canvas d-block d-lg-none">
+        <button
+          className="mobile-aside-button"
+          onClick={() => triggerMobileMenu()}
+        >
+          <i className="pe-7s-search" />
+        </button>
+      </div>
+      <div className="same-style cart-wrap d-block d-lg-none">
+        <button
+          className="account-setting-active"
+          onClick={e => handleClick(e)}
+        >
+          <i className="pe-7s-user" />
+        </button>
+        <div className="account-dropdown">
+          <ul>
+            <li>
+              <Link to={process.env.PUBLIC_URL + "/login-register"}>Connexion</Link>
+            </li>
+            <li>
+              <Link to={process.env.PUBLIC_URL + "/login-register"}>
+                Inscription
+              </Link>
+            </li>
+            <li>
+              <Link to={process.env.PUBLIC_URL + "/my-account"}>
+                Mon Compte
               </Link>
             </li>
           </ul>
@@ -89,13 +124,16 @@ const IconGroup = ({
             {cartData && cartData.length ? cartData.length : 0}
           </span>
         </button>
+        
         {/* menu cart */}
+        
         <MenuCart
           cartData={cartData}
           currency={currency}
           deleteFromCart={deleteFromCart}
         />
       </div>
+      
       <div className="same-style cart-wrap d-block d-lg-none">
         <Link className="icon-cart" to={process.env.PUBLIC_URL + "/cart"}>
           <i className="pe-7s-shopbag" />
@@ -103,40 +141,9 @@ const IconGroup = ({
             {cartData && cartData.length ? cartData.length : 0}
           </span>
         </Link>
+        
       </div>
-      <div className="same-style cart-wrap d-block d-lg-none">
-      <button
-          className="account-setting-active"
-          onClick={e => handleClick(e)}
-        >
-          <i className="pe-7s-user" />
-        </button>
-        <div className="account-dropdown">
-          <ul>
-            <li>
-              <Link to={process.env.PUBLIC_URL + "/login-register"}>Connexion</Link>
-            </li>
-            <li>
-              <Link to={process.env.PUBLIC_URL + "/login-register"}>
-                Inscription
-              </Link>
-            </li>
-            <li>
-              <Link to={process.env.PUBLIC_URL + "/my-account"}>
-                Mon compte
-              </Link>
-            </li>
-          </ul>
-        </div>
-      </div>
-      <div className="same-style mobile-off-canvas d-block d-lg-none">
-        <button
-          className="mobile-aside-button"
-          onClick={() => triggerMobileMenu()}
-        >
-          <i className="pe-7s-search" />
-        </button>
-      </div>
+      
     </div>
   );
 };

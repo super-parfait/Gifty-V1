@@ -48,16 +48,16 @@ const ShopGridNoSidebar = ({ location, products }) => {
   return (
     <Fragment>
       <MetaTags>
-        <title>Flone | Shop Page</title>
+        <title>Gifty | Packs Cadeau</title>
         <meta
           name="description"
-          content="Shop page of flone react minimalist eCommerce template."
+          content="Gifty App"
         />
       </MetaTags>
 
       <BreadcrumbsItem to={process.env.PUBLIC_URL + "/"}>Home</BreadcrumbsItem>
       <BreadcrumbsItem to={process.env.PUBLIC_URL + pathname}>
-        Shop
+        Packs Cadeau
       </BreadcrumbsItem>
 
       <LayoutOne headerTop="visible">
@@ -68,6 +68,9 @@ const ShopGridNoSidebar = ({ location, products }) => {
           <div className="container">
             <div className="row">
               <div className="col-lg-12">
+
+              
+
                 {/* shop topbar default */}
                 <ShopTopbar
                   getLayout={getLayout}

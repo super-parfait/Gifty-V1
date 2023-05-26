@@ -12,17 +12,21 @@ const LayoutOne = ({
 }) => {
   return (
     <Fragment>
+
+      
+
       <HeaderOne
         layout={headerContainerClass}
         top={headerTop}
         headerPaddingClass={headerPaddingClass}
         headerPositionClass={headerPositionClass}
       />
+      
       {children}
       <FooterOne
         backgroundColorClass="bg-gray"
-        spaceTopClass="pt-100"
-        spaceBottomClass="pb-70"
+        spaceTopClass="pt-5"
+        spaceBottomClass="pb-3"
       />
     </Fragment>
   );
