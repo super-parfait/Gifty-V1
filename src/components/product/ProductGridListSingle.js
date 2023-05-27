@@ -17,7 +17,7 @@ const ProductGridListSingle = ({
   compareItem,
   sliderClassName,
   spaceBottomClass
-}) => {
+}) => { 
   const [modalShow, setModalShow] = useState(false);
   const { addToast } = useToasts();
 
@@ -34,9 +34,9 @@ const ProductGridListSingle = ({
           sliderClassName ? sliderClassName : ""
         }`}
       >
-        <div
-          className={`product-wrap ${spaceBottomClass ? spaceBottomClass : ""}`}
-        >
+        <div className={`product-wrap ${spaceBottomClass ? spaceBottomClass : ""}`} >
+
+          {/* L'affichaqge de l'image */}
           <div className="product-img">
             <Link to={process.env.PUBLIC_URL + "/product/" + product.id}>
               <img
@@ -54,21 +54,26 @@ const ProductGridListSingle = ({
                 ""
               )}
             </Link>
-            {product.discount || product.new ? (
+
+            {/* {product.discount || product.new ? (
               <div className="product-img-badges">
                 {product.discount ? (
                   <span className="pink">-{product.discount}%</span>
                 ) : (
                   ""
                 )}
-                {product.new ? <span className="purple">New</span> : ""}
+                {product.new ? <span className="purple">Nouveau</span> : ""}
               </div>
             ) : (
               ""
-            )}
+            )} */}
+
+
+            {/* debut pour les actions sur les produits */}
 
             <div className="product-action">
               <div className="pro-same-action pro-wishlist">
+
                 <button
                   className={wishlistItem !== undefined ? "active" : ""}
                   disabled={wishlistItem !== undefined}
@@ -81,22 +86,33 @@ const ProductGridListSingle = ({
                 >
                   <i className="pe-7s-like" />
                 </button>
+
               </div>
+
               <div className="pro-same-action pro-cart">
-                {product.affiliateLink ? (
-                  <a
-                    href={product.affiliateLink}
-                    rel="noopener noreferrer"
-                    target="_blank"
-                  >
-                    {" "}
-                    Buy now{" "}
-                  </a>
-                ) : product.variation && product.variation.length >= 1 ? (
-                  <Link to={`${process.env.PUBLIC_URL}/product/${product.id}`}>
-                    Select Option
-                  </Link>
-                ) : product.stock && product.stock > 0 ? (
+                {
+                
+                // Le lient pour aller sur Amazon
+
+                // product.affiliateLink ? (
+                //   <a
+                //     href={product.affiliateLink}
+                //     rel="noopener noreferrer"
+                //     target="_blank"
+                //   >
+                //     {" "}
+                //     Buy now{" "}
+                //   </a>
+                // ) :
+
+
+                //  product.variation && product.variation.length >= 1 ? (
+                //   <Link to={`${process.env.PUBLIC_URL}/product/${product.id}`}>
+                //     Select Option
+                //   </Link>
+                // ) : 
+                
+                product.stock && product.stock > 0 ? (
                   <button
                     onClick={() => addToCart(product, addToast)}
                     className={
@@ -106,28 +122,37 @@ const ProductGridListSingle = ({
                     }
                     disabled={cartItem !== undefined && cartItem.quantity > 0}
                     title={
-                      cartItem !== undefined ? "Added to cart" : "Add to cart"
+                    cartItem !== undefined ? "Ajouté au panier" : "Ajouter au panier"
                     }
                   >
                     {" "}
                     <i className="pe-7s-cart"></i>{" "}
                     {cartItem !== undefined && cartItem.quantity > 0
-                      ? "Added"
-                      : "Add to cart"}
+                      ? "Ajouté"
+                      : "Ajouter au panier"}
                   </button>
                 ) : (
                   <button disabled className="active">
-                    Out of Stock
+                    En rupture de Stock
                   </button>
-                )}
+                )
+                
+                }
               </div>
+
+              
               <div className="pro-same-action pro-quickview">
                 <button onClick={() => setModalShow(true)} title="Quick View">
                   <i className="pe-7s-look" />
                 </button>
               </div>
             </div>
+
+
+            {/* Fin pour les actions sur les produits */}
           </div>
+
+            {/* L'affichage du nom et detail du produits */}
           <div className="product-content text-center">
             <h3>
               <Link to={process.env.PUBLIC_URL + "/product/" + product.id}>
@@ -154,12 +179,19 @@ const ProductGridListSingle = ({
               )}
             </div>
           </div>
+                {/* Fin de L'affichage du nom  et detail du produits */}
+
+
         </div>
+        
+
+        {/* Gestion de la responsivité avec le spaceBottomClass pour le mb25 ou mb30 */}
         <div className="shop-list-wrap mb-30">
           <div className="row">
             <div className="col-xl-4 col-md-5 col-sm-6">
               <div className="product-list-image-wrap">
                 <div className="product-img">
+                  
                   <Link to={process.env.PUBLIC_URL + "/product/" + product.id}>
                     <img
                       className="default-img img-fluid"
@@ -176,6 +208,8 @@ const ProductGridListSingle = ({
                       ""
                     )}
                   </Link>
+
+
                   {product.discount || product.new ? (
                     <div className="product-img-badges">
                       {product.discount ? (
@@ -188,6 +222,7 @@ const ProductGridListSingle = ({
                   ) : (
                     ""
                   )}
+                  
                 </div>
               </div>
             </div>
@@ -307,6 +342,8 @@ const ProductGridListSingle = ({
             </div>
           </div>
         </div>
+
+        
       </div>
       {/* product modal */}
       <ProductModal

@@ -1,15 +1,93 @@
 import PropTypes from "prop-types";
-import React, { Fragment } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import React, { Fragment, useState, useRef } from "react";
 import MetaTags from "react-meta-tags";
 import { Link } from "react-router-dom";
+import { Redirect, useHistory   } from 'react-router-dom';
 import { BreadcrumbsItem } from "react-breadcrumbs-dynamic";
 import Tab from "react-bootstrap/Tab";
 import Nav from "react-bootstrap/Nav";
 import LayoutOne from "../../layouts/LayoutOne";
 import Breadcrumb from "../../wrappers/breadcrumb/Breadcrumb";
 
-const LoginRegister = ({ location }) => {
+
+import { login } from "../../redux/actions/auth";
+
+import Form from "react-validation/build/form";
+import Input from "react-validation/build/input";
+import CheckButton from "react-validation/build/button";
+
+// import { isEmail } from "validator";
+
+
+const required = value => {
+  if (!value) {
+    return (
+      <div className="alert alert-danger" role="alert">
+        Ce champs est requis !!!
+      </div>
+    );
+  }
+};
+
+
+
+const LoginRegister = ({ location, props }) => {
   const { pathname } = location;
+
+  let history = useHistory();
+
+
+  const form = useRef();
+  const checkBtn = useRef();
+
+  const [telephone, setTelephone] = useState("");
+  const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const { isLoggedIn } = useSelector(state => state.auth);
+  const { message } = useSelector(state => state.message);
+
+  const dispatch = useDispatch();
+
+  const onChangeTelephone = (e) => {
+    const telephone = e.target.value;
+    setTelephone(telephone);
+  };
+
+  const onChangePassword = (e) => {
+    const password = e.target.value;
+    setPassword(password);
+  };
+
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+
+    const credentials = { telephone, password }
+
+    setLoading(true);
+
+    form.current.validateAll();
+
+    if (checkBtn.current.context._errors.length === 0) {
+      dispatch(login(credentials))
+        .then(() => {
+          history("/my-account");
+          window.location.reload();
+        })
+        .catch(() => {
+          setLoading(false);
+        });
+    } else {
+      setLoading(false);
+    }
+  };
+
+  if (isLoggedIn) {
+    return <Redirect to="/my-account" />;
+  }
+
 
   return (
     <Fragment>
@@ -46,19 +124,27 @@ const LoginRegister = ({ location }) => {
                       </Nav.Item>
                     </Nav>
                     <Tab.Content>
+
+                      {/* Le formulaire de Connexion */}
                       <Tab.Pane eventKey="login">
                         <div className="login-form-container">
                           <div className="login-register-form">
-                            <form>
-                              <input
+                            <Form onSubmit={handleLogin} ref={form} >
+                              <Input
                                 type="text"
                                 name="user-name"
                                 placeholder="Numéro de téléphone"
+                                value={telephone}
+                                onChange={onChangeTelephone}
+                                validations={[required]}
                               />
-                              <input
+                              <Input
                                 type="password"
                                 name="user-password"
                                 placeholder="Mot de passe"
+                                value={password}
+                                onChange={onChangePassword}
+                                validations={[required]}
                               />
                               <div className="button-box">
                                 <div className="login-toggle-btn">
@@ -68,14 +154,31 @@ const LoginRegister = ({ location }) => {
                                     Mot de Passe oublié ?
                                   </Link>
                                 </div>
-                                <button type="submit">
+                                <button type="submit"  disabled={loading}>
+                                  {loading && (
+                                    <span className="spinner-border spinner-border-sm"></span>
+                                  )}  
                                   <span>Se Connecter</span>
                                 </button>
                               </div>
-                            </form>
+
+                              {message && (
+                                <div className="form-group">
+                                  <div className="alert alert-danger" role="alert">
+                                    {message}
+                                  </div>
+                                </div>
+                              )}
+
+                              <CheckButton style={{ display: "none" }} ref={checkBtn} />  
+
+                            </Form>
                           </div>
                         </div>
                       </Tab.Pane>
+
+
+                      {/* Le Formulaire d'Inscription */}
                       <Tab.Pane eventKey="register">
                         <div className="login-form-container">
                           <div className="login-register-form">
