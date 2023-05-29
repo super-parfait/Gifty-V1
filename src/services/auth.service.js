@@ -30,8 +30,8 @@ const functionLogin = (credentials) =>{
         .post(API_URL+'user/login', credentials)
         .then(response => response.data)
         .then(data => {
-            addItem('userToken', data.token);
-            addItem('userRefeshToken', data.refreshtoken)
+            addItem('user', JSON.stringify({"token":data.token,"refresh_token": data.refreshtoken }));
+        //     addItem('userRefeshToken', JSON.stringify({}))
             return true;
         });
 }
@@ -39,9 +39,9 @@ const functionLogin = (credentials) =>{
 const functionRegister = (credentials) => {
     return axios
         .post(API_URL + 'user/register', credentials)
-        .then(response => response.data.token)
-        .then(token => {
-            addItem('userToken', token);
+        .then(response => response.data)
+        .then(data => {
+            addItem('user', JSON.stringify({'token':data.token}));
             // addItem('userRefeshToken', refreshtoken)
 
             return true;
