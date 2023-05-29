@@ -315,6 +315,12 @@ const App = (props) => {
                   path={process.env.PUBLIC_URL + "/shop-grid-no-sidebar"}
                   component={ShopGridNoSidebar}
                 />
+
+                <Route
+                  path={process.env.PUBLIC_URL + "/shop-list-standard"}
+                  component={ShopListStandard}
+                />
+
                 {/* <Route
                   path={process.env.PUBLIC_URL + "/shop-grid-full-width"}
                   component={ShopGridFullWidth}

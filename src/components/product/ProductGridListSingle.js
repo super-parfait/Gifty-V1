@@ -28,6 +28,8 @@ const ProductGridListSingle = ({
   ).toFixed(2);
 
   return (
+
+    
     <Fragment>
       <div
         className={`col-xl-4 col-sm-6 ${

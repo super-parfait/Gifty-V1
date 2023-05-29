@@ -21,7 +21,7 @@ const ShopGridNoSidebar = ({ location, products }) => {
   const [currentData, setCurrentData] = useState([]);
   const [sortedProducts, setSortedProducts] = useState([]);
 
-  const pageLimit = 12;
+  const pageLimit = 15;
   const { pathname } = location;
 
   const getLayout = layout => {
@@ -55,7 +55,7 @@ const ShopGridNoSidebar = ({ location, products }) => {
         />
       </MetaTags>
 
-      <BreadcrumbsItem to={process.env.PUBLIC_URL + "/"}>Home</BreadcrumbsItem>
+      <BreadcrumbsItem to={process.env.PUBLIC_URL + "/"}>Accueil</BreadcrumbsItem>
       <BreadcrumbsItem to={process.env.PUBLIC_URL + pathname}>
         Packs Cadeau
       </BreadcrumbsItem>
@@ -68,7 +68,7 @@ const ShopGridNoSidebar = ({ location, products }) => {
           <div className="container">
             <div className="row">
               <div className="col-lg-12">
-
+              
               
 
                 {/* shop topbar default */}

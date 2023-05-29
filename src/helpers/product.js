@@ -103,6 +103,7 @@ export const getSortedProducts = (products, sortType, sortValue) => {
       }
     }
   }
+  console.log(products)
   return products;
 };
 

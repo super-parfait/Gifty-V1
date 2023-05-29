@@ -70,7 +70,7 @@ const ProductDescriptionInfo = ({
 
       {product.variation ? (
         <div className="pro-details-size-color">
-          {/* <div className="pro-details-color-wrap">
+          <div className="pro-details-color-wrap">
             <span>Color</span>
             <div className="pro-details-color-content">
               {product.variation.map((single, key) => {
@@ -132,7 +132,7 @@ const ProductDescriptionInfo = ({
                     : "";
                 })}
             </div>
-          </div> */}
+          </div>
         </div>
       ) : (
         ""
@@ -232,7 +232,7 @@ const ProductDescriptionInfo = ({
           </div>
         </div>
       )}
-      {/* {product.category ? (
+      {product.category ? (
         <div className="pro-details-meta">
           <span>Categories :</span>
           <ul>
@@ -249,8 +249,8 @@ const ProductDescriptionInfo = ({
         </div>
       ) : (
         ""
-      )} */}
-      {/* {product.tag ? (
+      )} 
+     {product.tag ? (
         <div className="pro-details-meta">
           <span>Tags :</span>
           <ul>
@@ -267,9 +267,9 @@ const ProductDescriptionInfo = ({
         </div>
       ) : (
         ""
-      )} */}
+      )}
 
-      {/* <div className="pro-details-social">
+      <div className="pro-details-social">
         <ul>
           <li>
             <a href="//facebook.com">
@@ -297,7 +297,7 @@ const ProductDescriptionInfo = ({
             </a>
           </li>
         </ul>
-      </div> */}
+      </div> 
     </div>
   );
 };

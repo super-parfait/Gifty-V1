@@ -9,6 +9,7 @@ const ShopTopbar = ({
   sortedProductCount
 }) => {
   return (
+    
     <Fragment>
       {/* shop top action */}
       <ShopTopAction
