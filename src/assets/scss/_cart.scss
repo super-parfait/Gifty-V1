@@ -15,7 +15,7 @@
       
   }
 
-  .swiper-wrapper{
+  .slider-area .swiper-wrapper{
     position: fixed;
   }
 }
@@ -25,9 +25,10 @@
       height: 100% !important;
   }
 
-  .swiper-wrapper{
+  .slider-area .swiper-wrapper{
     position: fixed;
   }
+
 }
 
 // Fin de mes propres styles
