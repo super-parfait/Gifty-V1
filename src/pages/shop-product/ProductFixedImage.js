@@ -15,7 +15,7 @@ const ProductFixedImage = ({ location, product }) => {
   return (
     <Fragment>
       <MetaTags>
-        <title>Gifty | Product Page</title>
+        <title>Gifty | Produits </title>
         <meta
           name="description"
           content="Product page of flone react minimalist eCommerce template."
@@ -24,7 +24,7 @@ const ProductFixedImage = ({ location, product }) => {
 
       <BreadcrumbsItem to={process.env.PUBLIC_URL + "/"}>Home</BreadcrumbsItem>
       <BreadcrumbsItem to={process.env.PUBLIC_URL + pathname}>
-        Shop Product
+        Détails Produit
       </BreadcrumbsItem>
 
       <LayoutOne headerTop="visible">
@@ -46,10 +46,14 @@ const ProductFixedImage = ({ location, product }) => {
         />
 
         {/* related product slider */}
+
+
         <RelatedProductSlider
           spaceBottomClass="pb-95"
           category={product.category[0]}
         />
+
+
       </LayoutOne>
     </Fragment>
   );

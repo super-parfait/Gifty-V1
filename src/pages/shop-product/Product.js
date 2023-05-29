@@ -15,7 +15,7 @@ const Product = ({ location, product }) => {
   return (
     <Fragment>
       <MetaTags>
-        <title>Flone | Product Page</title>
+        <title>Gifty | Produit Page</title>
         <meta
           name="description"
           content="Product page of flone react minimalist eCommerce template."
@@ -24,7 +24,7 @@ const Product = ({ location, product }) => {
 
       <BreadcrumbsItem to={process.env.PUBLIC_URL + "/"}>Home</BreadcrumbsItem>
       <BreadcrumbsItem to={process.env.PUBLIC_URL + pathname}>
-        Shop Product
+        Shop Produit
       </BreadcrumbsItem>
 
       <LayoutOne headerTop="visible">
@@ -45,6 +45,11 @@ const Product = ({ location, product }) => {
         />
 
         {/* related product slider */}
+
+        {/* Il existe 2 cas, le premier est de suggérer d'autres packs cadeau par contre non pour le second cas où ne souhaite pas prendre 
+        ce pack cadeau, il devra revenir sur pour voir les autres packs cadeau. Pour ma part ilserait resonnable de suggérer d'autres juste
+        en bas raison pour laquelle j'ai laissé le relatedProductSlider */}
+
         <RelatedProductSlider
           spaceBottomClass="pb-95"
           category={product.category[0]}
