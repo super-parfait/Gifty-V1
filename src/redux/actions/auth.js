@@ -8,7 +8,9 @@ import {
       } from "./types";
       
 import AuthService from "../../services/auth.service";
-      
+
+
+// La fonction pour s'inscrire 
 export const register = (credentials) => (dispatch) => {
         return AuthService.functionRegister(credentials).then(
                 (response) => {
@@ -62,6 +64,90 @@ export const register = (credentials) => (dispatch) => {
         );
 };
 
+// La fonction pour la modification des infos 
+export const update_info = (credentials) => (dispatch) => {
+        return AuthService.functionUpdate(credentials).then(
+                (response) => {
+
+                        console.log(response)
+                        var message = ""
+                        if(response ===true){
+                                message = "Modification effectuée avec succès !"
+                        }
+                        dispatch({
+                                type: REGISTER_SUCCESS,
+                        });
+
+                        dispatch({
+                                type: SET_MESSAGE,
+                                payload: message,
+                        });
+
+                        return Promise.resolve();
+                },
+                (error) => {
+                        console.log(error)
+                        console.log(error.response.data)
+                        var message = error.response.data.message
+
+
+                        dispatch({
+                                type: REGISTER_FAIL,
+                        });
+
+                        dispatch({
+                                type: SET_MESSAGE,
+                                payload: message,
+                        });
+
+                        return Promise.reject();
+                }
+        );
+};
+
+
+// La fonction pour modifier le mot de passe 
+export  const update_password = (credentials) =>(dispatch)=>{
+        return AuthService.functionUpdatePassword(credentials).then(
+                (response) => {
+
+                        console.log(response)
+                        var message = ""
+                        if(response ===true){
+                                message = "Modification effectuée avec succès !"
+                        }
+                        dispatch({
+                                type: REGISTER_SUCCESS,
+                        });
+
+                        dispatch({
+                                type: SET_MESSAGE,
+                                payload: message,
+                        });
+
+                        return Promise.resolve();
+                },
+                (error) => {
+                        console.log(error)
+                        console.log(error.response.data)
+                        var message = error.response.data.message
+
+
+                        dispatch({
+                                type: REGISTER_FAIL,
+                        });
+
+                        dispatch({
+                                type: SET_MESSAGE,
+                                payload: message,
+                        });
+
+                        return Promise.reject();
+                }
+        );
+}
+
+
 export const login = (credentials) => (dispatch) => {
 return AuthService.functionLogin(credentials).then(
         (data) => {
@@ -77,22 +163,7 @@ return AuthService.functionLogin(credentials).then(
                 // console.log(error.response.data.msg)
                 var message = error.response.data;
 
-                // if (error.response.data.msg) {
-                //         message = error.response.data.msg
-                // }
-
-                // if (error.response.data.msg ===undefined) {
-                //         message = "Erreur de connexion !!!"
-                // }
-
-
-
-
-                // if(error.toString() === "Request failed with status code 401"){
-                //         message = "Votre connexion a echoué !!!"
-                // }
-                // const message = (error.response && error.response.data && error.response.data.msg) || error.message || error.toString();
-
+                
                 dispatch({
                         type: LOGIN_FAIL,
                 });

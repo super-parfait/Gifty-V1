@@ -1,8 +1,9 @@
 import axios from 'axios';
 // import jwtDecode from 'jwt-decode';
 import { getItem, addItem, removeItem } from './LocalStorage';
+import authHeader from './auth-header';
 
-const API_URL = "http://192.168.1.9:4005/api/v1/"
+const API_URL = "http://192.168.1.4:4005/api/v1/srv-usr/"
 
 
 export  function hasAuthenticated(){  
@@ -32,8 +33,36 @@ const functionLogin = (credentials) =>{
         .then(data => {
             addItem('user', JSON.stringify({"token":data.token,"refresh_token": data.refreshtoken }));
         //     addItem('userRefeshToken', JSON.stringify({}))
-            return true;
+            return data;
         });
+
+        
+}
+
+
+const functionUpdate = (credentials) => {
+
+
+    
+        return axios
+            .put(API_URL + 'user', credentials, {headers: authHeader()})
+            .then(response => response.data)
+            .then(data => {
+                return true;
+            });
+
+
+    
+}
+
+
+const functionUpdatePassword = (credentials) =>{
+    return axios
+            .put(API_URL + 'user/modify-password', credentials, {headers: authHeader()})
+            .then(response => response.data)
+            .then(data => {
+                return true;
+            });
 }
 
 const functionRegister = (credentials) => {
@@ -103,4 +132,6 @@ export default {
         functionRegister,
         functionLogin,
         functionLogout,
+        functionUpdate, 
+        functionUpdatePassword
       };
