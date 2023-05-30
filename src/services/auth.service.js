@@ -2,7 +2,7 @@ import axios from 'axios';
 // import jwtDecode from 'jwt-decode';
 import { getItem, addItem, removeItem } from './LocalStorage';
 
-const API_URL = "http://localhost:4005/api/v1/"
+const API_URL = "http://192.168.1.9:4005/api/v1/"
 
 
 export  function hasAuthenticated(){  

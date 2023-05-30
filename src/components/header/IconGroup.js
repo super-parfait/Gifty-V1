@@ -30,13 +30,13 @@ const IconGroup = ({
     >
       <div className="same-style header-search d-none d-lg-block">
         <button className="search-active" onClick={e => handleClick(e)}>
-          <i className="pe-7s-search" />
+          <i className="pe-7s-search myicon" />
         </button>
         <div className="search-content">
           <form action="#">
             <input type="text" placeholder="Search" />
             <button className="button-search">
-              <i className="pe-7s-search" />
+              <i className="pe-7s-search myicon" />
             </button>
           </form>
         </div>
@@ -46,7 +46,7 @@ const IconGroup = ({
           className="account-setting-active"
           onClick={e => handleClick(e)}
         >
-          <i className="pe-7s-user" />
+          <i className="pe-7s-user myicon" />
         </button>
         <div className="account-dropdown">
           <ul>
@@ -118,8 +118,8 @@ const IconGroup = ({
         </Link>
       </div>
       <div className="same-style cart-wrap d-none d-lg-block">
-        <button className="icon-cart" onClick={e => handleClick(e)}>
-          <i className="pe-7s-shopbag" />
+        <button className="icon-cart " onClick={e => handleClick(e)}>
+          <i className="pe-7s-shopbag myicon" />
           <span className="count-style">
             {cartData && cartData.length ? cartData.length : 0}
           </span>
@@ -135,7 +135,7 @@ const IconGroup = ({
       </div>
       
       <div className="same-style cart-wrap d-block d-lg-none">
-        <Link className="icon-cart" to={process.env.PUBLIC_URL + "/cart"}>
+        <Link className="icon-cart " to={process.env.PUBLIC_URL + "/cart"}>
           <i className="pe-7s-shopbag" />
           <span className="count-style">
             {cartData && cartData.length ? cartData.length : 0}

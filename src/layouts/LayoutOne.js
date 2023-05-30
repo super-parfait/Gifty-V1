@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 import React, { Fragment } from "react";
 import HeaderOne from "../wrappers/header/HeaderOne";
+// import HeaderSix from "../wrappers/header/HeaderSix";
 import FooterOne from "../wrappers/footer/FooterOne";
 
 const LayoutOne = ({

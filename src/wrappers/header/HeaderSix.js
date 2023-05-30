@@ -63,16 +63,16 @@ const HeaderSix = ({ layout, headerPaddingClass, headerBgClass }) => {
             {/* header logo */}
             <div className="logo text-center logo-hm5">
               <Link className="sticky-none" to={process.env.PUBLIC_URL + "/"}>
-                <img alt="" src="assets/img/logo/logo-2.png" />
+                <img alt="" src="assets/img/logo/1.png" />
               </Link>
               <Link className="sticky-block" to={process.env.PUBLIC_URL + "/"}>
-                <img alt="" src="assets/img/logo/logo.png" />
+                <img alt="" src="assets/img/logo/0.png" />
               </Link>
             </div>
           </div>
           <div className="col-xl-5 col-lg-4 col-md-6 col-6">
             {/* Icon group */}
-            <IconGroup iconWhiteClass="header-right-wrap-white" />
+            <IconGroup iconWhiteClass="header-right-wrap-red" />
           </div>
         </div>
       </div>
