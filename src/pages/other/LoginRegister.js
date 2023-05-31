@@ -114,7 +114,9 @@ const LoginRegister = ({ location, props }) => {
   const {isRegisterIn} = useSelector(state => state.auth);
 
 
-  const { message } = useSelector(state => state.message);
+  const { message_register } = useSelector(state => state.message);
+
+  const { message_login } = useSelector(state => state.message);
 
   const dispatch = useDispatch();
 
@@ -288,10 +290,10 @@ const LoginRegister = ({ location, props }) => {
                               </div>
                              
 
-                              {message && (
+                              {message_login && (
                                 <div className="form-group pt-2">
                                   <div className="alert alert-danger" role="alert">
-                                    {message}
+                                    {message_login}
                                   </div>
                                 </div>
                               )}
@@ -370,10 +372,10 @@ const LoginRegister = ({ location, props }) => {
                               </div>
 
 
-                              {message && (
+                              {message_register && (
                                 <div className="form-group pt-2">
                                   <div className={successful ? "alert alert-success" : "alert alert-danger" } role="alert">
-                                    {message}
+                                    {message_register}
                                   </div>
                                 </div>
                               )}

@@ -3,8 +3,16 @@ import {
         REGISTER_FAIL,
         LOGIN_SUCCESS,
         LOGIN_FAIL,
+        UPDATE_PASSWORD_SUCCESS,
+        UPDATE_PASSWORD_FAIL,
+        UPDATE_INFO_SUCCESS,
+        UPDATE_INFO_FAIL,
         LOGOUT,
         SET_MESSAGE,
+        SET_MESSAGE_LOGIN,
+        SET_MESSAGE_UPDATE_PASSWORD,
+        SET_MESSAGE_REGISTER,
+        SET_MESSAGE_UPDATE_INFO
       } from "./types";
       
 import AuthService from "../../services/auth.service";
@@ -22,10 +30,11 @@ export const register = (credentials) => (dispatch) => {
                         }
                         dispatch({
                                 type: REGISTER_SUCCESS,
+                                
                         });
 
                         dispatch({
-                                type: SET_MESSAGE,
+                                type: SET_MESSAGE_REGISTER,
                                 payload: message,
                         });
 
@@ -36,26 +45,12 @@ export const register = (credentials) => (dispatch) => {
                         console.log(error.response.data)
                         var message = error.response.data
 
-                        // if(error.response.data === '"telephone" must be a number'){
-                        //         message = "Numero de téléphone incorrect !!!"
-                        // }
-
-                        
-
-                        // if(error.response.data ==='"password" length must be at least 8 characters long'){
-                        //         message = "Mot de Passe Incorrect avec minimum 8 caracteres !!!"
-                        // }
-
-                        // const message = error
-
-                        // const message = (error.response && error.response.data && error.response.data.message) || error.message || error.toString();
-
                         dispatch({
                                 type: REGISTER_FAIL,
                         });
 
                         dispatch({
-                                type: SET_MESSAGE,
+                                type: SET_MESSAGE_REGISTER,
                                 payload: message,
                         });
 
@@ -75,11 +70,11 @@ export const update_info = (credentials) => (dispatch) => {
                                 message = "Modification effectuée avec succès !"
                         }
                         dispatch({
-                                type: REGISTER_SUCCESS,
+                                type: UPDATE_INFO_SUCCESS,
                         });
 
                         dispatch({
-                                type: SET_MESSAGE,
+                                type: SET_MESSAGE_UPDATE_INFO,
                                 payload: message,
                         });
 
@@ -92,11 +87,11 @@ export const update_info = (credentials) => (dispatch) => {
 
 
                         dispatch({
-                                type: REGISTER_FAIL,
+                                type: UPDATE_INFO_FAIL,
                         });
 
                         dispatch({
-                                type: SET_MESSAGE,
+                                type: SET_MESSAGE_UPDATE_INFO,
                                 payload: message,
                         });
 
@@ -117,12 +112,12 @@ export  const update_password = (credentials) =>(dispatch)=>{
                                 message = "Modification effectuée avec succès !"
                         }
                         dispatch({
-                                type: REGISTER_SUCCESS,
+                                type: UPDATE_PASSWORD_SUCCESS,
                         });
 
                         dispatch({
-                                type: SET_MESSAGE,
-                                payload: message,
+                                type: SET_MESSAGE_UPDATE_PASSWORD,
+                                payload: message
                         });
 
                         return Promise.resolve();
@@ -134,12 +129,12 @@ export  const update_password = (credentials) =>(dispatch)=>{
 
 
                         dispatch({
-                                type: REGISTER_FAIL,
+                                type: UPDATE_PASSWORD_FAIL,
                         });
 
                         dispatch({
-                                type: SET_MESSAGE,
-                                payload: message,
+                                type: SET_MESSAGE_UPDATE_PASSWORD,
+                                payload:message
                         });
 
                         return Promise.reject();
@@ -169,7 +164,7 @@ return AuthService.functionLogin(credentials).then(
                 });
 
                 dispatch({
-                        type: SET_MESSAGE,
+                        type: SET_MESSAGE_LOGIN,
                         payload: message,
                 });
 

@@ -4,6 +4,10 @@ import {
         LOGIN_SUCCESS,
         LOGIN_FAIL,
         LOGOUT,
+        UPDATE_INFO_SUCCESS,
+        UPDATE_INFO_FAIL,
+        UPDATE_PASSWORD_SUCCESS,
+        UPDATE_PASSWORD_FAIL,
       } from "../actions/types";
       
 const user = JSON.parse(localStorage.getItem("userToken"));
@@ -36,6 +40,26 @@ export default function (state = initialState, action) {
                                 isLoggedIn: false,
                                 user: null,
                         };
+                case UPDATE_INFO_SUCCESS:
+                        return {
+                                ...state,
+                                isLoggedIn: true,
+                        }
+                case UPDATE_INFO_FAIL: 
+                        return {
+                                ...state,
+                                isLoggedIn: true,
+                        }
+                case UPDATE_PASSWORD_SUCCESS:
+                        return{
+                                ...state,
+                                isLoggedIn: true,
+                        }
+                case UPDATE_PASSWORD_FAIL: 
+                        return {
+                                ...state,
+                                isLoggedIn: true,
+                        }
                 case LOGOUT:
                         return {
                                 ...state,

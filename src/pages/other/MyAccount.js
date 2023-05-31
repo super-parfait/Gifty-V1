@@ -57,7 +57,11 @@ const MyAccount = ({ location }) => {
   const [loading, setLoading] = useState(false);
 
 
-  const { message } = useSelector(state => state.message);
+  // const { message } = useSelector(state => state.message);
+
+  const { message_update_info } =useSelector(state=>state.message)
+
+  const { message_update_password } =useSelector(state=>state.message)
 
   const { user: currentUser } = useSelector((state) => state.auth);
 
@@ -260,7 +264,8 @@ const MyAccount = ({ location }) => {
                         </Card.Body>
                       </Accordion.Collapse>
                     </Card> */}
-                    {/* La partie du formulaire pour modifier  */}
+
+                    {/* La partie du formulaire pour modifier  les infos des clients */}
                     <Card className="single-my-account mb-20">
                       <Card.Header className="panel-heading">
                         <Accordion.Toggle variant="link" eventKey="0">
@@ -316,10 +321,10 @@ const MyAccount = ({ location }) => {
                                 </div>
                               </div>
                             </div>
-                              {message && (
+                              {message_update_info && (
                                 <div className="form-group pt-2">
                                   <div className= {successful ? "alert alert-success" : "alert alert-danger" } role="alert">
-                                    {message}
+                                    {message_update_info}
                                   </div>
                                 </div>
                               )}
@@ -374,10 +379,10 @@ const MyAccount = ({ location }) => {
                                 </div>
                               </div>
                             </div>
-                              {message && (
+                              {message_update_password && (
                                 <div className="form-group pt-2">
                                   <div className= {successful ? "alert alert-success" : "alert alert-danger" } role="alert">
-                                    {message}
+                                    {message_update_password}
                                   </div>
                                 </div>
                               )}
