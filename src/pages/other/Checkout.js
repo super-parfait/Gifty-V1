@@ -15,7 +15,7 @@ const Checkout = ({ location, cartItems, currency }) => {
   return (
     <Fragment>
       <MetaTags>
-        <title>Gifty | Checkout</title>
+        <title>Gifty | Paiement</title>
         <meta
           name="description"
           content="Checkout page of flone react minimalist eCommerce template."
@@ -23,7 +23,7 @@ const Checkout = ({ location, cartItems, currency }) => {
       </MetaTags>
       <BreadcrumbsItem to={process.env.PUBLIC_URL + "/"}>Home</BreadcrumbsItem>
       <BreadcrumbsItem to={process.env.PUBLIC_URL + pathname}>
-        Checkout
+        Commande
       </BreadcrumbsItem>
       <LayoutOne headerTop="visible">
         {/* breadcrumb */}
@@ -34,54 +34,54 @@ const Checkout = ({ location, cartItems, currency }) => {
               <div className="row">
                 <div className="col-lg-7">
                   <div className="billing-info-wrap">
-                    <h3>Billing Details</h3>
+                    <h3>Détails de le Commande</h3>
                     <div className="row">
                       <div className="col-lg-6 col-md-6">
                         <div className="billing-info mb-20">
-                          <label>First Name</label>
+                          <label>Nom & Prénoms</label>
                           <input type="text" />
                         </div>
                       </div>
                       <div className="col-lg-6 col-md-6">
                         <div className="billing-info mb-20">
-                          <label>Last Name</label>
-                          <input type="text" />
+                          <label>Email</label>
+                          <input type="email" />
                         </div>
                       </div>
                       <div className="col-lg-12">
                         <div className="billing-info mb-20">
-                          <label>Company Name</label>
+                          <label>Numéro de téléphone</label>
                           <input type="text" />
                         </div>
                       </div>
                       <div className="col-lg-12">
                         <div className="billing-select mb-20">
-                          <label>Country</label>
+                          <label>Ville</label> 
                           <select>
-                            <option>Select a country</option>
-                            <option>Azerbaijan</option>
-                            <option>Bahamas</option>
-                            <option>Bahrain</option>
-                            <option>Bangladesh</option>
-                            <option>Barbados</option>
+                            <option>Sélectionnez une Ville</option>
+                            <option>Abidjan</option>
+                            <option>Yamoussoukro</option>
+                            <option>San Pedro</option>
+                            <option>Bouaké</option>
+                            <option>Korhogo</option>
                           </select>
                         </div>
                       </div>
                       <div className="col-lg-12">
                         <div className="billing-info mb-20">
-                          <label>Street Address</label>
+                          <label>Adresse Précise </label>
+                          <input
+                            placeholder="Entrez votre Commune"
+                            type="text"
+                          /><br />
                           <input
                             className="billing-address"
-                            placeholder="House number and street name"
-                            type="text"
-                          />
-                          <input
-                            placeholder="Apartment, suite, unit etc."
+                            placeholder="Entrez votre Quartier"
                             type="text"
                           />
                         </div>
                       </div>
-                      <div className="col-lg-12">
+                      {/* <div className="col-lg-12">
                         <div className="billing-info mb-20">
                           <label>Town / City</label>
                           <input type="text" />
@@ -110,31 +110,31 @@ const Checkout = ({ location, cartItems, currency }) => {
                           <label>Email Address</label>
                           <input type="text" />
                         </div>
-                      </div>
+                      </div> */}
                     </div>
 
-                    <div className="additional-info-wrap">
-                      <h4>Additional information</h4>
+                    {/* <div className="additional-info-wrap">
+                      <h4>Plus d'Informations</h4>
                       <div className="additional-info">
-                        <label>Order notes</label>
+                        <label>Autres Notes</label>
                         <textarea
-                          placeholder="Notes about your order, e.g. special notes for delivery. "
+                          placeholder="Entrez le Carrefour etc..."
                           name="message"
                           defaultValue={""}
                         />
                       </div>
-                    </div>
+                    </div> */}
                   </div>
                 </div>
 
                 <div className="col-lg-5">
                   <div className="your-order-area">
-                    <h3>Your order</h3>
+                    <h3>Mes Achats</h3>
                     <div className="your-order-wrap gray-bg-4">
                       <div className="your-order-product-info">
                         <div className="your-order-top">
                           <ul>
-                            <li>Product</li>
+                            <li>Produits</li>
                             <li>Total</li>
                           </ul>
                         </div>
@@ -181,8 +181,10 @@ const Checkout = ({ location, cartItems, currency }) => {
                         </div>
                         <div className="your-order-bottom">
                           <ul>
-                            <li className="your-order-shipping">Shipping</li>
-                            <li>Free shipping</li>
+                            {/* <li className="your-order-shipping">Shipping</li>
+                            <li>Free shipping</li> */}
+                            <li className="your-order-shipping"></li>
+                            <li> </li>
                           </ul>
                         </div>
                         <div className="your-order-total">
@@ -198,7 +200,7 @@ const Checkout = ({ location, cartItems, currency }) => {
                       <div className="payment-method"></div>
                     </div>
                     <div className="place-order mt-25">
-                      <button className="btn-hover">Place Order</button>
+                      <button className="btn-hover">Valider</button>
                     </div>
                   </div>
                 </div>
@@ -211,9 +213,9 @@ const Checkout = ({ location, cartItems, currency }) => {
                       <i className="pe-7s-cash"></i>
                     </div>
                     <div className="item-empty-area__text">
-                      No items found in cart to checkout <br />{" "}
-                      <Link to={process.env.PUBLIC_URL + "/shop-grid-standard"}>
-                        Shop Now
+                      Aucun cadeau pour éffectuer une commande <br />{" "}
+                      <Link to={process.env.PUBLIC_URL + "/shop-grid-no-sidebar"}>
+                        Ajouter
                       </Link>
                     </div>
                   </div>

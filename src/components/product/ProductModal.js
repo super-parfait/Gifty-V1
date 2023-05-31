@@ -5,6 +5,7 @@ import { getProductCartQuantity } from "../../helpers/product";
 import { Modal } from "react-bootstrap";
 import Rating from "./sub-components/ProductRating";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
 function ProductModal(props) {
   const { product } = props;
@@ -166,96 +167,32 @@ function ProductModal(props) {
                   <p>{product.shortDescription}</p>
                 </div>
 
-                {product.variation ? (
-                  <div className="pro-details-size-color">
-                    <div className="pro-details-color-wrap">
-                      <span>Color</span>
-                      <div className="pro-details-color-content">
-                        {product.variation.map((single, key) => {
-                          return (
-                            <label
-                              className={`pro-details-color-content--single ${single.color}`}
-                              key={key}
-                            >
-                              <input
-                                type="radio"
-                                value={single.color}
-                                name="product-color"
-                                checked={
-                                  single.color === selectedProductColor
-                                    ? "checked"
-                                    : ""
-                                }
-                                onChange={() => {
-                                  setSelectedProductColor(single.color);
-                                  setSelectedProductSize(single.size[0].name);
-                                  setProductStock(single.size[0].stock);
-                                  setQuantityCount(1);
-                                }}
-                              />
-                              <span className="checkmark"></span>
-                            </label>
-                          );
-                        })}
-                      </div>
-                    </div>
-                    <div className="pro-details-size">
-                      <span>Size</span>
-                      <div className="pro-details-size-content">
-                        {product.variation &&
-                          product.variation.map(single => {
-                            return single.color === selectedProductColor
-                              ? single.size.map((singleSize, key) => {
-                                  return (
-                                    <label
-                                      className={`pro-details-size-content--single`}
-                                      key={key}
-                                    >
-                                      <input
-                                        type="radio"
-                                        value={singleSize.name}
-                                        checked={
-                                          singleSize.name ===
-                                          selectedProductSize
-                                            ? "checked"
-                                            : ""
-                                        }
-                                        onChange={() => {
-                                          setSelectedProductSize(
-                                            singleSize.name
-                                          );
-                                          setProductStock(singleSize.stock);
-                                          setQuantityCount(1);
-                                        }}
-                                      />
-                                      <span className="size-name">
-                                        {singleSize.name}
-                                      </span>
-                                    </label>
-                                  );
-                                })
-                              : "";
-                          })}
-                      </div>
-                    </div>
-                  </div>
-                ) : (
-                  ""
-                )}
-                {product.affiliateLink ? (
+                {
+                      (
+                         
+                        // le product signifie que dès que l'user appuie sur le btn il est renvoyer sur la page qui affiche des produits, il va donc falloir définir le véritable chemin plutard
+                        
+                        <div className="pro-details-quality">
+
+                          <div className="cart-plus-minus ml-4" style={{borderColor: 'transparent'}}>
+                            
+                          </div>
+
+
+                          <div className="pro-details-cart btn-hover ml-0" >
+                            <Link
+                              to={process.env.PUBLIC_URL + "/product"}>
+                              Personnaliser 
+                            </Link>
+                          </div>
+                        </div>
+                        )
+                  }
+
+                {
+                (
                   <div className="pro-details-quality">
-                    <div className="pro-details-cart btn-hover">
-                      <a
-                        href={product.affiliateLink}
-                        rel="noopener noreferrer"
-                        target="_blank"
-                      >
-                        Buy Now
-                      </a>
-                    </div>
-                  </div>
-                ) : (
-                  <div className="pro-details-quality">
+                    
                     <div className="cart-plus-minus">
                       <button
                         onClick={() =>
@@ -301,10 +238,10 @@ function ProductModal(props) {
                           disabled={productCartQty >= productStock}
                         >
                           {" "}
-                          Add To Cart{" "}
+                          Ajouter au panier{" "}
                         </button>
                       ) : (
-                        <button disabled>Out of Stock</button>
+                        <button disabled>En rupture de stock</button>
                       )}
                     </div>
                     <div className="pro-details-wishlist">
@@ -313,8 +250,8 @@ function ProductModal(props) {
                         disabled={wishlistItem !== undefined}
                         title={
                           wishlistItem !== undefined
-                            ? "Added to wishlist"
-                            : "Add to wishlist"
+                            ? "Ajouté aux Favoris"
+                            : "Ajouter aux Favoris"
                         }
                         onClick={() => addToWishlist(product, addToast)}
                       >
@@ -327,8 +264,8 @@ function ProductModal(props) {
                         disabled={compareItem !== undefined}
                         title={
                           compareItem !== undefined
-                            ? "Added to compare"
-                            : "Add to compare"
+                            ? "Ajouté pour comparer"
+                            : "Ajouter pour comparer"
                         }
                         onClick={() => addToCompare(product, addToast)}
                       >
@@ -336,7 +273,10 @@ function ProductModal(props) {
                       </button>
                     </div>
                   </div>
-                )}
+                  )}
+                   
+                  
+                  
               </div>
             </div>
           </div>

@@ -49,7 +49,7 @@ const ShopGridNoSidebar = ({ location, products }) => {
   return (
     <Fragment>
       <MetaTags>
-        <title>Gifty | Packs Cadeau</title>
+        <title>Gifty | Packs Cadeaux</title>
         <meta
           name="description"
           content="Gifty App"
@@ -58,7 +58,7 @@ const ShopGridNoSidebar = ({ location, products }) => {
 
       <BreadcrumbsItem to={process.env.PUBLIC_URL + "/"}>Accueil</BreadcrumbsItem>
       <BreadcrumbsItem to={process.env.PUBLIC_URL + pathname}>
-        Packs Cadeau
+        Packs Cadeaux
       </BreadcrumbsItem>
 
       <LayoutOne headerTop="visible">

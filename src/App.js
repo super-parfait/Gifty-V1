@@ -102,6 +102,13 @@ const Contact = lazy(() => import("./pages/other/Contact"));
 const MyAccount = lazy(() => import("./pages/other/MyAccount"));
 const LoginRegister = lazy(() => import("./pages/other/LoginRegister"));
 
+// Ajout page de forgotPassword and resetPassword
+
+const ForgotPassword = lazy(() => import("./pages/other/ForgotPassword"));
+const OtpPassword = lazy(() => import("./pages/other/OtpPassword"));
+
+// Fin
+
 const Cart = lazy(() => import("./pages/other/Cart"));
 const Wishlist = lazy(() => import("./pages/other/Wishlist"));
 const Compare = lazy(() => import("./pages/other/Compare"));
@@ -404,6 +411,16 @@ const App = (props) => {
                 <Route
                   path={process.env.PUBLIC_URL + "/login-register"}
                   component={LoginRegister}
+                />
+
+                <Route
+                  path={process.env.PUBLIC_URL + "/forgot-password"}
+                  component={ForgotPassword}
+                />
+
+                <Route
+                  path={process.env.PUBLIC_URL + "/otp-password"}
+                  component={OtpPassword}
                 />
 
                 <Route

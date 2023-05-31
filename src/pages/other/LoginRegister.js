@@ -268,7 +268,7 @@ const LoginRegister = ({ location, props }) => {
                                 <div className="login-toggle-btn">
                                   <input type="checkbox" />
                                   <label className="ml-10">Se Souvenir de Moi</label>
-                                  <Link to={process.env.PUBLIC_URL + "/"}>
+                                  <Link to={process.env.PUBLIC_URL + "/forgot-password"}>
                                     Mot de Passe oublié ?
                                   </Link>
                                 </div>
