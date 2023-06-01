@@ -181,7 +181,7 @@ function ProductModal(props) {
 
                           <div className="pro-details-cart btn-hover ml-0" >
                             <Link
-                              to={process.env.PUBLIC_URL + "/product"}>
+                              to={process.env.PUBLIC_URL + "/product-fixed-image"}>
                               Personnaliser 
                             </Link>
                           </div>

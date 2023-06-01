@@ -12,14 +12,14 @@ const ProductDescriptionTab = ({ spaceBottomClass, productFullDesc }) => {
             <Nav variant="pills" className="description-review-topbar">
               <Nav.Item>
                 <Nav.Link eventKey="additionalInfo">
-                  Additional Information
+                  Informations supplémentaires
                 </Nav.Link>
               </Nav.Item>
               <Nav.Item>
                 <Nav.Link eventKey="productDescription">Description</Nav.Link>
               </Nav.Item>
               <Nav.Item>
-                <Nav.Link eventKey="productReviews">Reviews(2)</Nav.Link>
+                <Nav.Link eventKey="productReviews">Commentaires</Nav.Link>
               </Nav.Item>
             </Nav>
             <Tab.Content className="description-review-bottom">
@@ -27,16 +27,16 @@ const ProductDescriptionTab = ({ spaceBottomClass, productFullDesc }) => {
                 <div className="product-anotherinfo-wrapper">
                   <ul>
                     <li>
-                      <span>Weight</span> 400 g
+                      <span>Poids</span> 400 g
                     </li>
                     <li>
                       <span>Dimensions</span>10 x 10 x 15 cm{" "}
                     </li>
                     <li>
-                      <span>Materials</span> 60% cotton, 40% polyester
+                      <span>Materiels</span> 60% cotton, 40% polyester
                     </li>
                     <li>
-                      <span>Other Info</span> American heirloom jean shorts pug
+                      <span>Autres Informations</span> American heirloom jean shorts pug
                       seitan letterpress
                     </li>
                   </ul>
@@ -63,7 +63,7 @@ const ProductDescriptionTab = ({ spaceBottomClass, productFullDesc }) => {
                           <div className="review-top-wrap">
                             <div className="review-left">
                               <div className="review-name">
-                                <h4>White Lewis</h4>
+                                <h4>John Doe</h4>
                               </div>
                               <div className="review-rating">
                                 <i className="fa fa-star" />
@@ -74,7 +74,7 @@ const ProductDescriptionTab = ({ spaceBottomClass, productFullDesc }) => {
                               </div>
                             </div>
                             <div className="review-left">
-                              <button>Reply</button>
+                              <button>Répondre</button>
                             </div>
                           </div>
                           <div className="review-bottom">
@@ -101,7 +101,7 @@ const ProductDescriptionTab = ({ spaceBottomClass, productFullDesc }) => {
                           <div className="review-top-wrap">
                             <div className="review-left">
                               <div className="review-name">
-                                <h4>White Lewis</h4>
+                                <h4>John Doe</h4>
                               </div>
                               <div className="review-rating">
                                 <i className="fa fa-star" />
@@ -112,7 +112,7 @@ const ProductDescriptionTab = ({ spaceBottomClass, productFullDesc }) => {
                               </div>
                             </div>
                             <div className="review-left">
-                              <button>Reply</button>
+                              <button>Répondre</button>
                             </div>
                           </div>
                           <div className="review-bottom">
@@ -129,11 +129,11 @@ const ProductDescriptionTab = ({ spaceBottomClass, productFullDesc }) => {
                   </div>
                   <div className="col-lg-5">
                     <div className="ratting-form-wrapper pl-50">
-                      <h3>Add a Review</h3>
+                      <h3>Ajouter un avis</h3>
                       <div className="ratting-form">
                         <form action="#">
                           <div className="star-box">
-                            <span>Your rating:</span>
+                            <span>Votre Note:</span>
                             <div className="ratting-star">
                               <i className="fa fa-star" />
                               <i className="fa fa-star" />
@@ -156,7 +156,7 @@ const ProductDescriptionTab = ({ spaceBottomClass, productFullDesc }) => {
                             <div className="col-md-12">
                               <div className="rating-form-style form-submit">
                                 <textarea
-                                  name="Your Review"
+                                  name="Votre Avis"
                                   placeholder="Message"
                                   defaultValue={""}
                                 />

@@ -18,7 +18,7 @@ const ProductFixedImage = ({ location, product }) => {
         <title>Gifty | Produits </title>
         <meta
           name="description"
-          content="Product page of flone react minimalist eCommerce template."
+          content=""
         />
       </MetaTags>
 

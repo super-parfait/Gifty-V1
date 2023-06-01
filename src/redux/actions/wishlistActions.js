@@ -6,7 +6,7 @@ export const DELETE_ALL_FROM_WISHLIST = "DELETE_ALL_FROM_WISHLIST";
 export const addToWishlist = (item, addToast) => {
   return dispatch => {
     if (addToast) {
-      addToast("Added To Wishlist", {
+      addToast("Ajouté aux Favoris", {
         appearance: "success",
         autoDismiss: true
       });
@@ -19,7 +19,7 @@ export const addToWishlist = (item, addToast) => {
 export const deleteFromWishlist = (item, addToast) => {
   return dispatch => {
     if (addToast) {
-      addToast("Removed From Wishlist", {
+      addToast("Supprimer des Favoris", {
         appearance: "error",
         autoDismiss: true
       });
@@ -32,7 +32,7 @@ export const deleteFromWishlist = (item, addToast) => {
 export const deleteAllFromWishlist = addToast => {
   return dispatch => {
     if (addToast) {
-      addToast("Removed All From Wishlist", {
+      addToast("Vider les Favoris", {
         appearance: "error",
         autoDismiss: true
       });

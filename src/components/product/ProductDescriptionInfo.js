@@ -68,7 +68,9 @@ const ProductDescriptionInfo = ({
         <p>{product.shortDescription}</p>
       </div>
 
-      {product.variation ? (
+      {/* {
+      
+      product.variation ? (
         <div className="pro-details-size-color">
           <div className="pro-details-color-wrap">
             <span>Color</span>
@@ -136,22 +138,27 @@ const ProductDescriptionInfo = ({
         </div>
       ) : (
         ""
-      )}
-      {product.affiliateLink ? 
+      )} */}
+
+
+      {
       
+      // product.affiliateLink ? 
+      
+      // (
+      //   <div className="pro-details-quality">
+      //     <div className="pro-details-cart btn-hover ml-0">
+      //       <a
+      //         href={product.affiliateLink}
+      //         rel="noopener noreferrer"
+      //         target="_blank"
+      //       >
+      //         Acheter 
+      //       </a>
+      //     </div>
+      //   </div>
+      // ) : 
       (
-        <div className="pro-details-quality">
-          <div className="pro-details-cart btn-hover ml-0">
-            <a
-              href={product.affiliateLink}
-              rel="noopener noreferrer"
-              target="_blank"
-            >
-              Acheter 
-            </a>
-          </div>
-        </div>
-      ) : (
         <div className="pro-details-quality">
           <div className="cart-plus-minus">
             <button
@@ -199,7 +206,7 @@ const ProductDescriptionInfo = ({
                 Ajouter au cadeau{" "}
               </button>
             ) : (
-              <button disabled>Article indisponible</button>
+              <button disabled>En rupture de stock</button>
             )}
           </div>
           <div className="pro-details-wishlist">
@@ -208,7 +215,7 @@ const ProductDescriptionInfo = ({
               disabled={wishlistItem !== undefined}
               title={
                 wishlistItem !== undefined
-                  ? "Article ajouté aux favoris"
+                  ? "Ajouté aux favoris"
                   : "Ajouter aux favoris"
               }
               onClick={() => addToWishlist(product, addToast)}
@@ -222,7 +229,7 @@ const ProductDescriptionInfo = ({
               disabled={compareItem !== undefined}
               title={
                 compareItem !== undefined
-                  ? "Article ajouté pour comparer"
+                  ? "Ajouté pour comparer"
                   : "Ajouter pour comparer"
               }
               onClick={() => addToCompare(product, addToast)}
@@ -232,14 +239,14 @@ const ProductDescriptionInfo = ({
           </div>
         </div>
       )}
-      {product.category ? (
+      {/* {product.category ? (
         <div className="pro-details-meta">
           <span>Categories :</span>
           <ul>
             {product.category.map((single, key) => {
               return (
                 <li key={key}>
-                  <Link to={process.env.PUBLIC_URL + "/shop-grid-standard"}>
+                  <Link to={process.env.PUBLIC_URL + "/shop-no-grid-sidebar"}>
                     {single}
                   </Link>
                 </li>
@@ -249,8 +256,9 @@ const ProductDescriptionInfo = ({
         </div>
       ) : (
         ""
-      )} 
-     {product.tag ? (
+      )}  */}
+
+     {/* {product.tag ? (
         <div className="pro-details-meta">
           <span>Tags :</span>
           <ul>
@@ -267,9 +275,9 @@ const ProductDescriptionInfo = ({
         </div>
       ) : (
         ""
-      )}
+      )} */}
 
-      <div className="pro-details-social">
+      {/* <div className="pro-details-social">
         <ul>
           <li>
             <a href="//facebook.com">
@@ -297,7 +305,7 @@ const ProductDescriptionInfo = ({
             </a>
           </li>
         </ul>
-      </div> 
+      </div>  */}
     </div>
   );
 };
