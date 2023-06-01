@@ -118,7 +118,7 @@ function ProductModal(props) {
                     })}
                 </Swiper>
               </div>
-              <div className="product-small-image-wrapper mt-15">
+              {/* <div className="product-small-image-wrapper mt-15">
                 <Swiper {...thumbnailSwiperParams}>
                   {product.image &&
                     product.image.map((single, key) => {
@@ -135,7 +135,7 @@ function ProductModal(props) {
                       );
                     })}
                 </Swiper>
-              </div>
+              </div> */}
             </div>
             <div className="col-md-7 col-sm-12 col-xs-12">
               <div className="product-details-content quickview-content">
@@ -167,7 +167,7 @@ function ProductModal(props) {
                   <p>{product.shortDescription}</p>
                 </div>
 
-                {
+                {/* {
                   (
                       
                     // le product signifie que dès que l'user appuie sur le btn il est renvoyer sur la page qui affiche des produits,
@@ -188,7 +188,7 @@ function ProductModal(props) {
                       </div>
                     </div>
                   )
-                }
+                } */}
 
                 {
                 (
@@ -239,7 +239,7 @@ function ProductModal(props) {
                           disabled={productCartQty >= productStock}
                         >
                           {" "}
-                          Ajouter au panier{" "}
+                          Ajouter au cadeau{" "}
                         </button>
                       ) : (
                         <button disabled>Indisponible</button>

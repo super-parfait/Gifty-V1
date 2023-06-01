@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { useToasts } from "react-toast-notifications";
 import { getDiscountPrice } from "../../helpers/product";
 import Rating from "./sub-components/ProductRating";
-import ProductModal from "./ProductModal";
+import ProductModal from "./ProductModal_2";
 
 const ProductGridListSingle = ({
   product,
@@ -40,7 +40,7 @@ const ProductGridListSingle = ({
 
           {/* L'affichage de l'image */}
           <div className="product-img">
-            <Link to={process.env.PUBLIC_URL + "/product/" + product.id}>
+            <Link to={process.env.PUBLIC_URL + "/product-fixed-image/" + product.id}>
               <img
                 className="default-img"
                 src={process.env.PUBLIC_URL + product.image[0]}
@@ -156,7 +156,7 @@ const ProductGridListSingle = ({
             {/* L'affichage du nom et detail du produits */}
           <div className="product-content text-center">
             <h3>
-              <Link to={process.env.PUBLIC_URL + "/product/" + product.id}>
+              <Link to={process.env.PUBLIC_URL + "/product-fixed-image/" + product.id}>
                 {product.name}
               </Link>
             </h3>
@@ -193,7 +193,7 @@ const ProductGridListSingle = ({
               <div className="product-list-image-wrap">
                 <div className="product-img">
                   
-                  <Link to={process.env.PUBLIC_URL + "/product/" + product.id}>
+                  <Link to={process.env.PUBLIC_URL + "/product-fixed-image/" + product.id}>
                     <img
                       className="default-img img-fluid"
                       src={process.env.PUBLIC_URL + product.image[0]}
@@ -230,7 +230,7 @@ const ProductGridListSingle = ({
             <div className="col-xl-8 col-md-7 col-sm-6">
               <div className="shop-list-content">
                 <h3>
-                  <Link to={process.env.PUBLIC_URL + "/product/" + product.id}>
+                  <Link to={process.env.PUBLIC_URL + "/product-fixed-image/" + product.id}>
                     {product.name}
                   </Link>
                 </h3>

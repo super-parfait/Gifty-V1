@@ -66,6 +66,13 @@ const HomeFashionSeven = lazy(() => import("./pages/home/HomeFashionSeven"));
 // const ShopGridFilter = lazy(() => import("./pages/shop/ShopGridFilter"));
 // const ShopGridTwoColumn = lazy(() => import("./pages/shop/ShopGridTwoColumn"));
 const ShopGridNoSidebar = lazy(() => import("./pages/shop/ShopGridNoSidebar"));
+
+// Ajout page d'affichage des produits
+
+const ProductGridImage = lazy(() => import("./pages/shop/ProductGridImage"));
+
+// Fin 
+
 // const ShopGridFullWidth = lazy(() => import("./pages/shop/ShopGridFullWidth"));
 // const ShopGridRightSidebar = lazy(() =>
 //   import("./pages/shop/ShopGridRightSidebar")
@@ -375,6 +382,11 @@ const App = (props) => {
                 <Route
                   path={process.env.PUBLIC_URL + "/product-fixed-image/:id"}
                   component={ProductFixedImage}
+                />
+
+                <Route
+                  path={process.env.PUBLIC_URL + "/product-grid-image/"}
+                  component={ProductGridImage}
                 />
 
                 {/* Blog pages */}

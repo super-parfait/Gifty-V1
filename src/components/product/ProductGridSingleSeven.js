@@ -97,7 +97,7 @@ const ProductGridSingleSeven = ({
                   }
                   disabled={cartItem !== undefined && cartItem.quantity > 0}
                   title={
-                    cartItem !== undefined ? "Added to cart" : "Add to cart"
+                    cartItem !== undefined ? "Ajouté au Panier" : "Ajouter au Panier"
                   }
                 >
                   <i className="fa fa-shopping-cart"></i>
@@ -108,7 +108,7 @@ const ProductGridSingleSeven = ({
                 </button>
               )}
 
-              <button onClick={() => setModalShow(true)} title="Quick View">
+              <button onClick={() => setModalShow(true)} title="Plus de détails">
                 <i className="fa fa-eye"></i>
               </button>
 
@@ -117,8 +117,8 @@ const ProductGridSingleSeven = ({
                 disabled={compareItem !== undefined}
                 title={
                   compareItem !== undefined
-                    ? "Added to compare"
-                    : "Add to compare"
+                    ? "Ajouté pour comparer"
+                    : "Ajouter pour comparer"
                 }
                 onClick={() => addToCompare(product, addToast)}
               >
@@ -131,8 +131,8 @@ const ProductGridSingleSeven = ({
                 disabled={wishlistItem !== undefined}
                 title={
                   wishlistItem !== undefined
-                    ? "Added to wishlist"
-                    : "Add to wishlist"
+                    ? "Ajouté aux Favoris"
+                    : "Ajouter aux Favoris"
                 }
                 onClick={() => addToWishlist(product, addToast)}
               >

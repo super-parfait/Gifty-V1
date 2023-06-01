@@ -38,7 +38,7 @@ const ProductGridSingle = ({
           className={`product-wrap ${spaceBottomClass ? spaceBottomClass : ""}`}
         >
           <div className="product-img">
-            <Link to={process.env.PUBLIC_URL + "/product-fixed-image/" + product.id}>
+            <Link to={process.env.PUBLIC_URL + "/product/" + product.id}>
               <img
                 className="default-img"
                 src={process.env.PUBLIC_URL + product.image[0]}
@@ -123,7 +123,7 @@ const ProductGridSingle = ({
                   </button>
                 ) : (
                   <button disabled className="active">
-                    En rupture de stock
+                    Indisponible
                   </button>
                 )}
               </div>
@@ -136,7 +136,7 @@ const ProductGridSingle = ({
           </div>
           <div className="product-content text-center">
             <h3>
-              <Link to={process.env.PUBLIC_URL + "/product-fixed-image/" + product.id}>
+              <Link to={process.env.PUBLIC_URL + "/product/" + product.id}>
                 {product.name}
               </Link>
             </h3>

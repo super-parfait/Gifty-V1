@@ -1,7 +1,7 @@
 export const ADD_TO_COMPARE = "ADD_TO_COMPARE";
 export const DELETE_FROM_COMPARE = "DELETE_FROM_COMPARE";
 
-// add to compare
+// Ajouter pour comparer
 export const addToCompare = (item, addToast) => {
   return dispatch => {
     if (addToast) {

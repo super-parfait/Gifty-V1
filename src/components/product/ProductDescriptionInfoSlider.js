@@ -194,7 +194,7 @@ const ProductDescriptionInfoSlider = ({
                 disabled={productCartQty >= productStock}
               >
                 {" "}
-                Add To Cart{" "}
+                Ajouter au Panier{" "}
               </button>
             ) : (
               <button disabled>Out of Stock</button>
@@ -206,8 +206,8 @@ const ProductDescriptionInfoSlider = ({
               disabled={wishlistItem !== undefined}
               title={
                 wishlistItem !== undefined
-                  ? "Added to wishlist"
-                  : "Add to wishlist"
+                  ? "Ajouté aux Favoris"
+                  : "Ajouter aux Favorisoris"
               }
               onClick={() => addToWishlist(product, addToast)}
             >
@@ -220,8 +220,8 @@ const ProductDescriptionInfoSlider = ({
               disabled={compareItem !== undefined}
               title={
                 compareItem !== undefined
-                  ? "Added to compare"
-                  : "Add to compare"
+                  ? "Ajouté pour comparer"
+                  : "Ajouter pour comparer"
               }
               onClick={() => addToCompare(product, addToast)}
             >
