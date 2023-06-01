@@ -1,5 +1,7 @@
 import PropTypes from "prop-types";
-import React, { Fragment } from "react";
+import React, { Fragment, useState, useRef } from "react";
+import {  useHistory, Redirect   } from 'react-router-dom';
+import { useDispatch, useSelector } from "react-redux";
 import MetaTags from "react-meta-tags";
 import { BreadcrumbsItem } from "react-breadcrumbs-dynamic";
 import Card from "react-bootstrap/Card";
@@ -7,8 +9,190 @@ import Accordion from "react-bootstrap/Accordion";
 import LayoutOne from "../../layouts/LayoutOne";
 import Breadcrumb from "../../wrappers/breadcrumb/Breadcrumb";
 
+
+
+import Form from "react-validation/build/form";
+import Input from "react-validation/build/input";
+import CheckButton from "react-validation/build/button";
+
+import { isEmail } from "validator";
+import { update_info, update_password } from "../../redux/actions/auth";
+
+
+
+const required = value => {
+  if (!value) {
+    return (
+      <div className="alert alert-danger" role="alert">
+        Ce champs est requis !!!
+      </div>
+    );
+  }
+};
+
+
+
 const MyAccount = ({ location }) => {
   const { pathname } = location;
+
+
+
+
+
+  const formUpdateInfo = useRef();
+  const checkBtnUpdateInfo = useRef();
+
+  const formUpdatePassword = useRef();
+  const checkBtnUpdatePassword = useRef();
+
+  const [telephone, setTelephone] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirm_password, setConfirmPassword] = useState("")
+  const [nom, setNom] = useState("")
+  const [prenom, setPrenom] = useState("")
+  const [email, setEmail] = useState("")
+  const [successful, setSuccessful] = useState(false);
+
+
+  const [loading, setLoading] = useState(false);
+
+
+  // const { message } = useSelector(state => state.message);
+
+  const { message_update_info } =useSelector(state=>state.message)
+
+  const { message_update_password } =useSelector(state=>state.message)
+
+  const { user: currentUser } = useSelector((state) => state.auth);
+
+
+  const dispatch = useDispatch();
+
+
+  if (!currentUser) {
+    return <Redirect to="/login-register" />;
+  }
+
+  const onChangeTelephone = (e) => {
+    const telephone = e.target.value;
+    setTelephone(telephone);
+  };
+
+  const onChangePassword = (e) => {
+    const password = e.target.value;
+    setPassword(password);
+  };
+
+
+
+  const onChangeNom = (e) => {
+    const nom = e.target.value;
+    setNom(nom);
+  };
+
+  const onChangeEmail = (e) => {
+    const email = e.target.value;
+    setEmail(email);
+  };
+
+  const onChangePrenom = (e) => {
+    const prenom = e.target.value;
+    setPrenom(prenom);
+  };
+
+  const onChangeConfirmPassword = (e) => {
+    const confirm_password = e.target.value;
+    setConfirmPassword(confirm_password);
+  };
+
+  
+  const handleUpdatePassword = (e) => {
+    e.preventDefault();
+
+    const credentials = {password,confirm_password}
+
+
+    // var credentials = {};
+
+    // for (var clé in data) {
+    //   var valeur = data[clé];
+    //   if (valeur !== null && valeur !== undefined && valeur !== '') {
+    //     credentials[clé] = valeur;
+    //   }
+    // }
+
+
+    console.log(credentials)
+    console.log(typeof(credentials))
+
+    setLoading(true);
+
+    formUpdatePassword.current.validateAll();
+
+    if (checkBtnUpdatePassword.current.context._errors.length === 0) {
+
+
+      dispatch(update_password(credentials))
+        .then(() => {
+          // history("/my-account");
+          // window.location.reload();
+
+          setSuccessful(true);
+          setLoading(false)
+        })
+        .catch(() => {
+          setLoading(false);
+          setSuccessful(false);
+        });
+    }else{
+      setLoading(false);
+    }
+  };
+
+  const handleUpdateInfo = (e) => {
+    e.preventDefault();
+
+    var data = {nom,prenom, telephone, email }
+
+
+    var credentials = {};
+
+    for (var clé in data) {
+      var valeur = data[clé];
+      if (valeur !== null && valeur !== undefined && valeur !== '') {
+        credentials[clé] = valeur;
+      }
+    }
+
+
+    console.log(credentials)
+    console.log(typeof(credentials))
+
+    setLoading(true);
+
+    formUpdateInfo.current.validateAll();
+
+    if (checkBtnUpdateInfo.current.context._errors.length === 0) {
+
+
+      dispatch(update_info(credentials))
+        .then(() => {
+          // history("/my-account");
+          // window.location.reload();
+
+          setSuccessful(true);
+          setLoading(false)
+        })
+        .catch(() => {
+          setLoading(false);
+          setSuccessful(false);
+        });
+    }else{
+      setLoading(false);
+    }
+  };
+
+
 
   return (
     <Fragment>
@@ -32,7 +216,9 @@ const MyAccount = ({ location }) => {
               <div className="ml-auto mr-auto col-lg-9">
                 <div className="myaccount-wrapper">
                   <Accordion defaultActiveKey="0">
-                    <Card className="single-my-account mb-20">
+
+                    {/* La partie affichant les infos des users */}
+                    {/* <Card className="single-my-account mb-20">
                       <Card.Header className="panel-heading">
                         <Accordion.Toggle variant="link" eventKey="0">
                           <h3 className="panel-title">
@@ -44,50 +230,113 @@ const MyAccount = ({ location }) => {
                         <Card.Body>
                           <div className="myaccount-info-wrapper">
                             <div className="account-info-wrapper">
-                              <h4>Modifier mes informations personnelles</h4>
-                              {/* <h5>Your Personal Details</h5> */}
+                              <h4>Mes informations personnelles</h4>
                             </div>
                             <div className="row">
                               <div className="col-lg-6 col-md-6">
                                 <div className="billing-info">
-                                  <label>Nom & Prénoms</label>
-                                  <input type="text" />
+                                  <label style={{color:`red`, fontSize:`20px`}} >Nom</label>
+                                  <p> {currentUser.nom}  </p>
                                 </div>
                               </div>
                               <div className="col-lg-6 col-md-6">
                                 <div className="billing-info">
-                                  <label>Numéro de téléphone</label>
-                                  <input type="text" />
+                                  <label style={{color:`red`, fontSize:`20px`}} >Prénom</label>
+                                  <p> {currentUser.prenom} </p>
                                 </div>
                               </div>
-                              <div className="col-lg-12 col-md-12">
+
+                              <div className="col-lg-6 col-md-6">
                                 <div className="billing-info">
-                                  <label>Email </label>
-                                  <input type="email" />
+                                  <label style={{color:`red`, fontSize:`20px`}} >Numéro de téléphone</label>
+                                  <p>{currentUser.telephone}</p>
                                 </div>
                               </div>
-                              {/* <div className="col-lg-6 col-md-6">
+                              <div className="col-lg-6 col-md-6">
                                 <div className="billing-info">
-                                  <label>Telephone</label>
-                                  <input type="text" />
+                                  <label style={{color:`red`, fontSize:`20px`}} >Email </label>
+                                  <p> {currentUser.email} </p>
                                 </div>
-                              </div>  */}
-                              {/* <div className="col-lg-6 col-md-6">
-                                <div className="billing-info">
-                                  <label>Fax</label>
-                                  <input type="text" />
-                                </div>
-                              </div> */}
-                            </div>
-                            <div className="billing-back-btn">
-                              <div className="billing-btn">
-                                <button type="submit">Enregister</button>
                               </div>
+                             
                             </div>
                           </div>
                         </Card.Body>
                       </Accordion.Collapse>
+                    </Card> */}
+
+                    {/* La partie du formulaire pour modifier  les infos des clients */}
+                    <Card className="single-my-account mb-20">
+                      <Card.Header className="panel-heading">
+                        <Accordion.Toggle variant="link" eventKey="0">
+                          <h3 className="panel-title">
+                            <span>1 .</span> Modifier Mes Informations{" "}
+                          </h3>
+                        </Accordion.Toggle>
+                      </Card.Header>
+                      <Accordion.Collapse eventKey="0">
+                        <Card.Body>
+                          <Form onSubmit={handleUpdateInfo} ref={formUpdateInfo} >
+                            <div className="myaccount-info-wrapper">
+                              <div className="account-info-wrapper">
+                                <h4>Modifier mes informations personnelles</h4>
+                                {/* <h5>Your Personal Details</h5> */}
+                              </div>
+                              <div className="row justify-content-center">
+                                <div className="col-lg-4 col-md-6">
+                                  <div className="billing-info">
+                                    <label>Nom</label>
+                                    <Input type="text" placeholder={currentUser.nom} value={nom} onChange={onChangeNom}  />
+                                  </div>
+                                </div>
+                                <div className="col-lg-4 col-md-6">
+                                  <div className="billing-info">
+                                    <label>Prénoms</label>
+                                    <Input type="text" placeholder={currentUser.prenom} value={prenom} onChange={onChangePrenom}  />
+                                  </div>
+                                </div>
+                                <div className="col-lg-4 col-md-6">
+                                  <div className="billing-info">
+                                    <label>Numéro de téléphone</label>
+                                    <Input type="text" placeholder={currentUser.telephone} value={telephone} onChange={onChangeTelephone}  />
+                                  </div>
+                                </div>
+                                <div className="col-lg-6 col-md-6">
+                                  <div className="billing-info">
+                                    <label>Email </label>
+                                    <Input type="email" placeholder={currentUser.email} value={email} onChange={onChangeEmail}  />
+                                  </div>
+                                </div>
+                                
+                              </div>
+                              <div className="billing-back-btn">
+                                <div className="billing-btn">
+                                  <button type="submit" disabled={loading}>
+                                    {loading && (
+                                      <span className="spinner-border spinner-border-sm"></span>
+                                    )}  
+                                    
+                                    Enregister
+                                  </button>
+                                </div>
+                              </div>
+                            </div>
+                              {message_update_info && (
+                                <div className="form-group pt-2">
+                                  <div className= {successful ? "alert alert-success" : "alert alert-danger" } role="alert">
+                                    {message_update_info}
+                                  </div>
+                                </div>
+                              )}
+
+                              <CheckButton style={{ display: "none" }} ref={checkBtnUpdateInfo} />  
+                            
+                          </Form> 
+                          
+                        </Card.Body>
+                      </Accordion.Collapse>
                     </Card>
+                    {/* La partie du formulaire pour modifier le mot de passe */}
                     <Card className="single-my-account mb-20">
                       <Card.Header className="panel-heading">
                         <Accordion.Toggle variant="link" eventKey="1">
@@ -98,77 +347,53 @@ const MyAccount = ({ location }) => {
                       </Card.Header>
                       <Accordion.Collapse eventKey="1">
                         <Card.Body>
-                          <div className="myaccount-info-wrapper">
-                            <div className="account-info-wrapper">
-                              <h4>Modifier mon Mot de Passe</h4>
-                              {/* <h5>Your Password</h5> */}
-                            </div>
-                            <div className="row">
-                              <div className="col-lg-12 col-md-12">
-                                <div className="billing-info">
-                                  <label>Mot de Passe</label>
-                                  <input type="password" />
+                          <Form onSubmit={handleUpdatePassword} ref={formUpdatePassword}>
+                            <div className="myaccount-info-wrapper">
+                              <div className="account-info-wrapper">
+                                <h4>Modifier mon Mot de Passe</h4>
+                                {/* <h5>Your Password</h5> */}
+                              </div>
+                              <div className="row">
+                                <div className="col-lg-12 col-md-12">
+                                  <div className="billing-info">
+                                    <label>Mot de Passe</label>
+                                    <Input type="password" placeholder="Nouveau mot de passe" value={password} onChange={onChangePassword} />
+                                  </div>
+                                </div>
+                                <div className="col-lg-12 col-md-12">
+                                  <div className="billing-info">
+                                    <label>Confirmer Mot de Passe</label>
+                                    <Input type="password" placeholder="Confirmez le mot de passe" value={confirm_password} onChange={onChangeConfirmPassword} />
+                                  </div>
                                 </div>
                               </div>
-                              <div className="col-lg-12 col-md-12">
-                                <div className="billing-info">
-                                  <label>Confirmer Mot de Passe</label>
-                                  <input type="password" />
+                              <div className="billing-back-btn">
+                                <div className="billing-btn">
+                                  <button type="submit" disabled={loading}>
+                                    {loading && (
+                                      <span className="spinner-border spinner-border-sm"></span>
+                                    )}  
+                                    
+                                    Enregister
+                                  </button>
                                 </div>
                               </div>
                             </div>
-                            <div className="billing-back-btn">
-                              <div className="billing-btn">
-                                <button type="submit">Enregister</button>
-                              </div>
-                            </div>
-                          </div>
+                              {message_update_password && (
+                                <div className="form-group pt-2">
+                                  <div className= {successful ? "alert alert-success" : "alert alert-danger" } role="alert">
+                                    {message_update_password}
+                                  </div>
+                                </div>
+                              )}
+
+                              <CheckButton style={{ display: "none" }} ref={checkBtnUpdatePassword} />
+
+                          </Form>
                         </Card.Body>
                       </Accordion.Collapse>
                     </Card>
-                    {/* <Card className="single-my-account mb-20">
-                      <Card.Header className="panel-heading">
-                        <Accordion.Toggle variant="link" eventKey="2">
-                          <h3 className="panel-title">
-                            <span>3 .</span> Modify your address book entries{" "}
-                          </h3>
-                        </Accordion.Toggle>
-                      </Card.Header>
-                      <Accordion.Collapse eventKey="2">
-                        <Card.Body>
-                          <div className="myaccount-info-wrapper">
-                            <div className="account-info-wrapper">
-                              <h4>Address Book Entries</h4>
-                            </div>
-                            <div className="entries-wrapper">
-                              <div className="row">
-                                <div className="col-lg-6 col-md-6 d-flex align-items-center justify-content-center">
-                                  <div className="entries-info text-center">
-                                    <p>Farhana hayder (shuvo) </p>
-                                    <p>hastech </p>
-                                    <p> Road#1 , Block#c </p>
-                                    <p> Rampura. </p>
-                                    <p>Dhaka </p>
-                                    <p>Bangladesh </p>
-                                  </div>
-                                </div>
-                                <div className="col-lg-6 col-md-6 d-flex align-items-center justify-content-center">
-                                  <div className="entries-edit-delete text-center">
-                                    <button className="edit">Edit</button>
-                                    <button>Delete</button>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                            <div className="billing-back-btn">
-                              <div className="billing-btn">
-                                <button type="submit">Continue</button>
-                              </div>
-                            </div>
-                          </div>
-                        </Card.Body>
-                      </Accordion.Collapse>
-                    </Card> */}
+                    
                   </Accordion>
                 </div>
               </div>

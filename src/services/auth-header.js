@@ -1,6 +1,8 @@
+// import { getItem, addItem, removeItem } from './LocalStorage';
+
 export default function authHeader() {
 
-        const user = JSON.parse(localStorage.getItem('userToken'));
+        const user = JSON.parse(localStorage.getItem('user'));
 
         if (user && user.token) {
 
