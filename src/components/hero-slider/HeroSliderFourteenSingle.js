@@ -27,9 +27,9 @@ const HeroSliderFourteenSingle = ({ data, sliderClassName, query, onInputChange 
         <div className="row">
           <div className="col-xl-12 col-lg-12 col-md-12 col-12">
             <div className="slider-content-6 slider-animated-1 text-center">
-              {/* <h1 className="animated">{data.title}</h1> */}
-              {/* <h1 className="animated">Gifty Home</h1>
-              <p className="animated">Une intelligence Artificielle pour vous proposer de bons cadeaux</p> */}
+              <h2 className="animated" style={{color:"white", fontSize:"20px"}}>Cherchez-vous le cadeau idéal ? </h2>
+              <h1 className="animated">{data.title}</h1>
+              {/* <p className="animated"></p> */}
 
 
               

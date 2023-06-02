@@ -14,7 +14,7 @@ const HomePlants = () => {
         <title>Flone | Plants Home</title>
         <meta
           name="description"
-          content="Plants home of flone react minimalist eCommerce template."
+          content="Plants home Votre application de cadeau, qui vous apporte du sourire."
         />
       </MetaTags>
       <LayoutTwo footerBgClass="bg-gray-4">

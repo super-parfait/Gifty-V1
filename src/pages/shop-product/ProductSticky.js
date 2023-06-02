@@ -15,10 +15,10 @@ const ProductSticky = ({ location, product }) => {
   return (
     <Fragment>
       <MetaTags>
-        <title>Flone | Product Page</title>
+        <title>Gifty | Product Page</title>
         <meta
           name="description"
-          content="Product page of flone react minimalist eCommerce template."
+          content="  Votre application de cadeau, qui vous apporte du sourire."
         />
       </MetaTags>
 

@@ -16,7 +16,7 @@ const HomeValentinesDay = () => {
         <title>Flone | Valentines day Home</title>
         <meta
           name="description"
-          content="Valentines day home of flone react minimalist eCommerce template."
+          content="Valentines day home Votre application de cadeau, qui vous apporte du sourire."
         />
       </MetaTags>
       <LayoutOne headerTop="visible">

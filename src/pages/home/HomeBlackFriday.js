@@ -17,7 +17,7 @@ const HomeBlackFriday = () => {
         <title>Flone | Black friday Home</title>
         <meta
           name="description"
-          content="Black friday home of flone react minimalist eCommerce template."
+          content="Black friday home Votre application de cadeau, qui vous apporte du sourire."
         />
       </MetaTags>
       <LayoutTen>

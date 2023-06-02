@@ -223,10 +223,10 @@ const LoginRegister = ({ location, props }) => {
   return (
     <Fragment>
       <MetaTags>
-        <title>Gifty | Login</title>
+        <title>Gifty | Authentification</title>
         <meta
           name="description"
-          content="Compare page of flone react minimalist eCommerce template."
+          content="Votre application de cadeau, qui vous apporte du sourire."
         />
       </MetaTags>
       <BreadcrumbsItem to={process.env.PUBLIC_URL + "/"}>Accueil</BreadcrumbsItem>

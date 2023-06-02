@@ -116,7 +116,7 @@ const FooterTwo = ({
                 rel="noopener noreferrer"
                 target="_blank"
               >
-                Flone
+                Gifty
               </a>
               . All Rights Reserved.
             </p>

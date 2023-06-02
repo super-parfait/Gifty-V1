@@ -12,10 +12,10 @@ const NotFound = ({ location }) => {
   return (
     <Fragment>
       <MetaTags>
-        <title>Flone | Not Found</title>
+        <title>Gifty | Not Found</title>
         <meta
           name="description"
-          content="404 page of flone react minimalist eCommerce template."
+          content="Votre application de cadeau, qui vous apporte du sourire."
         />
       </MetaTags>
       <BreadcrumbsItem to={process.env.PUBLIC_URL + "/"}>Home</BreadcrumbsItem>
@@ -31,10 +31,9 @@ const NotFound = ({ location }) => {
               <div className="col-xl-7 col-lg-8 text-center">
                 <div className="error">
                   <h1>404</h1>
-                  <h2>OPPS! PAGE NOT FOUND</h2>
+                  <h2>OPP ! PAGE NON TROUVÉE</h2>
                   <p>
-                    Sorry but the page you are looking for does not exist, have
-                    been removed, name changed or is temporarity unavailable.
+                    Désolé mais la page que vous recherchez n'existe pas, a été supprimée, a changé de nom ou est temporairement indisponible.
                   </p>
                   <form className="searchform mb-50">
                     <input
@@ -44,11 +43,11 @@ const NotFound = ({ location }) => {
                       placeholder="Search..."
                       className="searchform__input"
                     />
-                    <button type="submit" className="searchform__submit">
+                    <button type="submit" className="searchform__submit" style={{color:"$theme-color"}}>
                       <i className="fa fa-search" />
                     </button>
                   </form>
-                  <Link to={process.env.PUBLIC_URL + "/"} className="error-btn">
+                  <Link to={process.env.PUBLIC_URL + "/"} className="error-btn" >
                     Back to home page
                   </Link>
                 </div>

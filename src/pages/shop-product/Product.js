@@ -18,7 +18,7 @@ const Product = ({ location, product }) => {
         <title>Gifty | Pack Cadeau </title>
         <meta
           name="description"
-          content="Product page of flone react minimalist eCommerce template."
+          content="  Votre application de cadeau, qui vous apporte du sourire."
         />
       </MetaTags>
 

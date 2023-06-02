@@ -36,7 +36,7 @@ const Cart = ({
         <title>Gifty | Mon Panier</title>
         <meta
           name="description"
-          content="Cart page of flone react minimalist eCommerce template."
+          content="Votre application de cadeau, qui vous apporte du sourire."
         />
       </MetaTags>
 

@@ -36,10 +36,10 @@ const Compare = ({
   return (
     <Fragment>
       <MetaTags>
-        <title>Flone | Compare</title>
+        <title>Gifty | Comparer</title>
         <meta
           name="description"
-          content="Compare page of flone react minimalist eCommerce template."
+          content="Votre application de cadeau, qui vous apporte du sourire."
         />
       </MetaTags>
       <BreadcrumbsItem to={process.env.PUBLIC_URL + "/"}>Home</BreadcrumbsItem>

@@ -15,7 +15,7 @@ const HomeAutoParts = () => {
         <title>Flone | Auto parts Home</title>
         <meta
           name="description"
-          content="Auto parts home of flone react minimalist eCommerce template."
+          content="Votre application de cadeau, qui vous apporte du sourire."
         />
       </MetaTags>
       <LayoutOne headerTop="visible">

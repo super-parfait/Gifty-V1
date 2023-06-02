@@ -16,7 +16,7 @@ const HomePetFood = () => {
         <title>Flone | Pet food Home</title>
         <meta
           name="description"
-          content="Pet food home of flone react minimalist eCommerce template."
+          content="Pet food home Votre application de cadeau, qui vous apporte du sourire."
         />
       </MetaTags>
       <LayoutOne headerTop="visible">
