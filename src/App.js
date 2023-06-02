@@ -67,6 +67,13 @@ const HomeFashionSeven = lazy(() => import("./pages/home/HomeFashionSeven"));
 // const ShopGridFilter = lazy(() => import("./pages/shop/ShopGridFilter"));
 // const ShopGridTwoColumn = lazy(() => import("./pages/shop/ShopGridTwoColumn"));
 const ShopGridNoSidebar = lazy(() => import("./pages/shop/ShopGridNoSidebar"));
+
+// Ajout page d'affichage des produits
+
+const ProductGridImage = lazy(() => import("./pages/shop/ProductGridImage"));
+
+// Fin 
+
 // const ShopGridFullWidth = lazy(() => import("./pages/shop/ShopGridFullWidth"));
 // const ShopGridRightSidebar = lazy(() =>
 //   import("./pages/shop/ShopGridRightSidebar")
@@ -102,6 +109,13 @@ const About = lazy(() => import("./pages/other/About"));
 const Contact = lazy(() => import("./pages/other/Contact"));
 const MyAccount = lazy(() => import("./pages/other/MyAccount"));
 const LoginRegister = lazy(() => import("./pages/other/LoginRegister"));
+
+// Ajout page de forgotPassword and resetPassword
+
+const ForgotPassword = lazy(() => import("./pages/other/ForgotPassword"));
+const OtpPassword = lazy(() => import("./pages/other/OtpPassword"));
+
+// Fin
 
 const Cart = lazy(() => import("./pages/other/Cart"));
 const Wishlist = lazy(() => import("./pages/other/Wishlist"));
@@ -371,6 +385,11 @@ const App = (props) => {
                   component={ProductFixedImage}
                 />
 
+                <Route
+                  path={process.env.PUBLIC_URL + "/product-grid-image/"}
+                  component={ProductGridImage}
+                />
+
                 {/* Blog pages */}
                 {/* <Route
                   path={process.env.PUBLIC_URL + "/blog-standard"}
@@ -411,6 +430,16 @@ const App = (props) => {
                 <Route
                   path={process.env.PUBLIC_URL + "/login-register"}
                   component={LoginRegister}
+                />
+
+                <Route
+                  path={process.env.PUBLIC_URL + "/forgot-password"}
+                  component={ForgotPassword}
+                />
+
+                <Route
+                  path={process.env.PUBLIC_URL + "/otp-password"}
+                  component={OtpPassword}
                 />
 
                 <Route

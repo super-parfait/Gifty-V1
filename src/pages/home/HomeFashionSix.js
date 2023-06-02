@@ -14,7 +14,7 @@ const HomeFashionSix = () => {
         <title>Gifty Accueil</title>
         <meta
           name="description"
-          content="Le meilleur choix de cadeau pour vos evenements"
+          content="Le meilleur choix de cadeau pour vos événements"
         />
       </MetaTags>
       <LayoutSeven>

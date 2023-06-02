@@ -116,7 +116,7 @@ const Cart = ({
                                   >
                                     {cartItem.name}
                                   </Link>
-                                  {cartItem.selectedProductColor &&
+                                  {/* {cartItem.selectedProductColor &&
                                   cartItem.selectedProductSize ? (
                                     <div className="cart-item-variation">
                                       <span>
@@ -128,7 +128,7 @@ const Cart = ({
                                     </div>
                                   ) : (
                                     ""
-                                  )}
+                                  )} */}
                                 </td>
 
                                 <td className="product-price-cart">
@@ -225,7 +225,7 @@ const Cart = ({
                     <div className="cart-shiping-update-wrapper">
                       <div className="cart-shiping-update">
                         <Link
-                          to={process.env.PUBLIC_URL + "/shop-grid-standard"}
+                          to={process.env.PUBLIC_URL + "/shop-no-grid-sidebar"}
                         >
                           Ajouter 
                         </Link>

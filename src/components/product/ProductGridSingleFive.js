@@ -91,8 +91,8 @@ const ProductGridSingleFive = ({
                       disabled={wishlistItem !== undefined}
                       title={
                         wishlistItem !== undefined
-                          ? "Added to wishlist"
-                          : "Add to wishlist"
+                          ? "Ajouté aux Favoris"
+                          : "Ajouter aux Favoris"
                       }
                       onClick={() => addToWishlist(product, addToast)}
                     >
@@ -130,8 +130,8 @@ const ProductGridSingleFive = ({
                         }
                         title={
                           cartItem !== undefined
-                            ? "Added to cart"
-                            : "Add to cart"
+                            ? "Ajouté au Panier"
+                            : "Ajouter au Panier"
                         }
                       >
                         {" "}
@@ -150,8 +150,8 @@ const ProductGridSingleFive = ({
                       disabled={compareItem !== undefined}
                       title={
                         compareItem !== undefined
-                          ? "Added to compare"
-                          : "Add to compare"
+                          ? "Ajouté pour comparer"
+                          : "Ajouter pour comparer"
                       }
                       onClick={() => addToCompare(product, addToast)}
                     >
@@ -162,7 +162,7 @@ const ProductGridSingleFive = ({
                   <div className="pro-same-action pro-quickview">
                     <button
                       onClick={() => setModalShow(true)}
-                      title="Quick View"
+                      title="Plus de détails"
                     >
                       <i className="fa fa-eye"></i>
                     </button>

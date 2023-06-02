@@ -9,7 +9,7 @@ import LayoutOne from "../../layouts/LayoutOne";
 
 import Breadcrumb from "../../wrappers/breadcrumb/Breadcrumb";
 import ShopTopbar from "../../wrappers/product/ShopTopbar";
-import ShopProducts from "../../wrappers/product/ShopProducts";
+import ShopProducts from "../../wrappers/product/ShopProduct_2";
 
 const ShopGridNoSidebar = ({ location, products }) => {
   const [layout, setLayout] = useState("grid three-column");
@@ -49,16 +49,16 @@ const ShopGridNoSidebar = ({ location, products }) => {
   return (
     <Fragment>
       <MetaTags>
-        <title>Gifty | Packs Cadeaux</title>
+        <title>Gifty | Produits</title>
         <meta
           name="description"
-          content="Gifty App"
+          content="Votre application de cadeau, qui vous facilite la vie."
         />
       </MetaTags>
 
       <BreadcrumbsItem to={process.env.PUBLIC_URL + "/"}>Accueil</BreadcrumbsItem>
       <BreadcrumbsItem to={process.env.PUBLIC_URL + pathname}>
-        Packs Cadeaux
+      Produits
       </BreadcrumbsItem>
 
       <LayoutOne headerTop="visible">

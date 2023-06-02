@@ -30,7 +30,7 @@ const Wishlist = ({
   return (
     <Fragment>
       <MetaTags>
-        <title>Flone | Wishlist</title>
+        <title>Flone | Favoris</title>
         <meta
           name="description"
           content="Wishlist page of flone react minimalist eCommerce template."
@@ -39,7 +39,7 @@ const Wishlist = ({
 
       <BreadcrumbsItem to={process.env.PUBLIC_URL + "/"}>Home</BreadcrumbsItem>
       <BreadcrumbsItem to={process.env.PUBLIC_URL + pathname}>
-        Wishlist
+        Favoris
       </BreadcrumbsItem>
 
       <LayoutOne headerTop="visible">
@@ -49,7 +49,7 @@ const Wishlist = ({
           <div className="container">
             {wishlistItems && wishlistItems.length >= 1 ? (
               <Fragment>
-                <h3 className="cart-page-title">Your wishlist items</h3>
+                <h3 className="cart-page-title">Vos favoris</h3>
                 <div className="row">
                   <div className="col-12">
                     <div className="table-content table-responsive cart-table-content">
@@ -57,9 +57,9 @@ const Wishlist = ({
                         <thead>
                           <tr>
                             <th>Image</th>
-                            <th>Product Name</th>
-                            <th>Unit Price</th>
-                            <th>Add To Cart</th>
+                            <th>Nom Produit</th>
+                            <th>Prix unitaire</th>
+                            <th>Ajouter au Panier</th>
                             <th>action</th>
                           </tr>
                         </thead>
@@ -132,23 +132,26 @@ const Wishlist = ({
                                 </td>
 
                                 <td className="product-wishlist-cart">
-                                  {wishlistItem.affiliateLink ? (
-                                    <a
-                                      href={wishlistItem.affiliateLink}
-                                      rel="noopener noreferrer"
-                                      target="_blank"
-                                    >
-                                      {" "}
-                                      Buy now{" "}
-                                    </a>
-                                  ) : wishlistItem.variation &&
-                                    wishlistItem.variation.length >= 1 ? (
-                                    <Link
-                                      to={`${process.env.PUBLIC_URL}/product/${wishlistItem.id}`}
-                                    >
-                                      Select option
-                                    </Link>
-                                  ) : wishlistItem.stock &&
+                                  {
+                                  // wishlistItem.affiliateLink ? (
+                                  //   <a
+                                  //     href={wishlistItem.affiliateLink}
+                                  //     rel="noopener noreferrer"
+                                  //     target="_blank"
+                                  //   >
+                                  //     {" "}
+                                  //     Buy now{" "}
+                                  //   </a>
+                                  // ) : wishlistItem.variation &&
+                                  //   wishlistItem.variation.length >= 1 ? (
+                                  //   <Link
+                                  //     to={`${process.env.PUBLIC_URL}/product/${wishlistItem.id}`}
+                                  //   >
+                                  //     Select option
+                                  //   </Link>
+                                  // ) : 
+                                  
+                                  wishlistItem.stock &&
                                     wishlistItem.stock > 0 ? (
                                     <button
                                       onClick={() =>
@@ -166,18 +169,18 @@ const Wishlist = ({
                                       }
                                       title={
                                         wishlistItem !== undefined
-                                          ? "Added to cart"
-                                          : "Add to cart"
+                                          ? "Ajouté au Panier"
+                                          : "Ajouter au Panier"
                                       }
                                     >
                                       {cartItem !== undefined &&
                                       cartItem.quantity > 0
-                                        ? "Added"
-                                        : "Add to cart"}
+                                        ? "Ajouté"
+                                        : "Ajouter au Panier"}
                                     </button>
                                   ) : (
                                     <button disabled className="active">
-                                      Out of stock
+                                      indisponible
                                     </button>
                                   )}
                                 </td>
@@ -205,14 +208,14 @@ const Wishlist = ({
                     <div className="cart-shiping-update-wrapper">
                       <div className="cart-shiping-update">
                         <Link
-                          to={process.env.PUBLIC_URL + "/shop-grid-standard"}
+                          to={process.env.PUBLIC_URL + "/shop-grid-no-sidebar"}
                         >
-                          Continue Shopping
+                          Continuer
                         </Link>
                       </div>
                       <div className="cart-clear">
                         <button onClick={() => deleteAllFromWishlist(addToast)}>
-                          Clear Wishlist
+                          Effacer
                         </button>
                       </div>
                     </div>
@@ -227,9 +230,9 @@ const Wishlist = ({
                       <i className="pe-7s-like"></i>
                     </div>
                     <div className="item-empty-area__text">
-                      No items found in wishlist <br />{" "}
-                      <Link to={process.env.PUBLIC_URL + "/shop-grid-standard"}>
-                        Add Items
+                      Aucun élement dans les favoris <br />{" "}
+                      <Link to={process.env.PUBLIC_URL + "/shop-grid-no-sidebar"}>
+                        Ajouter
                       </Link>
                     </div>
                   </div>

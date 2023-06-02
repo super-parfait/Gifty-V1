@@ -28,8 +28,8 @@ const HeroSliderFourteenSingle = ({ data, sliderClassName, query, onInputChange 
           <div className="col-xl-12 col-lg-12 col-md-12 col-12">
             <div className="slider-content-6 slider-animated-1 text-center">
               {/* <h1 className="animated">{data.title}</h1> */}
-              <h1 className="animated">Gifty Home</h1>
-              <p className="animated">Une intelligence Artificielle pour vous proposer de bons cadeaux</p>
+              {/* <h1 className="animated">Gifty Home</h1>
+              <p className="animated">Une intelligence Artificielle pour vous proposer de bons cadeaux</p> */}
 
 
               
@@ -46,8 +46,8 @@ const HeroSliderFourteenSingle = ({ data, sliderClassName, query, onInputChange 
                                   <input className="form-control form-control-lg form-control-borderless" type="search" placeholder="Chercher un cadeau" style={{fontSize:`20px`}} onChange={(e) => onInputChange(e.target.value)} value={query} />
                               </div>
                               
-                              <div className="col-auto ">
-                                  <button className="btn btn-lg" style={{backgroundColor:`#ff1e1e`, color:`white`}} type="submit"><i className="pe-7s-search"></i></button>
+                              <div className="col-auto " >
+                                  <button className="btn btn-lg" style={{backgroundColor:`#ff1e1e`, color:`white`}} type="submit"><i className="pe-7s-search" ></i></button>
                               </div>
                               
                           </div>

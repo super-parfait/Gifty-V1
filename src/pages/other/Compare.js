@@ -138,14 +138,14 @@ const Compare = ({
                                         }
                                         title={
                                           compareItem !== undefined
-                                            ? "Added to cart"
-                                            : "Add to cart"
+                                            ? "Ajouté au Panier"
+                                            : "Ajouter au Panier"
                                         }
                                       >
                                         {cartItem !== undefined &&
                                         cartItem.quantity > 0
-                                          ? "Added"
-                                          : "Add to cart"}
+                                          ? "Ajouté"
+                                          : "Ajouter au Panier"}
                                       </button>
                                     ) : (
                                       <button disabled className="active">
@@ -234,7 +234,7 @@ const Compare = ({
                     </div>
                     <div className="item-empty-area__text">
                      Aucun produit à comparer <br />{" "}
-                      <Link to={process.env.PUBLIC_URL + "/shop-grid-standard"}>
+                      <Link to={process.env.PUBLIC_URL + "/shop-no-grid-sidebar"}>
                        Ajouter
                       </Link>
                     </div>

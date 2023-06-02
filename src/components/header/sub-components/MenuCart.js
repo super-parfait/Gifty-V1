@@ -48,13 +48,13 @@ const MenuCart = ({ cartData, currency, deleteFromCart }) => {
                         {single.name}{" "}
                       </Link>
                     </h4>
-                    <h6>Qty: {single.quantity}</h6>
+                    <h6>Quantité: {single.quantity}</h6>
                     <span>
                       {discountedPrice !== null
                         ? currency.currencySymbol + finalDiscountedPrice
                         : currency.currencySymbol + finalProductPrice}
                     </span>
-                    {single.selectedProductColor &&
+                    {/* {single.selectedProductColor &&
                     single.selectedProductSize ? (
                       <div className="cart-item-variation">
                         <span>Color: {single.selectedProductColor}</span>
@@ -62,7 +62,7 @@ const MenuCart = ({ cartData, currency, deleteFromCart }) => {
                       </div>
                     ) : (
                       ""
-                    )}
+                    )} */}
                   </div>
                   <div className="shopping-cart-delete">
                     <button onClick={() => deleteFromCart(single, addToast)}>
@@ -83,18 +83,18 @@ const MenuCart = ({ cartData, currency, deleteFromCart }) => {
           </div>
           <div className="shopping-cart-btn btn-hover text-center">
             <Link className="default-btn" to={process.env.PUBLIC_URL + "/cart"}>
-              view cart
+              Voir le Panier
             </Link>
             <Link
               className="default-btn"
               to={process.env.PUBLIC_URL + "/checkout"}
             >
-              checkout
+              Commander
             </Link>
           </div>
         </Fragment>
       ) : (
-        <p className="text-center">No items added to cart</p>
+        <p className="text-center">Aucun élément dans le Panier</p>
       )}
     </div>
   );

@@ -95,8 +95,8 @@ const ProductGridSingleSix = ({
                   disabled={wishlistItem !== undefined}
                   title={
                     wishlistItem !== undefined
-                      ? "Added to wishlist"
-                      : "Add to wishlist"
+                      ? "Ajouté aux Favoris"
+                      : "Ajouter aux Favoris"
                   }
                   onClick={() => addToWishlist(product, addToast)}
                 >
@@ -130,7 +130,7 @@ const ProductGridSingleSix = ({
                     }
                     disabled={cartItem !== undefined && cartItem.quantity > 0}
                     title={
-                      cartItem !== undefined ? "Added to cart" : "Add to cart"
+                      cartItem !== undefined ? "Ajouté au Panier" : "Ajouter au Panier"
                     }
                   >
                     <i className="pe-7s-cart"></i>
@@ -147,8 +147,8 @@ const ProductGridSingleSix = ({
                   disabled={compareItem !== undefined}
                   title={
                     compareItem !== undefined
-                      ? "Added to compare"
-                      : "Add to compare"
+                      ? "Ajouté pour comparer"
+                      : "Ajouter pour comparer"
                   }
                   onClick={() => addToCompare(product, addToast)}
                 >

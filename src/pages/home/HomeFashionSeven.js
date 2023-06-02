@@ -15,7 +15,7 @@ const HomeFashionSeven = () => {
         <title>Gifty | Produits</title>
         <meta
           name="description"
-          content="Fashion home of flone react minimalist eCommerce template."
+          content="Le meilleur choix de cadeau pour vos evenements"
         />
       </MetaTags>
       <LayoutOne

@@ -68,7 +68,7 @@ const ProductDescriptionInfo = ({
         <p>{product.shortDescription}</p>
       </div>
 
-      {
+      {/* {
         (
             
           // le product signifie que dès que l'user appuie sur le btn il est renvoyer sur la page qui affiche des produits,
@@ -89,7 +89,7 @@ const ProductDescriptionInfo = ({
             </div>
           </div>
         )
-      }
+      } */}
 
       {/* {
       

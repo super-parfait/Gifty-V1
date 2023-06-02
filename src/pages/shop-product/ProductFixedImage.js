@@ -5,9 +5,13 @@ import { BreadcrumbsItem } from "react-breadcrumbs-dynamic";
 import { connect } from "react-redux";
 import LayoutOne from "../../layouts/LayoutOne";
 import Breadcrumb from "../../wrappers/breadcrumb/Breadcrumb";
-import RelatedProductSlider from "../../wrappers/product/RelatedProductSlider";
-import ProductDescriptionTab from "../../wrappers/product/ProductDescriptionTab";
-import ProductImageDescription from "../../wrappers/product/ProductImageDescription";
+// import RelatedProductSlider from "../../wrappers/product/RelatedProductSlider_2";
+// import ProductDescriptionTab from "../../wrappers/product/ProductDescriptionTab_2";
+// import ProductImageDescription from "../../wrappers/product/ProductImageDescription_2";
+
+import RelatedProductSlider from "../../wrappers/product/RelatedProductSlider_2";
+import ProductDescriptionTab from "../../wrappers/product/ProductDescriptionTab_2";
+import ProductImageDescription from "../../wrappers/product/ProductImageDescription_2";
 
 const ProductFixedImage = ({ location, product }) => {
   const { pathname } = location;
@@ -18,7 +22,7 @@ const ProductFixedImage = ({ location, product }) => {
         <title>Gifty | Produits </title>
         <meta
           name="description"
-          content="Product page of flone react minimalist eCommerce template."
+          content=""
         />
       </MetaTags>
 
