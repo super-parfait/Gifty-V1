@@ -234,7 +234,7 @@ const Compare = ({
                     </div>
                     <div className="item-empty-area__text">
                      Aucun produit à comparer <br />{" "}
-                      <Link to={process.env.PUBLIC_URL + "/shop-no-grid-sidebar"}>
+                      <Link to={process.env.PUBLIC_URL + "/shop-grid-no-sidebar"}>
                        Ajouter
                       </Link>
                     </div>

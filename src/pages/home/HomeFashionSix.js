@@ -11,10 +11,10 @@ const HomeFashionSix = () => {
   return (
     <Fragment>
       <MetaTags>
-        <title>Gifty Accueil</title>
+        <title>Gifty | Accueil</title>
         <meta
           name="description"
-          content="Le meilleur choix de cadeau pour vos événements"
+          contetnt="Votre application de cadeau, qui vous facilite la tâche"
         />
       </MetaTags>
       <LayoutSeven>

@@ -339,7 +339,7 @@ const Cart = ({
                     </div>
                     <div className="item-empty-area__text">
                      Aucun article dans " Mon Panier " <br />{" "}
-                      <Link to={process.env.PUBLIC_URL + "/shop-grid-standard"}>
+                      <Link to={process.env.PUBLIC_URL + "/"}>
                         Ajouter
                       </Link>
                     </div>

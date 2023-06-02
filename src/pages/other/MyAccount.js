@@ -63,7 +63,7 @@ const MyAccount = ({ location }) => {
 
   const { message_update_password } =useSelector(state=>state.message)
 
-  const { isLoggedIn: currentUser } = useSelector((state) => state.auth);
+  const { user: currentUser } = useSelector((state) => state.auth);
 
 
   const dispatch = useDispatch();
@@ -356,8 +356,8 @@ const MyAccount = ({ location }) => {
                               <div className="row">
                                 <div className="col-lg-12 col-md-12">
                                   <div className="billing-info">
-                                    <label>Mot de Passe</label>
-                                    <Input type="password" placeholder="Nouveau mot de passe" value={password} onChange={onChangePassword} />
+                                    <label>Nouveau mot de passe</label>
+                                    <Input type="password" placeholder="********" value={password} onChange={onChangePassword} />
                                   </div>
                                 </div>
                                 <div className="col-lg-12 col-md-12">
