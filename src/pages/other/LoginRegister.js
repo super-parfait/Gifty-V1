@@ -9,6 +9,9 @@ import Tab from "react-bootstrap/Tab";
 import Nav from "react-bootstrap/Nav";
 import LayoutOne from "../../layouts/LayoutOne";
 import Breadcrumb from "../../wrappers/breadcrumb/Breadcrumb";
+import { ToastProvider, useToasts } from 'react-toast-notifications';
+
+// import { toast } from "react-toastify";
 
 
 import { login } from "../../redux/actions/auth";
@@ -90,6 +93,8 @@ const LoginRegister = ({ location, props }) => {
 
   let history = useHistory();
 
+  const { addToast } = useToasts();
+
 
   const formLogin = useRef();
   const checkBtnLogin = useRef();
@@ -160,7 +165,8 @@ const LoginRegister = ({ location, props }) => {
 
     setLoading(true);
 
-    formLogin.current.validateAll();
+    formLogin.current.validateAll(); 
+
 
     if (checkBtnLogin.current.context._errors.length === 0) {
       dispatch(login(credentials))
@@ -169,6 +175,8 @@ const LoginRegister = ({ location, props }) => {
           window.location.reload();
         })
         .catch(() => {
+          // toast.error(message_login);
+          addToast(message_login, { appearance: 'error', autoDismiss:true });
           setLoading(false);
         });
     } else {
@@ -191,13 +199,16 @@ const LoginRegister = ({ location, props }) => {
         .then(() => {
           // history("/my-account");
           // window.location.reload();
-
-          setSuccessful(true);
           setLoading(false)
+          addToast(message_register, { appearance: 'success', autoDismiss:true });
+          // setSuccessful(true);
+          
         })
         .catch(() => {
           setLoading(false);
-          setSuccessful(false);
+          addToast(message_register, { appearance: 'error', autoDismiss:true });
+          
+          // setSuccessful(false);
         });
     }else{
       setLoading(false);
@@ -290,13 +301,15 @@ const LoginRegister = ({ location, props }) => {
                               </div>
                              
 
-                              {message_login && (
+                              {/* {
+                              message_login && (
                                 <div className="form-group pt-2">
                                   <div className="alert alert-danger" role="alert">
                                     {message_login}
                                   </div>
                                 </div>
-                              )}
+                              )
+                              } */}
 
                               <CheckButton style={{ display: "none" }} ref={checkBtnLogin} />  
 
@@ -372,13 +385,15 @@ const LoginRegister = ({ location, props }) => {
                               </div>
 
 
-                              {message_register && (
+                              {/* {
+                              message_register && (
                                 <div className="form-group pt-2">
                                   <div className={successful ? "alert alert-success" : "alert alert-danger" } role="alert">
                                     {message_register}
                                   </div>
                                 </div>
-                              )}
+                              )
+                              } */}
 
                               <CheckButton style={{ display: "none" }} ref={checkBtnRegister} /> 
 

@@ -7,6 +7,7 @@ import { combineReducers } from "redux";
 import { createMultilanguageReducer } from "redux-multilanguage";
 import auth from "./auth";
 import message from "./message";
+// import productsSearch from "./productReducer"
 
 const rootReducer = combineReducers({
   multilanguage: createMultilanguageReducer({ currentLanguageCode: "en" }),
@@ -17,6 +18,7 @@ const rootReducer = combineReducers({
   compareData: compareReducer,
   auth,
   message,
+  // search:productsSearch
 });
 
 export default rootReducer;

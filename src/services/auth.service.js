@@ -3,16 +3,23 @@ import axios from 'axios';
 import { getItem, addItem, removeItem } from './LocalStorage';
 import authHeader from './auth-header';
 
-const API_URL = "http://192.168.1.13:4005/api/v1/srv-usr/"
+const API_URL = "http://192.168.1.7:4005/api/v1/srv-usr/"
 
 
-export  function hasAuthenticated(){  
-//     const token =  getItem('userToken');
-//     const refreshtoken = getItem('userRefeshToken');
+export  function functionGetUserData(){  
+
+    return axios
+        .get(API_URL+'user/', {headers: authHeader()})
+        .then(response => response.data)
+        .then(data => {
+            addItem('user', JSON.stringify({"token":data.token}));
+        //     addItem('userRefeshToken', JSON.stringify({}))
+            return data;
+        });
 
 //     return token ? tokenIsValid(token, refreshtoken) : false ;
 
-return true
+// return true
 
 
     // if((token && refreshtoken)){
@@ -133,5 +140,6 @@ export default {
         functionLogin,
         functionLogout,
         functionUpdate, 
-        functionUpdatePassword
+        functionUpdatePassword,
+        functionGetUserData
       };

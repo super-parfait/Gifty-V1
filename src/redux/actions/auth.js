@@ -3,6 +3,8 @@ import {
         REGISTER_FAIL,
         LOGIN_SUCCESS,
         LOGIN_FAIL,
+        AUTH_SUCCESS,
+        AUTH_FAIL,
         UPDATE_PASSWORD_SUCCESS,
         UPDATE_PASSWORD_FAIL,
         UPDATE_INFO_SUCCESS,
@@ -180,3 +182,45 @@ export const logout = () => (dispatch) => {
                 type: LOGOUT,
         });
 };
+
+// La fonction pour verifier si l'utilisateur est connecté et existe 
+export const fetchUserData = () => (dispatch) =>{
+        return AuthService.functionGetUserData().then(
+                (response) => {
+
+                        // console.log(response)
+                        // var message = ""
+                        // if(response ===true){
+                        //         message = "Modification effectuée avec succès !"
+                        // }
+                        dispatch({
+                                type: AUTH_SUCCESS,
+                                payload: { user: response }
+                        });
+
+                        // dispatch({
+                        //         type: SET_MESSAGE_UPDATE_INFO,
+                        //         payload: message,
+                        // });
+
+                        return Promise.resolve();
+                },
+                (error) => {
+                        // console.log(error)
+                        // console.log(error.response.data)
+                        // var message = error.response.data.message
+
+
+                        dispatch({
+                                type:AUTH_FAIL,
+                        });
+
+                        // dispatch({
+                        //         type: SET_MESSAGE_UPDATE_INFO,
+                        //         payload: message,
+                        // });
+
+                        return Promise.reject();
+                }
+        );
+}

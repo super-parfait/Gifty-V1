@@ -4,6 +4,11 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import MenuCart from "./sub-components/MenuCart";
 import { deleteFromCart } from "../../redux/actions/cartActions";
+import { useSelector } from "react-redux";
+
+
+
+
 
 const IconGroup = ({
   currency,
@@ -13,6 +18,11 @@ const IconGroup = ({
   deleteFromCart,
   iconWhiteClass
 }) => {
+
+  const { isLoggedIn } = useSelector(state => state.auth);
+
+  console.log(isLoggedIn)
+
   const handleClick = e => {
     e.currentTarget.nextSibling.classList.toggle("active");
   };
@@ -41,6 +51,7 @@ const IconGroup = ({
           </form>
         </div>
       </div>
+
       <div className="same-style account-setting d-none d-lg-block">
         <button
           className="account-setting-active"
@@ -48,23 +59,33 @@ const IconGroup = ({
         >
           <i className="pe-7s-user myicon" />
         </button>
-        <div className="account-dropdown">
-          <ul>
-            <li>
-              <Link to={process.env.PUBLIC_URL + "/login-register"}>Connexion</Link>
-            </li>
-            <li>
-              <Link to={process.env.PUBLIC_URL + "/login-register"}>
-                Inscription
-              </Link>
-            </li>
-            <li>
-              <Link to={process.env.PUBLIC_URL + "/my-account"}>
-                Mon Compte
-              </Link>
-            </li>
-          </ul>
-        </div>
+        
+            {isLoggedIn ? (
+              <div className="account-dropdown">
+                <ul>
+                  <li>
+                    <Link to={process.env.PUBLIC_URL + "/my-account"}>
+                      Mon Compte
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+            ):(
+              <div className="account-dropdown">
+                <ul>
+                  <li>
+                    <Link to={process.env.PUBLIC_URL + "/login-register"}>Connexion</Link>
+                  </li>
+                  <li>
+                    <Link to={process.env.PUBLIC_URL + "/login-register"}>
+                      Inscription
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+            )}
+
+
       </div>
 
       
@@ -76,6 +97,7 @@ const IconGroup = ({
           <i className="pe-7s-search" />
         </button>
       </div>
+      
       <div className="same-style cart-wrap d-block d-lg-none">
         <button
           className="account-setting-active"
@@ -83,23 +105,30 @@ const IconGroup = ({
         >
           <i className="pe-7s-user" />
         </button>
-        <div className="account-dropdown">
-          <ul>
-            <li>
-              <Link to={process.env.PUBLIC_URL + "/login-register"}>Connexion</Link>
-            </li>
-            <li>
-              <Link to={process.env.PUBLIC_URL + "/login-register"}>
-                Inscription
-              </Link>
-            </li>
-            <li>
-              <Link to={process.env.PUBLIC_URL + "/my-account"}>
-                Mon Compte
-              </Link>
-            </li>
-          </ul>
-        </div>
+        {isLoggedIn ? (
+          <div className="account-dropdown">
+            <ul>
+              <li>
+                <Link to={process.env.PUBLIC_URL + "/my-account"}>
+                  Mon Compte
+                </Link>
+              </li>
+            </ul>
+          </div>
+        ):(
+          <div className="account-dropdown">
+            <ul>
+              <li>
+                <Link to={process.env.PUBLIC_URL + "/login-register"}>Connexion</Link>
+              </li>
+              <li>
+                <Link to={process.env.PUBLIC_URL + "/login-register"}>
+                  Inscription
+                </Link>
+              </li>
+            </ul>
+          </div>
+        )}
       </div>
       <div className="same-style header-compare">
         <Link to={process.env.PUBLIC_URL + "/compare"}>

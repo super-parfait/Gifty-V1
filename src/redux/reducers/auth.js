@@ -8,6 +8,8 @@ import {
         UPDATE_INFO_FAIL,
         UPDATE_PASSWORD_SUCCESS,
         UPDATE_PASSWORD_FAIL,
+        AUTH_SUCCESS,
+        AUTH_FAIL,
       } from "../actions/types";
       
 const user = JSON.parse(localStorage.getItem("userToken"));
@@ -18,6 +20,17 @@ export default function (state = initialState, action) {
         const { type, payload } = action;
 
         switch (type) {
+                case AUTH_SUCCESS:
+                        return {
+                                ...state,
+                                isLoggedIn: true,
+                                user: payload.user,
+                        }
+                case AUTH_FAIL:
+                        return {
+                                ...state,
+                                isLoggedIn: false
+                        }
                 case REGISTER_SUCCESS:
                         return {
                                 ...state,

@@ -6,6 +6,7 @@ import { ToastProvider } from "react-toast-notifications";
 import { multilanguage, loadLanguages } from "redux-multilanguage";
 import { connect } from "react-redux";
 import { BreadcrumbsProvider } from "react-breadcrumbs-dynamic";
+import PrivateRoute from "./services/PrivateRoutes";
 
 // home pages
 // const HomeFashion = lazy(() => import("./pages/home/HomeFashion"));
@@ -393,10 +394,16 @@ const App = (props) => {
                   path={process.env.PUBLIC_URL + "/about"}
                   component={About}
                 />
-                <Route
+                {/* <Route
                   path={process.env.PUBLIC_URL + "/contact"}
                   component={Contact}
-                />
+                /> */}
+                <PrivateRoute path={process.env.PUBLIC_URL + "/contact"}>
+                    <Contact/>
+                </PrivateRoute>
+                {/* <PrivateRoute exact path="/my-account" >
+                    <MyAccount/>
+                </PrivateRoute> */}
                 <Route
                   path={process.env.PUBLIC_URL + "/my-account"}
                   component={MyAccount}

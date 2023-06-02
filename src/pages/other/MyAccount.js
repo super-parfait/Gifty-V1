@@ -63,7 +63,7 @@ const MyAccount = ({ location }) => {
 
   const { message_update_password } =useSelector(state=>state.message)
 
-  const { user: currentUser } = useSelector((state) => state.auth);
+  const { isLoggedIn: currentUser } = useSelector((state) => state.auth);
 
 
   const dispatch = useDispatch();
