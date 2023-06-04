@@ -16,6 +16,8 @@ import {
 import LayoutOne from "../../layouts/LayoutOne";
 import Breadcrumb from "../../wrappers/breadcrumb/Breadcrumb";
 
+import Table from "./table";
+
 const Cart = ({
   location,
   cartItems,
@@ -348,8 +350,12 @@ const Cart = ({
               </div>
             )}
           </div>
+          <br />
+          <Table />
         </div>
       </LayoutOne>
+      
+      
     </Fragment>
   );
 };
