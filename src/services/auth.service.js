@@ -3,7 +3,7 @@ import axios from 'axios';
 import { getItem, addItem, removeItem } from './LocalStorage';
 import authHeader from './auth-header';
 
-const API_URL = "http://192.168.1.7:4005/api/v1/srv-usr/"
+const API_URL = "http://192.168.1.6:4005/api/v1/srv-usr/"
 
 
 export  function functionGetUserData(){  
