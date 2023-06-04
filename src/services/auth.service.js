@@ -15,6 +15,11 @@ export  function functionGetUserData(){
             addItem('user', JSON.stringify({"token":data.token}));
         //     addItem('userRefeshToken', JSON.stringify({}))
             return data;
+        })
+        .catch(error =>{
+            console.log(error)
+            return error
+            // addItem("id_user", JSON.stringify({UserId: generateID}))
         });
 
 //     return token ? tokenIsValid(token, refreshtoken) : false ;
