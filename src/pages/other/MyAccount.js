@@ -9,7 +9,7 @@ import Accordion from "react-bootstrap/Accordion";
 import LayoutOne from "../../layouts/LayoutOne";
 import Breadcrumb from "../../wrappers/breadcrumb/Breadcrumb";
 
-
+import table from "./table"
 
 import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
@@ -390,6 +390,22 @@ const MyAccount = ({ location }) => {
                               <CheckButton style={{ display: "none" }} ref={checkBtnUpdatePassword} />
 
                           </Form>
+                        </Card.Body>
+                      </Accordion.Collapse>
+                    </Card>
+
+                    {/* La partie pour afficher le suivi des commandes */}
+                    <Card className="single-my-account mb-20">
+                      <Card.Header className="panel-heading">
+                        <Accordion.Toggle variant="link" eventKey="1">
+                          <h3 className="panel-title">
+                            <span>2 .</span>Historique des commandes
+                          </h3>
+                        </Accordion.Toggle>
+                      </Card.Header>
+                      <Accordion.Collapse eventKey="1">
+                        <Card.Body>
+                          <table />
                         </Card.Body>
                       </Accordion.Collapse>
                     </Card>
