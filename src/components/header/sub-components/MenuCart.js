@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { useToasts } from "react-toast-notifications";
 import { getDiscountPrice } from "../../../helpers/product";
 
-const MenuCart = ({ cartData, currency, deleteFromCart }) => {
+const MenuCart = ({ cartData, deleteFromCart }) => {
   let cartTotalPrice = 0;
   const { addToast } = useToasts();
   return (
@@ -14,15 +14,15 @@ const MenuCart = ({ cartData, currency, deleteFromCart }) => {
           <ul>
             {cartData.map((single, key) => {
               const discountedPrice = getDiscountPrice(
-                single.price,
-                single.discount
+                single.gift.price,
+                // single.discount
               );
               const finalProductPrice = (
-                single.price * currency.currencyRate
-              ).toFixed(2);
+                single.gift.price
+              );
               const finalDiscountedPrice = (
-                discountedPrice * currency.currencyRate
-              ).toFixed(2);
+                discountedPrice
+              );
 
               discountedPrice != null
                 ? (cartTotalPrice += finalDiscountedPrice * single.quantity)
@@ -31,10 +31,10 @@ const MenuCart = ({ cartData, currency, deleteFromCart }) => {
               return (
                 <li className="single-shopping-cart" key={key}>
                   <div className="shopping-cart-img">
-                    <Link to={process.env.PUBLIC_URL + "/product/" + single.id}>
+                    <Link to={process.env.PUBLIC_URL + "/product/" + single.gift.id}>
                       <img
                         alt=""
-                        src={process.env.PUBLIC_URL + single.image[0]}
+                        src={process.env.PUBLIC_URL + single.gift.image}
                         className="img-fluid"
                       />
                     </Link>
@@ -42,17 +42,17 @@ const MenuCart = ({ cartData, currency, deleteFromCart }) => {
                   <div className="shopping-cart-title">
                     <h4>
                       <Link
-                        to={process.env.PUBLIC_URL + "/product/" + single.id}
+                        to={process.env.PUBLIC_URL + "/product/" + single.gift.id}
                       >
                         {" "}
-                        {single.name}{" "}
+                        {single.gift.title}{" "}
                       </Link>
                     </h4>
                     <h6>Quantité: {single.quantity}</h6>
                     <span>
                       {discountedPrice !== null
-                        ? currency.currencySymbol + finalDiscountedPrice
-                        : currency.currencySymbol + finalProductPrice}
+                        ? finalDiscountedPrice + "F CFA"
+                        : finalProductPrice + "F CFA"}
                     </span>
                     {/* {single.selectedProductColor &&
                     single.selectedProductSize ? (
@@ -77,7 +77,7 @@ const MenuCart = ({ cartData, currency, deleteFromCart }) => {
             <h4>
               Total :{" "}
               <span className="shop-total">
-                {currency.currencySymbol + cartTotalPrice.toFixed(2)}
+                { cartTotalPrice + "F CFA"}
               </span>
             </h4>
           </div>

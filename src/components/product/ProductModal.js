@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 
 function ProductModal(props) {
   const { product } = props;
-  const { currency } = props;
+  // const { currency } = props;
   const { discountedprice } = props;
   const { finalproductprice } = props;
   const { finaldiscountedprice } = props;
@@ -144,14 +144,14 @@ function ProductModal(props) {
                   {discountedprice !== null ? (
                     <Fragment>
                       <span>
-                        {currency.currencySymbol + finaldiscountedprice}
+                        { finaldiscountedprice}
                       </span>{" "}
                       <span className="old">
-                        {currency.currencySymbol + finalproductprice}
+                        { finalproductprice}
                       </span>
                     </Fragment>
                   ) : (
-                    <span>{currency.currencySymbol + finalproductprice} </span>
+                    <span>{ finalproductprice} </span>
                   )}
                 </div>
                 {product.rating && product.rating > 0 ? (
@@ -294,7 +294,7 @@ ProductModal.propTypes = {
   addtowishlist: PropTypes.func,
   cartitems: PropTypes.array,
   compareitem: PropTypes.object,
-  currency: PropTypes.object,
+  // currency: PropTypes.object,
   discountedprice: PropTypes.number,
   finaldiscountedprice: PropTypes.number,
   finalproductprice: PropTypes.number,

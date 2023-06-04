@@ -8,8 +8,8 @@ export const addToCart = (
   item,
   addToast,
   quantityCount,
-  selectedProductColor,
-  selectedProductSize
+  // selectedProductColor,
+  // selectedProductSize
 ) => {
   return dispatch => {
     if (addToast) {
@@ -20,16 +20,16 @@ export const addToCart = (
       payload: {
         ...item,
         quantity: quantityCount,
-        selectedProductColor: selectedProductColor
-          ? selectedProductColor
-          : item.selectedProductColor
-          ? item.selectedProductColor
-          : null,
-        selectedProductSize: selectedProductSize
-          ? selectedProductSize
-          : item.selectedProductSize
-          ? item.selectedProductSize
-          : null
+        // selectedProductColor: selectedProductColor
+        //   ? selectedProductColor
+        //   : item.selectedProductColor
+        //   ? item.selectedProductColor
+        //   : null,
+        // selectedProductSize: selectedProductSize
+        //   ? selectedProductSize
+        //   : item.selectedProductSize
+        //   ? item.selectedProductSize
+        //   : null
       }
     });
   };
@@ -38,7 +38,7 @@ export const addToCart = (
 export const decreaseQuantity = (item, addToast) => {
   return dispatch => {
     if (addToast) {
-      addToast("Décrémenter du Panier", {
+      addToast("Décrémenté du Panier", {
         appearance: "warning",
         autoDismiss: true
       });
@@ -50,7 +50,7 @@ export const decreaseQuantity = (item, addToast) => {
 export const deleteFromCart = (item, addToast) => {
   return dispatch => {
     if (addToast) {
-      addToast("Supprimer du Panier", { appearance: "error", autoDismiss: true });
+      addToast("Supprimé du Panier", { appearance: "error", autoDismiss: true });
     }
     dispatch({ type: DELETE_FROM_CART, payload: item });
   };
@@ -59,7 +59,7 @@ export const deleteFromCart = (item, addToast) => {
 export const deleteAllFromCart = addToast => {
   return dispatch => {
     if (addToast) {
-      addToast("Vider le Panier", {
+      addToast("Panier vide", {
         appearance: "error",
         autoDismiss: true
       });
@@ -70,11 +70,12 @@ export const deleteAllFromCart = addToast => {
 
 // get stock of cart item
 export const cartItemStock = (item, color, size) => {
-  if (item.stock) {
-    return item.stock;
+  if (item.quantity) {
+    return item.quantity;
   } else {
-    return item.variation
-      .filter(single => single.color === color)[0]
-      .size.filter(single => single.name === size)[0].stock;
+    return item
+    // .variation
+    //   .filter(single => single.color === color)[0]
+    //   .size.filter(single => single.name === size)[0].stock;
   }
 };

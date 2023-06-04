@@ -14,14 +14,14 @@ const cartReducer = (state = initState, action) => {
 
   if (action.type === ADD_TO_CART) {
     // for non variant products
-    if (product.variation === undefined) {
-      const cartItem = cartItems.filter(item => item.id === product.id)[0];
+    // if (product.variation === undefined) {
+      const cartItem = cartItems.filter(item => item.id === product.gift.id)[0];
       if (cartItem === undefined) {
         return [
           ...cartItems,
           {
             ...product,
-            quantity: product.quantity ? product.quantity : 1,
+            quantity: product.gift.quantity ? product.gift.quantity : 1,
             cartItemId: uuid()
           }
         ];
@@ -30,62 +30,62 @@ const cartReducer = (state = initState, action) => {
           item.cartItemId === cartItem.cartItemId
             ? {
                 ...item,
-                quantity: product.quantity
-                  ? item.quantity + product.quantity
+                quantity: product.gift.quantity
+                  ? item.quantity + product.gift.quantity
                   : item.quantity + 1
               }
             : item
         );
       }
       // for variant products
-    } else {
-      const cartItem = cartItems.filter(
-        item =>
-          item.id === product.id &&
-          product.selectedProductColor &&
-          product.selectedProductColor === item.selectedProductColor &&
-          product.selectedProductSize &&
-          product.selectedProductSize === item.selectedProductSize &&
-          (product.cartItemId ? product.cartItemId === item.cartItemId : true)
-      )[0];
+    // } else {
+    //   const cartItem = cartItems.filter(
+    //     item =>
+    //       item.id === product.gift.id &&
+    //       // product.selectedProductColor &&
+    //       // product.selectedProductColor === item.selectedProductColor &&
+    //       // product.selectedProductSize &&
+    //       // product.selectedProductSize === item.selectedProductSize &&
+    //       (product.cartItemId ? product.cartItemId === item.cartItemId : true)
+    //   )[0];
 
-      if (cartItem === undefined) {
-        return [
-          ...cartItems,
-          {
-            ...product,
-            quantity: product.quantity ? product.quantity : 1,
-            cartItemId: uuid()
-          }
-        ];
-      } else if (
-        cartItem !== undefined &&
-        (cartItem.selectedProductColor !== product.selectedProductColor ||
-          cartItem.selectedProductSize !== product.selectedProductSize)
-      ) {
-        return [
-          ...cartItems,
-          {
-            ...product,
-            quantity: product.quantity ? product.quantity : 1,
-            cartItemId: uuid()
-          }
-        ];
-      } else {
-        return cartItems.map(item =>
-          item.cartItemId === cartItem.cartItemId
-            ? {
-                ...item,
-                quantity: product.quantity
-                  ? item.quantity + product.quantity
-                  : item.quantity + 1,
-                selectedProductColor: product.selectedProductColor,
-                selectedProductSize: product.selectedProductSize
-              }
-            : item
-        );
-      }
-    }
+    //   if (cartItem === undefined) {
+    //     return [
+    //       ...cartItems,
+    //       {
+    //         ...product,
+    //         quantity: product.gift.quantity ? product.gift.quantity : 1,
+    //         cartItemId: uuid()
+    //       }
+    //     ];
+    //   } else if (
+    //     cartItem !== undefined &&
+    //     (cartItem.selectedProductColor !== product.selectedProductColor ||
+    //       cartItem.selectedProductSize !== product.selectedProductSize)
+    //   ) {
+    //     return [
+    //       ...cartItems,
+    //       {
+    //         ...product,
+    //         quantity: product.quantity ? product.quantity : 1,
+    //         cartItemId: uuid()
+    //       }
+    //     ];
+    //   } else {
+    //     return cartItems.map(item =>
+    //       item.cartItemId === cartItem.cartItemId
+    //         ? {
+    //             ...item,
+    //             quantity: product.quantity
+    //               ? item.quantity + product.quantity
+    //               : item.quantity + 1,
+    //             selectedProductColor: product.selectedProductColor,
+    //             selectedProductSize: product.selectedProductSize
+    //           }
+    //         : item
+    //     );
+    //   }
+    // }
   }
 
   if (action.type === DECREASE_QUANTITY) {

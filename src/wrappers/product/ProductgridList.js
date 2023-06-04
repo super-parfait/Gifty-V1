@@ -1,14 +1,14 @@
 import PropTypes from "prop-types";
 import React, { Fragment } from "react";
-import { connect } from "react-redux";
+import { connect, useSelector } from "react-redux";
 import { addToCart } from "../../redux/actions/cartActions";
 import { addToWishlist } from "../../redux/actions/wishlistActions";
 import { addToCompare } from "../../redux/actions/compareActions";
 import ProductGridListSingle from "../../components/product/ProductGridListSingle";
 
 const ProductGrid = ({
-  products,
-  currency,
+  // data,
+  // currency,
   addToCart,
   addToWishlist,
   addToCompare,
@@ -19,16 +19,23 @@ const ProductGrid = ({
   spaceBottomClass
 }) => {
 
-  console.log(products)
+
+  const { data } = useSelector(state => state.productData);
+  console.log(data)
+
+
+
   return (
     <Fragment>
-      {products.map(product => {
+      {data.map(product => {
+
+        console.log(product)
         return (
           <ProductGridListSingle
             sliderClassName={sliderClassName}
             spaceBottomClass={spaceBottomClass}
             product={product}
-            currency={currency}
+            // currency={currency}
             addToCart={addToCart}
             addToWishlist={addToWishlist}
             addToCompare={addToCompare}
