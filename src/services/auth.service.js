@@ -2,6 +2,7 @@ import axios from 'axios';
 // import jwtDecode from 'jwt-decode';
 import { getItem, addItem, removeItem } from './LocalStorage';
 import authHeader from './auth-header';
+import { v4 as uuid } from 'uuid';
 
 const API_URL = "http://192.168.1.6:4005/api/v1/srv-usr/"
 
@@ -17,9 +18,13 @@ export  function functionGetUserData(){
             return data;
         })
         .catch(error =>{
-            console.log(error)
-            return error
-            // addItem("id_user", JSON.stringify({UserId: generateID}))
+            const unique_id = uuid();
+            const generate_user = JSON.parse(localStorage.getItem("generate_id_user"));
+
+            if(!generate_user){
+                addItem("generate_id_user", JSON.stringify({'UserId': unique_id}))
+            }
+            
         });
 
 //     return token ? tokenIsValid(token, refreshtoken) : false ;
@@ -31,7 +36,7 @@ export  function functionGetUserData(){
     //     const value = tokenIsValid(token, refreshtoken)
 
     //     console.log(value)
-    //     return value
+    
         
     // }else{
     //     return false

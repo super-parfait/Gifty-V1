@@ -40,12 +40,22 @@ export const receiveProducts = ({status, payload }) => ({
 export const getProducts = (query) => {
   return function (dispatch) {
     dispatch(requestProducts(query));
-    const url = `https://www.googleapis.com/books/v1/volumes?q=${query}`
-    return axios.get(url)
-      .then(response => {
+
+
+    const UserId = JSON.parse(localStorage.getItem('generate_id_user'));
+
+    // const url = `https://www.googleapis.com/books/v1/volumes?q=${query}`
+    const query_search = { "theme": query }
+    const url = `https://dev-mks.com:9000/api/v1/srv-core/recommandation`
+
+    console.log(UserId.UserId)
+    return axios.get(url,query_search, {headers: UserId.UserId})
+      .then(response => response.data)
+      .then(data =>{
+        console.log(data)
         dispatch(receiveProducts({
           status: 'success',
-          payload: response.data
+          payload: data
         }))
       })
       .catch(error => {
