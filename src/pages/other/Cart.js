@@ -71,6 +71,7 @@ const Cart = ({
                         </thead>
                         <tbody>
                           {cartItems.map((cartItem, key) => {
+
                             const discountedPrice = getDiscountPrice(
                               cartItem.price,
                               cartItem.discount
@@ -98,7 +99,7 @@ const Cart = ({
                                     to={
                                       process.env.PUBLIC_URL +
                                       "/product/" +
-                                      cartItem.id
+                                      cartItem.gift.id
                                     }
                                   >
                                     <img
@@ -117,7 +118,7 @@ const Cart = ({
                                     to={
                                       process.env.PUBLIC_URL +
                                       "/product/" +
-                                      cartItem.id
+                                      cartItem.gift.id
                                     }
                                   >
                                     {cartItem.gift.title}
@@ -171,16 +172,17 @@ const Cart = ({
                                           quantityCount
                                         )
                                       }
-                                      disabled={
-                                        cartItem !== undefined &&
-                                        cartItem.quantity &&
-                                        cartItem.quantity >=
-                                          cartItemStock(
-                                            cartItem,
-                                            cartItem.selectedProductColor,
-                                            cartItem.selectedProductSize
-                                          )
-                                      }
+                                      // disabled={
+                                      //   cartItem !== undefined &&
+                                      //   cartItem.quantity &&
+                                      //   cartItem.quantity >=
+                                      //     cartItemStock(
+                                      //       cartItem,
+                                      //       cartItem.selectedProductColor,
+                                      //       cartItem.selectedProductSize
+                                      //     )
+                                      // }
+
                                     >
                                       +
                                     </button>
@@ -220,7 +222,7 @@ const Cart = ({
                     <div className="cart-shiping-update-wrapper">
                       <div className="cart-shiping-update">
                         <Link
-                          to={process.env.PUBLIC_URL + "/shop-no-grid-sidebar"}
+                          to={process.env.PUBLIC_URL + "/shop-grid-no-sidebar"}
                         >
                           Ajouter 
                         </Link>
@@ -306,9 +308,11 @@ const Cart = ({
                         </h4>
                       </div>
                       <h5>
-                        Total Produits{" "}
+                        Total de Cadeau(x) {" "}
                         <span>
-                          {cartTotalPrice.toFixed(2)}
+
+                          {cartItems.length}
+                          {/* {cartTotalPrice.toFixed(2)} */}
                         </span>
                       </h5>
 
@@ -319,7 +323,7 @@ const Cart = ({
                         </span>
                       </h4>
                       <Link to={process.env.PUBLIC_URL + "/checkout"}>
-                        Passer à la caisse
+                        Passer au paiement
                       </Link>
                     </div>
                   </div>

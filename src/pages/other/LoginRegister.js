@@ -9,7 +9,7 @@ import Tab from "react-bootstrap/Tab";
 import Nav from "react-bootstrap/Nav";
 import LayoutOne from "../../layouts/LayoutOne";
 import Breadcrumb from "../../wrappers/breadcrumb/Breadcrumb";
-import { ToastProvider, useToasts } from 'react-toast-notifications';
+import { useToasts } from 'react-toast-notifications';
 
 // import { toast } from "react-toastify";
 

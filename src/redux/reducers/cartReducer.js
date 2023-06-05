@@ -16,15 +16,16 @@ const cartReducer = (state = initState, action) => {
   if (action.type === ADD_TO_CART) {
     // for non variant products
     console.log(product.variation)
+
     if (product.variation === undefined) {
-      const cartItem = cartItems.filter(item => item.id === product.gift.id)[0];
+      const cartItem = cartItems.filter(item => item.gift.id === product.gift.id)[0];
       console.log(cartItem)
       if (cartItem === undefined) {
         return [
           ...cartItems,
           {
             ...product,
-            quantity: product.gift.quantity ? product.gift.quantity : 1,
+            quantity: product.quantity ? product.quantity : 1,
             cartItemId: uuid()
           }
         ];
