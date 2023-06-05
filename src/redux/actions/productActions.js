@@ -46,7 +46,7 @@ export const getProducts = (query) => {
 
     // const url = `https://www.googleapis.com/books/v1/volumes?q=${query}`
     const query_search = { "theme": query }
-    const url = `https://dev-mks.com:9000/api/v1/srv-core/recommandation`
+    const url = `https://dev-mks.com:9000/api/v1/srv-core/recommendation`
 
     console.log(UserId.UserId)
     return axios.get(url,query_search, {headers: UserId.UserId})

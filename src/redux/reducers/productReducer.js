@@ -31,16 +31,18 @@ const productReducer = (state = initState, action) => {
         products: action.payload
       }
     case REQUEST_PRODUCT:
-      return Object.assign({}, state, {
+      return {
+        ...state,
         isFetching: true,
         query: action.query
-      })
+      }
     case RECEIVE_PRODUCT:
-      return Object.assign({}, state, {
+      return {
+        ...state,
         isFetching: false,
         data: action.status === 'success' ? action.payload : initState.data,
         error: action.status === 'error' ? action.payload : initState.error
-      })
+      }
     default:
       return state;
   }

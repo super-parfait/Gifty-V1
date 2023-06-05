@@ -39,10 +39,10 @@ const ProductGridListSingle = ({
 
           {/* L'affichage de l'image */}
           <div className="product-img">
-            <Link to={process.env.PUBLIC_URL + "/product/" + product.id}>
+            <Link to={process.env.PUBLIC_URL + "/product/" + product.gift.id}>
               <img
                 className="default-img"
-                src={process.env.PUBLIC_URL + product.image}
+                src={product.product.image}
                 alt=""
               />
               {/* {product.image.length > 1 ? (
@@ -155,27 +155,31 @@ const ProductGridListSingle = ({
             {/* L'affichage du nom et detail du produits */}
           <div className="product-content text-center">
             <h3>
-              <Link to={process.env.PUBLIC_URL + "/product/" + product.id}>
+              <Link to={process.env.PUBLIC_URL + "/product/" + product.gift.id}>
                 {product.gift.title}
               </Link>
             </h3>
-            {product.rating && product.rating > 0 ? (
+
+            {/* Les notes des cadeaux */}
+            {/* {product.rating && product.rating > 0 ? (
               <div className="product-rating">
                 <Rating ratingValue={product.rating} />
               </div>
             ) : (
               ""
-            )}
+            )} */}
+
+
             <div className="product-price">
               {discountedPrice !== null ? (
                 <Fragment>
-                  <span>{ finalDiscountedPrice + "F CFA"}</span>{" "}
+                  <span>{ finalDiscountedPrice + " F CFA"}</span>{" "}
                   <span className="old">
-                    { finalProductPrice + "F CFA"}
+                    { finalProductPrice + " F CFA"}
                   </span>
                 </Fragment>
               ) : (
-                <span>{ finalProductPrice + "F CFA"} </span>
+                <span>{ finalProductPrice + " F CFA"} </span>
               )}
             </div>
           </div>
@@ -192,11 +196,11 @@ const ProductGridListSingle = ({
               <div className="product-list-image-wrap">
                 <div className="product-img">
                   
-                  <Link to={process.env.PUBLIC_URL + "/product/" + product.id}>
+                  <Link to={process.env.PUBLIC_URL + "/product/" + product.gift.id}>
                     <img
                       className="default-img img-fluid"
-                      src={process.env.PUBLIC_URL + product.gift.image}
-                      alt=""
+                      src={product.gift.image}
+                      alt={product.gift.title}
                     />
                     {/* {product.image.length > 1 ? (
                       <img
@@ -237,17 +241,20 @@ const ProductGridListSingle = ({
                   {discountedPrice !== null ? (
                     <Fragment>
                       <span>
-                        { finalDiscountedPrice + "F CFA"}
+                        { finalDiscountedPrice + " F CFA"}
                       </span>{" "}
                       <span className="old">
-                        { finalProductPrice + "F CFA"}
+                        { finalProductPrice + " F CFA"}
                       </span>
                     </Fragment>
                   ) : (
-                    <span>{ finalProductPrice + "F CFA"} </span>
+                    <span>{ finalProductPrice + " F CFA"} </span>
                   )}
                 </div>
-                {product.rating && product.rating > 0 ? (
+
+                {/* La note des details */}
+                
+                {/* {product.rating && product.rating > 0 ? (
                   <div className="rating-review">
                     <div className="product-list-rating">
                       <Rating ratingValue={product.rating} />
@@ -255,7 +262,7 @@ const ProductGridListSingle = ({
                   </div>
                 ) : (
                   ""
-                )}
+                )} */}
                 {product.gift.description ? (
                   <p>{product.gift.description}</p>
                 ) : (
