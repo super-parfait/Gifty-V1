@@ -75,9 +75,13 @@ const Cart = ({
                               cartItem.price,
                               cartItem.discount
                             );
+
+                            const Price =  cartItem.gift.price;
+
                             const finalProductPrice = (
-                              cartItem.price * currency.currencyRate
+                              cartItem.gift.price
                             ).toFixed(2);
+
                             const finalDiscountedPrice = (
                               discountedPrice * currency.currencyRate
                             ).toFixed(2);
@@ -100,8 +104,8 @@ const Cart = ({
                                     <img
                                       className="img-fluid"
                                       src={
-                                        process.env.PUBLIC_URL +
-                                        cartItem.image
+                                        
+                                        cartItem.product.image
                                       }
                                       alt=""
                                     />
@@ -116,7 +120,7 @@ const Cart = ({
                                       cartItem.id
                                     }
                                   >
-                                    {cartItem.name}
+                                    {cartItem.gift.title}
                                   </Link>
                                   {/* {cartItem.selectedProductColor &&
                                   cartItem.selectedProductSize ? (
@@ -134,23 +138,12 @@ const Cart = ({
                                 </td>
 
                                 <td className="product-price-cart">
-                                  {discountedPrice !== null ? (
-                                    <Fragment>
-                                      <span className="amount old">
-                                        {
-                                          finalProductPrice + "F CFA"}
-                                      </span>
-                                      <span className="amount">
-                                        {
-                                          finalDiscountedPrice + "F CFA"}
-                                      </span>
-                                    </Fragment>
-                                  ) : (
+                                 
                                     <span className="amount">
                                       {
                                         finalProductPrice + "F CFA"}
                                     </span>
-                                  )}
+                                  
                                 </td>
 
                                 <td className="product-quantity">
