@@ -4,28 +4,38 @@ import { getItem, addItem, removeItem } from './LocalStorage';
 import authHeader from './auth-header';
 import { v4 as uuid } from 'uuid';
 
-const API_URL = "http://192.168.1.6:4005/api/v1/srv-usr/"
+const API_URL = "http://192.168.1.12:4005/api/v1/srv-usr/"
 
 
 export  function functionGetUserData(){  
 
+    const unique_id = uuid();
+    const generate_user = JSON.parse(localStorage.getItem("generate_id_user"));
+
+    if(!generate_user){
+        addItem("generate_id_user", JSON.stringify({'UserId': unique_id}))
+    }
+
     return axios
         .get(API_URL+'user/', {headers: authHeader()})
-        .then(response => response.data)
-        .then(data => {
-            addItem('user', JSON.stringify({"token":data.token}));
+        // .then(response => response.data)
+        .then(response =>{
+            addItem('user', JSON.stringify({"token":response.data.token}));
         //     addItem('userRefeshToken', JSON.stringify({}))
-            return data;
+            return response.data;
         })
-        .catch(error =>{
-            const unique_id = uuid();
-            const generate_user = JSON.parse(localStorage.getItem("generate_id_user"));
+        // .catch(error =>{
+        //     const unique_id = uuid();
+        //     const generate_user = JSON.parse(localStorage.getItem("generate_id_user"));
 
-            if(!generate_user){
-                addItem("generate_id_user", JSON.stringify({'UserId': unique_id}))
-            }
+        //     if(!generate_user){
+        //         addItem("generate_id_user", JSON.stringify({'UserId': unique_id}))
+        //     }
             
-        });
+            
+        // });
+
+        
 
 //     return token ? tokenIsValid(token, refreshtoken) : false ;
 

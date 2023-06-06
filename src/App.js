@@ -118,6 +118,7 @@ const OtpPassword = lazy(() => import("./pages/other/OtpPassword"));
 // Fin
 
 const Cart = lazy(() => import("./pages/other/Cart"));
+const HistoryOrder = lazy(()=>import("./pages/other/historyOrder"))
 const Wishlist = lazy(() => import("./pages/other/Wishlist"));
 const Compare = lazy(() => import("./pages/other/Compare"));
 const Checkout = lazy(() => import("./pages/other/Checkout"));
@@ -445,6 +446,10 @@ const App = (props) => {
                 <Route
                   path={process.env.PUBLIC_URL + "/cart"}
                   component={Cart}
+                />
+                <Route
+                  path={process.env.PUBLIC_URL + "/history-order"}
+                  component={HistoryOrder}
                 />
                 <Route
                   path={process.env.PUBLIC_URL + "/wishlist"}

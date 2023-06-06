@@ -1,4 +1,3 @@
-// import { getItem, addItem, removeItem } from './LocalStorage';
 
 export default function authHeader() {
 

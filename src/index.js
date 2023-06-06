@@ -9,11 +9,14 @@ import { fetchProducts } from "./redux/actions/productActions";
 import { fetchUserData } from "./redux/actions/auth";
 // import rootReducer from "./redux/reducers/rootReducer";
 import products from "./data/products.json";
+// import orders from "./data/orders";
 import App from "./App";
 import "./assets/scss/style.scss";
 import * as serviceWorker from "./serviceWorker";
 import store from "./redux/store"
 import { ToastProvider } from 'react-toast-notifications';
+// import { fetchOrders } from "./redux/actions/orderActions";
+import { GetOrder } from "./redux/actions/orderActions";
 
 
 
@@ -22,8 +25,8 @@ import { ToastProvider } from 'react-toast-notifications';
 
 // fetch products from json file
 store.dispatch(fetchProducts(products));
-
 store.dispatch(fetchUserData())
+store.dispatch(GetOrder())
 
 ReactDOM.render(
   <Router history={history}>

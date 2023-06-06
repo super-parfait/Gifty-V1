@@ -19,6 +19,9 @@ const initialState = user ? { isLoggedIn: true, user } : { isLoggedIn: false, us
 export default function (state = initialState, action) {
         const { type, payload } = action;
 
+
+        console.log(type)
+        
         switch (type) {
                 case AUTH_SUCCESS:
                         return {

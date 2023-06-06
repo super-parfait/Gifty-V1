@@ -3,6 +3,7 @@ import productReducer from "./productReducer";
 import cartReducer from "./cartReducer";
 import wishlistReducer from "./wishlistReducer";
 import compareReducer from "./compareReducer";
+import orderReducer from "./orderReducer"
 import { combineReducers } from "redux";
 import { createMultilanguageReducer } from "redux-multilanguage";
 import auth from "./auth";
@@ -18,6 +19,7 @@ const rootReducer = combineReducers({
   compareData: compareReducer,
   auth,
   message,
+  orderData:orderReducer
   // search:productsSearch
 });
 

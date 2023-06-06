@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import React, { Fragment } from "react";
+import {Redirect} from "react-router-dom";
 import { connect, useSelector } from "react-redux";
 import { addToCart } from "../../redux/actions/cartActions";
 import { addToWishlist } from "../../redux/actions/wishlistActions";
@@ -21,7 +22,16 @@ const ProductGrid = ({
 
 
   const { data } = useSelector(state => state.productData);
-  // console.log(data)
+
+  const {query} = useSelector(state=>state.productData)
+
+
+  console.log(query)
+
+  // Si aucun theme n'est saisi on le redirige sur la pade d'accueil
+  if(query===""){
+    return <Redirect to="/" />;
+  }
 
 
 

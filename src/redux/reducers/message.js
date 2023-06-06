@@ -1,11 +1,19 @@
-import { SET_MESSAGE, CLEAR_MESSAGE, REGISTER_SUCCESS, REGISTER_FAIL, UPDATE_INFO_SUCCESS, UPDATE_INFO_FAIL, UPDATE_PASSWORD_SUCCESS, UPDATE_PASSWORD_FAIL, LOGIN_SUCCESS, LOGIN_FAIL, SET_MESSAGE_LOGIN, SET_MESSAGE_REGISTER, SET_MESSAGE_UPDATE_INFO, SET_MESSAGE_UPDATE_PASSWORD } from "../actions/types";
+import { SET_MESSAGE, CLEAR_MESSAGE, REGISTER_SUCCESS, REGISTER_FAIL, UPDATE_INFO_SUCCESS, UPDATE_INFO_FAIL, UPDATE_PASSWORD_SUCCESS, UPDATE_PASSWORD_FAIL, LOGIN_SUCCESS, LOGIN_FAIL, SET_MESSAGE_LOGIN, SET_MESSAGE_REGISTER, SET_MESSAGE_UPDATE_INFO, SET_MESSAGE_UPDATE_PASSWORD, SET_MESSAGE_CHECKOUT } from "../actions/types";
 
-const initialState = {message_login: "",message_register: "" , message_update_info: "", message_update_password: "" };
+const initialState = {message_login: "",message_register: "" , message_update_info: "", message_update_password: "", message_checkout:"" };
 
 export default function (state = initialState, action) {
   const { type, payload } = action;
 
+
+  console.log(type)
+
   switch (type) {
+
+    case SET_MESSAGE_CHECKOUT:
+      return {
+        message_checkout: payload
+      }
 
     case SET_MESSAGE_LOGIN: 
       return {

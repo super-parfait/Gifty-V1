@@ -201,14 +201,14 @@ const LoginRegister = ({ location, props }) => {
           // window.location.reload();
           setLoading(false)
           addToast(message_register, { appearance: 'success', autoDismiss:true });
-          // setSuccessful(true);
+          setSuccessful(true);
           
         })
         .catch(() => {
           setLoading(false);
           addToast(message_register, { appearance: 'error', autoDismiss:true });
           
-          // setSuccessful(false);
+          setSuccessful(false);
         });
     }else{
       setLoading(false);
@@ -385,7 +385,7 @@ const LoginRegister = ({ location, props }) => {
                               </div>
 
 
-                              {/* {
+                              {
                               message_register && (
                                 <div className="form-group pt-2">
                                   <div className={successful ? "alert alert-success" : "alert alert-danger" } role="alert">
@@ -393,7 +393,7 @@ const LoginRegister = ({ location, props }) => {
                                   </div>
                                 </div>
                               )
-                              } */}
+                              }
 
                               <CheckButton style={{ display: "none" }} ref={checkBtnRegister} /> 
 
