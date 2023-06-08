@@ -22,10 +22,12 @@ const ProductGridSingle = ({
   const { addToast } = useToasts();
 
   const discountedPrice = getDiscountPrice(product.price, product.discount);
-  const finalProductPrice = +(product.price * currency.currencyRate).toFixed(2);
+  const finalProductPrice = +(product.gift.price).toFixed(2);
   const finalDiscountedPrice = +(
     discountedPrice * currency.currencyRate
   ).toFixed(2);
+
+  console.log(cartItem)
 
   return (
     <Fragment>
@@ -38,13 +40,19 @@ const ProductGridSingle = ({
           className={`product-wrap ${spaceBottomClass ? spaceBottomClass : ""}`}
         >
           <div className="product-img">
-            <Link to={process.env.PUBLIC_URL + "/product/" + product.id}>
+            <Link to={process.env.PUBLIC_URL + "/product/" + product.gift.id}>
               <img
                 className="default-img"
-                src={process.env.PUBLIC_URL + product.image[0]}
+                src={product.product.image}
                 alt=""
               />
-              {product.image.length > 1 ? (
+              <img
+                  className="hover-img"
+                  src={product.product.image}
+                  alt=""
+                />
+              {/* {
+              product.image.length > 1 ? (
                 <img
                   className="hover-img"
                   src={process.env.PUBLIC_URL + product.image[1]}
@@ -52,7 +60,8 @@ const ProductGridSingle = ({
                 />
               ) : (
                 ""
-              )}
+              )
+              } */}
             </Link>
             {/* {product.discount || product.new ? (
               <div className="product-img-badges">
@@ -83,49 +92,28 @@ const ProductGridSingle = ({
                 </button>
               </div>
               <div className="pro-same-action pro-cart">
-                {
+
+                  {/* Le bouton pour ajouter des cadeaux au panier */}
+              <button
+                onClick={() => addToCart(product, addToast)}
+                className={
+                  cartItem !== undefined && cartItem.quantity > 0
+                    ? "active"
+                    : ""
+                }
+                disabled={cartItem !== undefined && cartItem.quantity > 0}
+
+                title={
+                  cartItem !== undefined  ? "Ajouté au Panier" : "Ajouter au Panier"
+                }
+              >
+                {" "}
+                <i className="pe-7s-cart"></i>{" "}
+                {cartItem !== undefined && cartItem.quantity > 0
+                  ? "Ajouté au panier"
+                  : "Ajouter au Panier"}
+              </button>
                 
-                // product.affiliateLink ? (
-                //   <a
-                //     href={product.affiliateLink}
-                //     rel="noopener noreferrer"
-                //     target="_blank"
-                //   >
-                //     {" "}
-                //     Buy now{" "}
-                //   </a>
-                // ) : 
-                
-                // product.variation && product.variation.length >= 1 ? (
-                //   <Link to={`${process.env.PUBLIC_URL}/product/${product.id}`}>
-                //     Select Option
-                //   </Link>
-                // ) : 
-                
-                product.stock && product.stock > 0 ? (
-                  <button
-                    onClick={() => addToCart(product, addToast)}
-                    className={
-                      cartItem !== undefined && cartItem.quantity > 0
-                        ? "active"
-                        : ""
-                    }
-                    disabled={cartItem !== undefined && cartItem.quantity > 0}
-                    title={
-                      cartItem !== undefined ? "Ajouté au Panier" : "Ajouter au Panier"
-                    }
-                  >
-                    {" "}
-                    <i className="pe-7s-cart"></i>{" "}
-                    {cartItem !== undefined && cartItem.quantity > 0
-                      ? "Ajouté"
-                      : "Ajouter au Panier"}
-                  </button>
-                ) : (
-                  <button disabled className="active">
-                    Indisponible
-                  </button>
-                )}
               </div>
               <div className="pro-same-action pro-quickview">
                 <button onClick={() => setModalShow(true)} title="Voir">
@@ -136,19 +124,21 @@ const ProductGridSingle = ({
           </div>
           <div className="product-content text-center">
             <h3>
-              <Link to={process.env.PUBLIC_URL + "/product/" + product.id}>
-                {product.name}
+              <Link to={process.env.PUBLIC_URL + "/product/" + product.gift.id}>
+                {product.gift.title}
               </Link>
             </h3>
-            {product.rating && product.rating > 0 ? (
+            {/* {product.rating && product.rating > 0 ? (
               <div className="product-rating">
                 <Rating ratingValue={product.rating} />
               </div>
             ) : (
               ""
-            )}
+            )} */}
             <div className="product-price">
-              {discountedPrice !== null ? (
+
+              {finalProductPrice +"F CFA"}
+              {/* {discountedPrice !== null ? (
                 <Fragment>
                   <span>{currency.currencySymbol + finalDiscountedPrice}</span>{" "}
                   <span className="old">
@@ -157,7 +147,7 @@ const ProductGridSingle = ({
                 </Fragment>
               ) : (
                 <span>{currency.currencySymbol + finalProductPrice} </span>
-              )}
+              )} */}
             </div>
           </div>
         </div>

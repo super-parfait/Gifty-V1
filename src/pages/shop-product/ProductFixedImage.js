@@ -19,14 +19,14 @@ const ProductFixedImage = ({ location, product }) => {
   return (
     <Fragment>
       <MetaTags>
-        <title>Gifty | Produits </title>
+        <title>Gifty | Cadeaux </title>
         <meta
           name="description"
-          content=""
+          content="Votre application de cadeau, qui vous facilite la vie."
         />
       </MetaTags>
 
-      <BreadcrumbsItem to={process.env.PUBLIC_URL + "/"}>Home</BreadcrumbsItem>
+      <BreadcrumbsItem to={process.env.PUBLIC_URL + "/"}>Accueil</BreadcrumbsItem>
       <BreadcrumbsItem to={process.env.PUBLIC_URL + pathname}>
         Détails Produit
       </BreadcrumbsItem>

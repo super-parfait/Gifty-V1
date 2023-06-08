@@ -25,6 +25,9 @@ const ProductDescriptionInfo = ({
   const [selectedProductColor, setSelectedProductColor] = useState(
     product.variation ? product.variation[0].color : ""
   );
+
+  const cartItem= cartItems.filter(cartItem => cartItem.gift.id === product.gift.id)[0]
+  
   const [selectedProductSize, setSelectedProductSize] = useState(
     product.variation ? product.variation[0].size[0].name : ""
   );
@@ -42,19 +45,21 @@ const ProductDescriptionInfo = ({
 
   return (
     <div className="product-details-content ml-70">
-      <h2>{product.name}</h2>
+      <h2>{product.gift.title}</h2>
       <div className="product-details-price">
-        {discountedPrice !== null ? (
+        {/* {discountedPrice !== null ? (
           <Fragment>
             <span>{currency.currencySymbol + finalDiscountedPrice}</span>{" "}
             <span className="old">
               {currency.currencySymbol + finalProductPrice}
             </span>
           </Fragment>
-        ) : (
-          <span>{currency.currencySymbol + finalProductPrice} </span>
-        )}
+        ) : ( */}
+          <span>{finalProductPrice +  "F CFA"} </span>
+        {/* )}  */}
       </div>
+
+      {/* Les notes des cadeaux */}
       {product.rating && product.rating > 0 ? (
         <div className="pro-details-rating-wrap">
           <div className="pro-details-rating">
@@ -64,8 +69,10 @@ const ProductDescriptionInfo = ({
       ) : (
         ""
       )}
+
+
       <div className="pro-details-list">
-        <p>{product.shortDescription}</p>
+        <p>{product.gift.description}</p>
       </div>
 
       {
@@ -83,7 +90,7 @@ const ProductDescriptionInfo = ({
 
             <div className="pro-details-cart btn-hover ml-0" >
               <Link
-                to={process.env.PUBLIC_URL + "/product-grid-image"}>
+                to={process.env.PUBLIC_URL + "/personnaliser-cadeau/"+product.gift.id}>
                 Personnaliser 
               </Link>
             </div>
@@ -186,33 +193,76 @@ const ProductDescriptionInfo = ({
           <div className="cart-plus-minus">
             <button
               onClick={() =>
-                setQuantityCount(quantityCount > 1 ? quantityCount - 1 : 1)
+                setQuantityCount(
+                  quantityCount - 1
+                )
+                // setQuantityCount(quantityCount > 1 ? quantityCount - 1 : 1)
               }
               className="dec qtybutton"
             >
               -
             </button>
+
             <input
               className="cart-plus-minus-box"
               type="text"
               value={quantityCount}
               readOnly
             />
+
             <button
               onClick={() =>
                 setQuantityCount(
-                  quantityCount < productStock - productCartQty
-                    ? quantityCount + 1
-                    : quantityCount
+                   quantityCount + 1
                 )
+                // setQuantityCount(
+                //   quantityCount < productStock - productCartQty
+                //     ? quantityCount + 1
+                //     : quantityCount
+                // )
               }
               className="inc qtybutton"
             >
               +
             </button>
           </div>
+          
           <div className="pro-details-cart btn-hover">
-            {productStock && productStock > 0 ? (
+            <>
+
+            {/* Le bouton pour ajouter le cadeau au panier */}
+              <button
+                onClick={() =>
+                  addToCart(
+                    product,
+                    addToast,
+                    quantityCount,
+                    selectedProductColor,
+                    selectedProductSize
+                  )
+                }
+
+                className={
+                  cartItem !== undefined && cartItem.quantity > 0
+                    ? "active"
+                    : ""
+                }
+
+                disabled={
+                  cartItem !== undefined && cartItem.quantity > 0
+                }
+                // disabled={productCartQty >= productStock}
+
+              >
+                {" "}
+                <i className="pe-7s-cart"></i>{" "}
+                    {cartItem !== undefined && cartItem.quantity > 0
+                      ? "Ajouté"
+                      : "Ajouter au panier"}
+              </button>
+            </>
+            {/* {
+            productStock && productStock > 0 ? (
               <button
                 onClick={() =>
                   addToCart(
@@ -230,7 +280,8 @@ const ProductDescriptionInfo = ({
               </button>
             ) : (
               <button disabled>Indisponible</button>
-            )}
+            )
+            } */}
           </div>
           <div className="pro-details-wishlist">
             <button

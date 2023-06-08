@@ -27,6 +27,8 @@ const ProductGridListSingle = ({
     discountedPrice
   );
 
+  console.log(cartItem)
+
   return (
 
     <Fragment>

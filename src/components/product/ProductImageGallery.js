@@ -57,6 +57,7 @@ const ProductImageGallery = ({ product }) => {
   return (
     <Fragment>
       <div className="product-large-image-wrapper">
+        
         {/* {product.discount || product.new ? (
           <div className="product-img-badges">
             {product.discount ? (
@@ -71,8 +72,27 @@ const ProductImageGallery = ({ product }) => {
         )} */}
         <LightgalleryProvider>
           <Swiper {...gallerySwiperParams}>
-            {product.image &&
-              product.image.map((single, key) => {
+
+            <div>
+              <LightgalleryItem
+                group="any"
+                src={product.product.image}
+              >
+                <button>
+                  <i className="pe-7s-expand1"></i>
+                </button>
+              </LightgalleryItem>
+              <div className="single-image">
+                <img
+                  src={product.product.image}
+                  className="img-fluid"
+                  alt=""
+                />
+              </div>
+            </div>
+            {/* {
+            product.product.image &&
+              product.product.image.map((single, key) => {
                 return (
                   <div key={key}>
                     <LightgalleryItem
@@ -92,13 +112,25 @@ const ProductImageGallery = ({ product }) => {
                     </div>
                   </div>
                 );
-              })}
+              })
+              } */}
           </Swiper>
         </LightgalleryProvider>
       </div>
       <div className="product-small-image-wrapper mt-15">
         <Swiper {...thumbnailSwiperParams}>
-          {product.image &&
+
+          <div >
+            <div className="single-image">
+              <img
+                src={product.product.image}
+                className="img-fluid"
+                alt=""
+              />
+            </div>
+          </div>
+          {/* {
+          product.image &&
             product.image.map((single, key) => {
               return (
                 <div key={key}>
@@ -111,7 +143,8 @@ const ProductImageGallery = ({ product }) => {
                   </div>
                 </div>
               );
-            })}
+            })
+            } */}
         </Swiper>
       </div>
     </Fragment>

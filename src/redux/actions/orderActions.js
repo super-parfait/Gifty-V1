@@ -26,5 +26,5 @@ export const  GetOrder =  () => (dispatch)=>{
 
                         return Promise.reject();
                 }
-        )
+        );
 }

@@ -34,6 +34,8 @@ const ShopGridNoSidebar = ({ location, products }) => {
     setFilterSortValue(sortValue);
   };
 
+  console.log(products)
+
   useEffect(() => {
     let sortedProducts = getSortedProducts(products, sortType, sortValue);
     const filterSortedProducts = getSortedProducts(
@@ -49,7 +51,7 @@ const ShopGridNoSidebar = ({ location, products }) => {
   return (
     <Fragment>
       <MetaTags>
-        <title>Gifty | Produits</title>
+        <title>Gifty | Cadeaux</title>
         <meta
           name="description"
           content="Votre application de cadeau, qui vous facilite la vie."

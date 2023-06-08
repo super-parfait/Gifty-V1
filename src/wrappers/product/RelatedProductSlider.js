@@ -33,7 +33,7 @@ const RelatedProductSlider = ({ spaceBottomClass, category }) => {
     >
       <div className="container">
         <SectionTitle
-          titleText="Produits connexes"
+          titleText="Cadeaux connexes"
           positionClass="text-center"
           spaceClass="mb-50"
         />

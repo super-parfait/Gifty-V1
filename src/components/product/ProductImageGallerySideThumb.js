@@ -62,6 +62,8 @@ const ProductImageGalleryLeftThumb = ({ product, thumbPosition }) => {
     }
   };
 
+  console.log(product)
+
   return (
     <Fragment>
       <div className="row row-5">
@@ -87,13 +89,13 @@ const ProductImageGalleryLeftThumb = ({ product, thumbPosition }) => {
             )} */}
             <LightgalleryProvider>
               <Swiper {...gallerySwiperParams}>
-                {product.image &&
-                  product.image.map((single, key) => {
+                {product.product.image &&
+                  product.product.image.map((single, key) => {
                     return (
                       <div key={key}>
                         <LightgalleryItem
                           group="any"
-                          src={process.env.PUBLIC_URL + single}
+                          src={ single}
                         >
                           <button>
                             <i className="pe-7s-expand1"></i>
@@ -101,7 +103,7 @@ const ProductImageGalleryLeftThumb = ({ product, thumbPosition }) => {
                         </LightgalleryItem>
                         <div className="single-image">
                           <img
-                            src={process.env.PUBLIC_URL + single}
+                            src={ single}
                             className="img-fluid"
                             alt=""
                           />
@@ -122,13 +124,13 @@ const ProductImageGalleryLeftThumb = ({ product, thumbPosition }) => {
         >
           <div className="product-small-image-wrapper product-small-image-wrapper--side-thumb">
             <Swiper {...thumbnailSwiperParams}>
-              {product.image &&
-                product.image.map((single, key) => {
+              {product.product.image &&
+                product.product.image.map((single, key) => {
                   return (
                     <div key={key}>
                       <div className="single-image">
                         <img
-                          src={process.env.PUBLIC_URL + single}
+                          src={single}
                           className="img-fluid"
                           alt=""
                         />

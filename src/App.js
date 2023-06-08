@@ -387,8 +387,10 @@ const App = (props) => {
                 />
 
                 <Route
-                  path={process.env.PUBLIC_URL + "/product-grid-image/"}
-                  component={ProductGridImage}
+                  path={process.env.PUBLIC_URL + "/personnaliser-cadeau/:id"}
+                  render={(routeProps) => (
+                    <ProductGridImage {...routeProps} key={routeProps.match.params.id} />
+                  )}
                 />
 
                 {/* Blog pages */}

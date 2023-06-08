@@ -22,6 +22,8 @@ const historyOrder = ({
   const { pathname } = location;
 //   let cartTotalPrice = 0;
 
+
+
   return (
     <Fragment>
       <MetaTags>

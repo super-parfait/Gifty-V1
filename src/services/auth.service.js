@@ -4,7 +4,7 @@ import { getItem, addItem, removeItem } from './LocalStorage';
 import authHeader from './auth-header';
 import { v4 as uuid } from 'uuid';
 
-const API_URL = "http://192.168.1.12:4005/api/v1/srv-usr/"
+const API_URL = "http://192.168.1.9:4005/api/v1/srv-usr/"
 
 
 export  function functionGetUserData(){  

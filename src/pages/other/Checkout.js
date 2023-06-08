@@ -442,7 +442,7 @@ const Checkout = ({ location, cartItems, currency }) => {
                         <Link
                           to={process.env.PUBLIC_URL + "/history-order"}
                         >
-                          Confirmer mes commandes 
+                          Mon Historique 
                         </Link>
                       </div>
                       {/* <div className="cart-clear">

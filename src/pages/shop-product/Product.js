@@ -12,6 +12,9 @@ import ProductImageDescription from "../../wrappers/product/ProductImageDescript
 const Product = ({ location, product }) => {
   const { pathname } = location;
 
+
+  console.log(product)
+
   return (
     <Fragment>
       <MetaTags>
@@ -22,7 +25,7 @@ const Product = ({ location, product }) => {
         />
       </MetaTags>
 
-      <BreadcrumbsItem to={process.env.PUBLIC_URL + "/"}>Home</BreadcrumbsItem>
+      <BreadcrumbsItem to={process.env.PUBLIC_URL + "/"}>Accueil</BreadcrumbsItem>
       <BreadcrumbsItem to={process.env.PUBLIC_URL + pathname}>
         Détail Pack Cadeau
       </BreadcrumbsItem>
@@ -41,7 +44,8 @@ const Product = ({ location, product }) => {
         {/* product description tab */}
         <ProductDescriptionTab
           spaceBottomClass="pb-90"
-          productFullDesc={product.fullDescription}
+          productFullDesc={product.gift.description}
+          productVendeur={product.gift.user}
         />
 
         {/* related product slider */}
@@ -52,7 +56,7 @@ const Product = ({ location, product }) => {
 
         <RelatedProductSlider
           spaceBottomClass="pb-95"
-          category={product.category[0]}
+          category={product.product.category[0]}
         />
       </LayoutOne>
     </Fragment>
@@ -67,10 +71,11 @@ Product.propTypes = {
 const mapStateToProps = (state, ownProps) => {
   const itemId = ownProps.match.params.id;
   return {
-    product: state.productData.products.filter(
-      single => single.id === itemId
+    product: state.productData.data.filter(
+      single => single.gift.id == itemId
     )[0]
   };
+  
 };
 
 export default connect(mapStateToProps)(Product);

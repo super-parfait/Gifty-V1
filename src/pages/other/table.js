@@ -10,26 +10,32 @@ import TableRow from '@mui/material/TableRow';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Box from '@mui/material/Box';
+import { useSelector } from "react-redux";
+import { right } from '@popperjs/core';
+import { Fragment } from 'react-is';
+import { Link } from 'react-router-dom';
+
+
 
 const columns = [
-  { id: 'id', label: '#', minWidth: 170 },
+  { id: 'id', label: 'Numero de commande', minWidth: 170 },
   { id: 'date', label: 'Date', minWidth: 170 },
-  { id: 'name', label: 'Nom Pack', minWidth: 100 },
+  { id: 'last_name', label: 'Proprietaire', minWidth: 100 },
+  // {
+  //   id: 'qty',
+  //   label: 'Quantité',
+  //   minWidth: 170,
+  //   align: 'right',
+  // },
   {
-    id: 'qty',
-    label: 'Quantité',
-    minWidth: 170,
-    align: 'right',
-  },
-  {
-    id: 'price',
+    id: 'prix',
     label: 'Prix',
     minWidth: 100,
     align: 'right',
     format: (value) => value.toLocaleString('fr-FR'),
   },
   {
-    id: 'localisation',
+    id: 'commune',
     label: 'Localisation',
     minWidth: 170,
     align: 'right',
@@ -40,31 +46,62 @@ const columns = [
     minWidth: 170,
     align: 'right',
   },
+  // {
+  //   id: "action",
+  //   label:"Actions",
+  //   minWidth:300,
+  //   align:'right'
+  // }
 ];
 
-function createData(id, date, name, qty, price, localisation, status) {
-  return { id, date, name, qty, price, localisation, status };
-}
+// function createData(id, date, name, qty, price, localisation, status) {
+//   return { id, date, name, qty, price, localisation, status };
+// }
 
-const rows = [
-  createData(1, '01/01/2023', 'Pack 1', 3, 15000, 'Yopougon Maroc', 'Succes'),
-  createData(2, '01/01/2023', 'Pack 2', 2, 25000, 'Cocody Angré', 'En cours'),
-  createData(3, '01/01/2023', 'Pack 3', 2, 35000, 'Abobo', 'Succes'),
-  createData(4, '01/01/2023', 'Pack 4', 4, 45000, 'Treichville', 'En cours'),
-  createData(5, '01/01/2023', 'Pack 5', 2, 25000, 'koumassi', 'Succes'),
-  createData(6, '01/01/2023', 'Pack 6', 3, 10000, 'Yopougon Maroc', 'Succes'),
-  createData(7, '01/01/2023', 'Pack 7', 2, 20500, 'Cocody Angré', 'En cours'),
-  createData(8, '01/01/2023', 'Pack 8', 2, 25000, 'Abobo', 'Succes'),
-  createData(9, '01/01/2023', 'Pack 9', 4, 25000, 'Treichville', 'En cours'),
-  createData(10, '01/01/2023', 'Pack 10', 2, 25000, 'koumassi', 'Succes'),
-  createData(11, '01/01/2023', 'Pack 11', 3, 25000, 'Yopougon Maroc', 'Succes'),
-  createData(12, '01/01/2023', 'Pack 12', 2, 25000, 'Cocody Angré', 'En cours'),
-  createData(13, '01/01/2023', 'Pack 13', 2, 25000, 'Abobo', 'Succes'),
-  createData(14, '01/01/2023', 'Pack 14', 4, 25000, 'Treichville', 'En cours'),
-  createData(15, '01/01/2023', 'Pack 15', 2, 25000, 'koumassi', 'Succes'),
-];
+
+
+
 
 export default function StickyHeadTable() {
+
+
+  const {order} = useSelector(state=>state.orderData)
+
+
+
+  var objet;
+  var final_orders=[];
+
+  for(let i=0; i<order.length; i++){
+    objet= order[i];
+
+    const a = {
+      "id": objet.id,
+      "status": objet.status,
+      "last_name": objet.customer_last_name,
+      "telephone": objet.customer_phone_number,
+      "date": objet.date_created,
+      "commune": objet.customer_neighborhood,
+      "prix": objet.price,
+    }
+    final_orders.push(a)
+
+    console.log(final_orders)
+
+    var rows = [];
+    rows.push(a)
+    // rows.push([createData(final_orders.id, final_orders.date, final_orders.last_name, 3, final_orders.prix, final_orders.commune, final_orders.status)])
+
+    // console.log(rows)
+  }
+
+  console.log(final_orders)
+  console.log(rows)
+
+
+  // const rows = [
+  //   createData(order[0].id, '01/01/2023', 'Pack 1', 3, 15000, 'Yopougon Maroc', 'Succes'),
+  // ];
 
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
@@ -80,66 +117,97 @@ export default function StickyHeadTable() {
 
   
 
+  
+
   return (
-    <Box sx={{ width: '90%', margin: '0 auto' }}>
-        <br/>
-        <h3 className="cart-page-title" >Mes historiques de commande</h3>
-      <Card>
-        <CardContent>
-          <TableContainer>
-            <Table stickyHeader aria-label="sticky table">
-              <TableHead>
-                <TableRow>
-                  {columns.map((column) => (
-                    <TableCell
-                      key={column.id}
-                      align={column.align}
-                      style={{ minWidth: column.minWidth }}
-                    >
-                      {column.label}
-                    </TableCell>
-                  ))}
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                {rows
-                  .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                  .map((row) => {
-                    return (
-                      <TableRow
-                        hover
-                        role="checkbox"
-                        tabIndex={-1}
-                        key={row.id}
-                      >
-                        {columns.map((column) => {
-                          const value = row[column.id];
-                          return (
-                            <TableCell key={column.id} align={column.align}>
-                              {column.format && typeof value === 'number'
-                                ? column.format(value)
-                                : value}
-                            </TableCell>
-                          );
-                        })}
+    <Fragment>
+
+
+    
+    {
+      final_orders.length < 1 ? (
+        <div className="row">
+                <div className="col-lg-12">
+                  <div className="item-empty-area text-center">
+                    <div className="item-empty-area__icon mb-30">
+                      <i className="pe-7s-cash"></i>
+                    </div>
+                    <div className="item-empty-area__text">
+                      Aucun Historique<br />{" "}
+                      <Link to={process.env.PUBLIC_URL + "/"}>
+                        Faire une commande
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              </div>
+    ):(
+        <Box sx={{ width: '90%', margin: '0 auto' }}>
+              <br/>
+              <h3 className="cart-page-title" >Mes historiques de commande</h3>
+            <Card>
+              <CardContent>
+                <TableContainer>
+                  <Table stickyHeader aria-label="sticky table">
+                    <TableHead>
+                      <TableRow>
+                        {columns.map((column) => (
+                          <TableCell
+                            key={column.id}
+                            align={column.align}
+                            style={{ minWidth: column.minWidth }}
+                          >
+                            {column.label}
+                          </TableCell>
+                        ))}
                       </TableRow>
-                    );
-                  })}
-              </TableBody>
-            </Table>
-          </TableContainer>
-          <TablePagination
-            rowsPerPageOptions={[5, 10, 25, 100]}
-            component="div"
-            count={rows.length}
-            rowsPerPage={rowsPerPage}
-            page={page}
-            onPageChange={handleChangePage}
-            onRowsPerPageChange={handleChangeRowsPerPage}
-          />
-        </CardContent>
-      </Card>
-    </Box>
+                    </TableHead>
+                    <TableBody>
+                      {rows
+                        .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                        .map((row) => {
+                          return (
+                            <TableRow
+                              hover
+                              role="checkbox"
+                              tabIndex={-1}
+                              key={row.id}
+                            >
+                              {
+                                columns.map((column) => {
+                                  const value = row[column.id];
+                                  return (
+                                    <TableCell key={column.id} align={column.align}>
+                                      {column.format && typeof value === 'number'
+                                        ? column.format(value)
+                                        : value}
+                                    </TableCell>
+                                  );
+                                })
+                              }
+                            </TableRow>
+                          );
+                        })
+                        
+                        }
+                    </TableBody>
+                  </Table>
+                </TableContainer>
+                <TablePagination
+                  rowsPerPageOptions={[5, 10, 25, 100]}
+                  component="div"
+                  count={rows.length}
+                  rowsPerPage={rowsPerPage}
+                  page={page}
+                  onPageChange={handleChangePage}
+                  onRowsPerPageChange={handleChangeRowsPerPage}
+                />
+              </CardContent>
+            </Card>
+          </Box>
+    )}
+
+    </Fragment>
   );
 }
 

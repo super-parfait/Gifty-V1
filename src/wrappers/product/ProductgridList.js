@@ -38,9 +38,6 @@ const ProductGrid = ({
   return (
     <Fragment>
       {data.map(product => {
-
-        console.log(cartItems)
-        console.log(product)
         
         return (
           <ProductGridListSingle
@@ -56,12 +53,12 @@ const ProductGrid = ({
             }
             wishlistItem={
               wishlistItems.filter(
-                wishlistItem => wishlistItem.id === product.id
+                wishlistItem => wishlistItem.gift.id === product.gift.id
               )[0]
             }
             compareItem={
               compareItems.filter(
-                compareItem => compareItem.id === product.id
+                compareItem => compareItem.gift.id === product.gift.id
               )[0]
             }
             key={product.gift.id}

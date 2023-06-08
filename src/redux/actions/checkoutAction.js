@@ -11,6 +11,7 @@ export const checkout = (credentials) =>(dispatch) =>{
                 (response)=>{
 
                         console.log(response)
+                        
                         var message = ""
                         if(response ===true){
                                 message = "Commande crée avec succès !!! "
