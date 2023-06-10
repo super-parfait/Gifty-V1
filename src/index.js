@@ -5,7 +5,7 @@ import {Router} from "react-router-dom";
 import history from './utils/history';
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
-import { fetchProducts } from "./redux/actions/productActions";
+import { fetchProductForPersonnalized, fetchProducts } from "./redux/actions/productActions";
 import { fetchUserData } from "./redux/actions/auth";
 // import rootReducer from "./redux/reducers/rootReducer";
 import products from "./data/products.json";
@@ -17,6 +17,7 @@ import store from "./redux/store"
 import { ToastProvider } from 'react-toast-notifications';
 // import { fetchOrders } from "./redux/actions/orderActions";
 import { GetOrder } from "./redux/actions/orderActions";
+import { addToCart } from "./redux/actions/cartActions";
 
 
 
@@ -26,6 +27,7 @@ import { GetOrder } from "./redux/actions/orderActions";
 // fetch products from json file
 store.dispatch(fetchProducts(products));
 store.dispatch(fetchUserData())
+store.dispatch(fetchProductForPersonnalized())
 store.dispatch(GetOrder())
 
 ReactDOM.render(

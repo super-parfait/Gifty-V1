@@ -1,7 +1,7 @@
 import axios from "axios";
 
-import { REQUEST_PRODUCT, RECEIVE_PRODUCT, FETCH_PRODUCTS_SUCCESS } from "./types";
-
+import {FETCH_PRODUCT_PERSONNALIZED_SUCCESS,FETCH_PRODUCT_PERSONNALIZED_FAIL, REQUEST_PRODUCT, RECEIVE_PRODUCT, FETCH_PRODUCTS_SUCCESS } from "./types";
+import {functionGetProductForPersonnalized} from "../../services/products.services";
 
 
 
@@ -65,4 +65,29 @@ export const getProducts = (query) => {
         }))
       })
   };
+}
+
+
+export const fetchProductForPersonnalized = () => (dispatch) =>{
+
+  return functionGetProductForPersonnalized().then(
+          (response) => {
+
+                  dispatch({
+                          type: FETCH_PRODUCT_PERSONNALIZED_SUCCESS,
+                          payload: response
+                  });
+
+                  return Promise.resolve();
+          },
+          (error) => {
+
+                  dispatch({
+                          type:FETCH_PRODUCT_PERSONNALIZED_FAIL,
+                  });
+
+
+                  return Promise.reject();
+          }
+  );
 }

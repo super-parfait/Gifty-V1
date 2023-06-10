@@ -333,7 +333,7 @@ const App = (props) => {
                 />
 
                 <Route
-                  path={process.env.PUBLIC_URL + "/shop-list-standard"}
+                  path={process.env.PUBLIC_URL + "/mes-cadeaux"}
                   component={ShopListStandard}
                 />
 
@@ -393,6 +393,13 @@ const App = (props) => {
                   )}
                 />
 
+                <Route
+                  path={process.env.PUBLIC_URL + "/mes-cadeaux"}
+                  render={(routeProps) => (
+                    <ProductGridImage {...routeProps} key={routeProps.match.params.id} />
+                  )}
+                />
+
                 {/* Blog pages */}
                 {/* <Route
                   path={process.env.PUBLIC_URL + "/blog-standard"}
@@ -416,13 +423,13 @@ const App = (props) => {
                   path={process.env.PUBLIC_URL + "/about"}
                   component={About}
                 />
-                {/* <Route
+                <Route
                   path={process.env.PUBLIC_URL + "/contact"}
                   component={Contact}
-                /> */}
-                <PrivateRoute path={process.env.PUBLIC_URL + "/contact"}>
+                />
+                {/* <PrivateRoute path={process.env.PUBLIC_URL + "/contact"}>
                     <Contact/>
-                </PrivateRoute>
+                </PrivateRoute> */}
                 {/* <PrivateRoute exact path="/my-account" >
                     <MyAccount/>
                 </PrivateRoute> */}

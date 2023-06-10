@@ -53,6 +53,7 @@ export const checkout = (credentials) =>(dispatch) =>{
                         return Promise.reject();
                 } 
         
-        )}
+        )
+}
 
 // export default chekout

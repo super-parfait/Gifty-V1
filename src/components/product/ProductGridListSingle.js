@@ -117,6 +117,7 @@ const ProductGridListSingle = ({
                 product.quantity && product.quantity > 0 ? (
                   <button
                     onClick={() => addToCart(product, addToast)}
+                    
                     className={
                       cartItem !== undefined && cartItem.quantity > 0
                         ? "active"

@@ -3,7 +3,7 @@ import React, { Fragment, useState, useEffect } from "react";
 import MetaTags from "react-meta-tags";
 import Paginator from "react-hooks-paginator";
 import { BreadcrumbsItem } from "react-breadcrumbs-dynamic";
-import { connect } from "react-redux";
+import { connect, useSelector } from "react-redux";
 import { getSortedProducts } from "../../helpers/product";
 import LayoutOne from "../../layouts/LayoutOne";
 
@@ -11,7 +11,7 @@ import Breadcrumb from "../../wrappers/breadcrumb/Breadcrumb";
 import ShopTopbar from "../../wrappers/product/ShopTopbar";
 import ShopProducts from "../../wrappers/product/ShopProduct_2";
 
-const ShopGridNoSidebar = ({ location, products }) => {
+const ShopGridNoSidebar = ({ location, products, product, gift }) => {
   const [layout, setLayout] = useState("grid three-column");
   const sortType = "";
   const sortValue = "";
@@ -34,7 +34,23 @@ const ShopGridNoSidebar = ({ location, products }) => {
     setFilterSortValue(sortValue);
   };
 
-  console.log(products)
+  // console.log(products)
+
+  // var newGift = {
+  //   gift: product.gift.id,
+  //   product: [
+  //     ...gift
+  //   ],
+  //   quantity:2
+
+  // }
+
+  // console.log(newGift)
+
+  // const {products_for_personnalized}
+  // = useSelector(state => state.productData);
+
+  // console.log(products_for_personnalized) ;
 
   useEffect(() => {
     let sortedProducts = getSortedProducts(products, sortType, sortValue);
@@ -78,12 +94,12 @@ const ShopGridNoSidebar = ({ location, products }) => {
                 <ShopTopbar
                   getLayout={getLayout}
                   getFilterSortParams={getFilterSortParams}
-                  productCount={products.length}
+                  productCount={currentData.length}
                   sortedProductCount={currentData.length}
                 />
 
                 {/* shop page content default */}
-                <ShopProducts layout={layout} products={currentData} />
+                <ShopProducts layout={layout} products={currentData} Gift={product.gift} quantityGift={product.quantity} />
 
                 {/* shop product pagination */}
                 <div className="pro-pagination-style text-center mt-30">
@@ -110,13 +126,24 @@ const ShopGridNoSidebar = ({ location, products }) => {
 
 ShopGridNoSidebar.propTypes = {
   location: PropTypes.object,
-  products: PropTypes.array
+  products: PropTypes.array,
+  products_for_personnalized: PropTypes.array
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = (state, ownProps) => {
+  const itemId = ownProps.match.params.id;
+
   return {
-    products: state.productData.products
-  };
+    product: state.productData.data.filter(
+    single => single.gift.id == itemId
+  )[0],
+  products: state.productData.products_for_personnalized,
+  gift: state.giftData
+}
+
+  // return {
+  //   products: state.productData.products
+  // };
 };
 
 export default connect(mapStateToProps)(ShopGridNoSidebar);

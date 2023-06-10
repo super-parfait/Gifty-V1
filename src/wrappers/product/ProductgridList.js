@@ -21,6 +21,9 @@ const ProductGrid = ({
 }) => {
 
 
+  console.log(cartItems)
+
+
   const { data } = useSelector(state => state.productData);
 
   const {query} = useSelector(state=>state.productData)

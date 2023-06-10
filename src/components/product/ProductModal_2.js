@@ -102,7 +102,18 @@ function ProductModal(props) {
             <div className="col-md-5 col-sm-12 col-xs-12">
               <div className="product-large-image-wrapper">
                 <Swiper {...gallerySwiperParams}>
-                  {product.image &&
+
+                    <div>
+                      <div className="single-image">
+                        <img
+                          src={product.image}
+                          className="img-fluid"
+                          alt=""
+                        />
+                      </div>
+                    </div>
+                  {/* {
+                  product.image &&
                     product.image.map((single, key) => {
                       return (
                         <div key={key}>
@@ -115,7 +126,8 @@ function ProductModal(props) {
                           </div>
                         </div>
                       );
-                    })}
+                    })
+                    } */}
                 </Swiper>
               </div>
               {/* <div className="product-small-image-wrapper mt-15">
@@ -139,9 +151,13 @@ function ProductModal(props) {
             </div>
             <div className="col-md-7 col-sm-12 col-xs-12">
               <div className="product-details-content quickview-content">
-                <h2>{product.name}</h2>
+                <h2>{product.title}</h2>
+
                 <div className="product-details-price">
-                  {discountedprice !== null ? (
+
+                  {finalproductprice+" F CFA"}
+                  {/* {
+                  discountedprice !== null ? (
                     <Fragment>
                       <span>
                         {currency.currencySymbol + finaldiscountedprice}
@@ -152,9 +168,11 @@ function ProductModal(props) {
                     </Fragment>
                   ) : (
                     <span>{currency.currencySymbol + finalproductprice} </span>
-                  )}
+                  )
+                  } */}
                 </div>
-                {product.rating && product.rating > 0 ? (
+                {/* {
+                product.rating && product.rating > 0 ? (
                   <div className="pro-details-rating-wrap">
                     <div className="pro-details-rating">
                       <Rating ratingValue={product.rating} />
@@ -162,9 +180,10 @@ function ProductModal(props) {
                   </div>
                 ) : (
                   ""
-                )}
+                )
+                } */}
                 <div className="pro-details-list">
-                  <p>{product.shortDescription}</p>
+                  <p>{product.description}</p>
                 </div>
 
                 {/* {

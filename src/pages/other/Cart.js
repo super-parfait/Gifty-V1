@@ -15,15 +15,18 @@ import {
 } from "../../redux/actions/cartActions";
 import LayoutOne from "../../layouts/LayoutOne";
 import Breadcrumb from "../../wrappers/breadcrumb/Breadcrumb";
+import { addToGift, decreaseQuantityGift } from "../../redux/actions/giftActions";
 
-import Table from "./table";
 
 const Cart = ({
   location,
-  cartItems,
+  cartItemsNotPersonnalized,
+  cartItemsPersonnalised,
   currency,
   decreaseQuantity,
+  decreaseQuantityGift,
   addToCart,
+  addToGift,
   deleteFromCart,
   deleteAllFromCart
 }) => {
@@ -31,6 +34,63 @@ const Cart = ({
   const { addToast } = useToasts();
   const { pathname } = location;
   let cartTotalPrice = 0;
+
+  // console.log(cartItems);
+  var cartItems = cartItemsNotPersonnalized.concat(cartItemsPersonnalised)
+
+
+
+  
+
+
+//   function getCartItems(){
+//       if(cartItemsPersonnalised.length>0 && cartItemsNotPersonnalized.length >0){
+
+//     if(cartItemsNotPersonnalized[0].gift.id ===cartItemsPersonnalised[0].gift.id){
+//       const tab = []
+//       tab.push({cartItemsNotPersonnalized,cartItemsPersonnalised})
+//       console.log(tab)
+//       cartItems = [{
+//         cartItemId: tab[0].cartItemsNotPersonnalized[0].cartItemId,
+//         gift: tab[0].cartItemsNotPersonnalized[0].gift,
+//         product:[
+//           tab[0].cartItemsNotPersonnalized[0].product,
+//           tab[0].cartItemsPersonnalised[0].product[0]
+//         ],
+//         quantity: 1
+//       }]
+//       console.log(cartItems)
+//     }else if(cartItemsNotPersonnalized[0].gift.id !== cartItemsPersonnalised[0].gift.id){
+//       const tab = []
+//       tab.push({cartItemsNotPersonnalized,cartItemsPersonnalised})
+//       console.log(tab)
+//       return cartItems = tab
+  
+//     }
+
+    
+//  }else{
+
+//   if(cartItemsPersonnalised.length>0){
+//     console.log(cartItems)
+//     return cartItems = cartItemsPersonnalised;
+//   }else if(cartItemsNotPersonnalized.length >0) {
+//     console.log(cartItems)
+//     return cartItems = cartItemsNotPersonnalized
+//   }
+
+//  }
+// }
+
+// getCartItems()
+
+
+
+
+
+console.log(cartItems)
+
+  
 
   return (
     <Fragment>
@@ -72,16 +132,18 @@ const Cart = ({
                         <tbody>
                           {cartItems.map((cartItem, key) => {
 
+                            // console.log(cartItem)
+
                             const discountedPrice = getDiscountPrice(
                               cartItem.price,
                               cartItem.discount
                             );
 
-                            const Price =  cartItem.gift.price;
+                            // const Price =  cartItem.gift.price;
 
                             const finalProductPrice = (
                               cartItem.gift.price
-                            ).toFixed(2);
+                            );
 
                             const finalDiscountedPrice = (
                               discountedPrice * currency.currencyRate
@@ -106,7 +168,8 @@ const Cart = ({
                                       className="img-fluid"
                                       src={
                                         
-                                        cartItem.product.image
+                                        process.env.PUBLIC_URL +
+                                      "/assets/img/gifty_animated_2.gif"
                                       }
                                       alt=""
                                     />
@@ -149,10 +212,14 @@ const Cart = ({
 
                                 <td className="product-quantity">
                                   <div className="cart-plus-minus">
-                                    <button
+
+                                  { cartItem.custumize==="true" ? (
+                                    <>
+                                      <button
                                       className="dec qtybutton"
+
                                       onClick={() =>
-                                        decreaseQuantity(cartItem, addToast)
+                                        decreaseQuantityGift(cartItem, addToast)
                                       }
                                     >
                                       -
@@ -166,26 +233,54 @@ const Cart = ({
                                     <button
                                       className="inc qtybutton"
                                       onClick={() =>
-                                        addToCart(
+                                        
+                                        addToGift(
                                           cartItem,
                                           addToast,
-                                          quantityCount
-                                        )
+                                          quantityCount                       
+                                          )
                                       }
-                                      // disabled={
-                                      //   cartItem !== undefined &&
-                                      //   cartItem.quantity &&
-                                      //   cartItem.quantity >=
-                                      //     cartItemStock(
-                                      //       cartItem,
-                                      //       cartItem.selectedProductColor,
-                                      //       cartItem.selectedProductSize
-                                      //     )
-                                      // }
+                                      
 
                                     >
                                       +
                                     </button>
+                                    </>
+                                  ):(
+                                    <>
+                                    <button
+                                    className="dec qtybutton"
+
+                                    onClick={() =>
+                                      decreaseQuantity(cartItem, addToast)
+                                    }
+                                  >
+                                    -
+                                  </button>
+                                  <input
+                                    className="cart-plus-minus-box"
+                                    type="text"
+                                    value={cartItem.quantity}
+                                    readOnly
+                                  />
+                                  <button
+                                    className="inc qtybutton"
+                                    onClick={() =>
+                                      
+                                      addToCart(
+                                        cartItem,
+                                        addToast,
+                                        quantityCount
+                                      )
+                                    }
+                                    
+
+                                  >
+                                    +
+                                  </button>
+                                  </>
+                                  )}
+                                    
                                   </div>
                                 </td>
                                 <td className="product-subtotal">
@@ -348,7 +443,6 @@ const Cart = ({
             )}
           </div>
           <br />
-          <Table />
         </div>
       </LayoutOne>
       
@@ -359,9 +453,11 @@ const Cart = ({
 
 Cart.propTypes = {
   addToCart: PropTypes.func,
+  addToGift: PropTypes.func,
   cartItems: PropTypes.array,
   currency: PropTypes.object,
   decreaseQuantity: PropTypes.func,
+  decreaseQuantityGift: PropTypes.func,
   location: PropTypes.object,
   deleteAllFromCart: PropTypes.func,
   deleteFromCart: PropTypes.func
@@ -369,18 +465,25 @@ Cart.propTypes = {
 
 const mapStateToProps = state => {
   return {
-    cartItems: state.cartData,
-    currency: state.currencyData
+    cartItemsNotPersonnalized: state.cartData,
+    currency: state.currencyData,
+    cartItemsPersonnalised: state.giftData
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
+    addToGift: (item, addToast, quantityCount) => {
+      dispatch(addToGift(item, addToast, quantityCount))
+    },
     addToCart: (item, addToast, quantityCount) => {
       dispatch(addToCart(item, addToast, quantityCount));
     },
     decreaseQuantity: (item, addToast) => {
       dispatch(decreaseQuantity(item, addToast));
+    },
+    decreaseQuantityGift: (item, addToast)=>{
+      dispatch(decreaseQuantityGift(item,addToast))
     },
     deleteFromCart: (item, addToast) => {
       dispatch(deleteFromCart(item, addToast));

@@ -10,14 +10,26 @@ const ProductGridListSingle = ({
   product,
   currency,
   addToCart,
+  addToGift,
+  Gift,
+  quantityGift,
   addToWishlist,
   addToCompare,
   cartItem,
+  giftItem,
   wishlistItem,
   compareItem,
   sliderClassName,
   spaceBottomClass
 }) => { 
+
+
+  // console.log(Gift)
+  // console.log(product)
+  // console.log(quantityGift)
+
+
+
   const [modalShow, setModalShow] = useState(false);
   const { addToast } = useToasts();
 
@@ -31,6 +43,7 @@ const ProductGridListSingle = ({
 
     
     <Fragment>
+      
       <div
         className={`col-xl-4 col-sm-6 ${
           sliderClassName ? sliderClassName : ""
@@ -43,13 +56,13 @@ const ProductGridListSingle = ({
             <Link to={process.env.PUBLIC_URL + "/product-fixed-image/" + product.id}>
               <img
                 className="default-img"
-                src={process.env.PUBLIC_URL + product.image[0]}
+                src={product.image}
                 alt=""
               />
               {product.image.length > 1 ? (
                 <img
                   className="hover-img"
-                  src={process.env.PUBLIC_URL + product.image[1]}
+                  src={product.image}
                   alt=""
                 />
               ) : (
@@ -113,32 +126,34 @@ const ProductGridListSingle = ({
                 //   </Link>
                 // ) : 
                 
-                product.stock && product.stock > 0 ? (
+                // product.stock && product.stock > 0 ? (
                   <button
-                    onClick={() => addToCart(product, addToast)}
+                    onClick={() => addToGift(product, addToast, Gift, quantityGift)}
                     className={
-                      cartItem !== undefined && cartItem.quantity > 0
+                      giftItem !== undefined && giftItem.quantity > 0
                         ? "active"
                         : ""
                     }
-                    disabled={cartItem !== undefined && cartItem.quantity > 0}
+
+                    disabled={giftItem !== undefined && giftItem.quantity > 0}
                     title={
-                    cartItem !== undefined ? "Ajouté au panier" : "Ajouter au panier"
+                    giftItem !== undefined ? "Ajouté au Cadeau" : "Ajouter au Cadeau"
                     }
                   >
                     {" "}
                     <i className="pe-7s-cart"></i>{" "}
-                    {cartItem !== undefined && cartItem.quantity > 0
-                      ? "Ajouté"
-                      : "Ajouter au panier"}
+                    {giftItem !== undefined && giftItem.quantity > 0
+                      ? "Ajouté au Cadeau"
+                      : "Ajouter au Cadeau"}
                   </button>
-                ) : (
-                  <button disabled className="active">
-                    Indisponible
-                  </button>
-                )
+                // ) : (
+                //   <button disabled className="active">
+                //     Indisponible
+                //   </button>
+                // )
                 
-                }
+                // 
+              }
               </div>
 
               
@@ -157,7 +172,7 @@ const ProductGridListSingle = ({
           <div className="product-content text-center">
             <h3>
               <Link to={process.env.PUBLIC_URL + "/product-fixed-image/" + product.id}>
-                {product.name}
+                {product.title}
               </Link>
             </h3>
             {product.rating && product.rating > 0 ? (
@@ -170,13 +185,13 @@ const ProductGridListSingle = ({
             <div className="product-price">
               {discountedPrice !== null ? (
                 <Fragment>
-                  <span>{currency.currencySymbol + finalDiscountedPrice}</span>{" "}
+                  <span>{ finalDiscountedPrice}</span>{" "}
                   <span className="old">
-                    {currency.currencySymbol + finalProductPrice}
+                    {finalProductPrice +" F CFA"}
                   </span>
                 </Fragment>
               ) : (
-                <span>{currency.currencySymbol + finalProductPrice} </span>
+                <span>{finalProductPrice + "F CFA"} </span>
               )}
             </div>
           </div>
@@ -196,13 +211,13 @@ const ProductGridListSingle = ({
                   <Link to={process.env.PUBLIC_URL + "/product-fixed-image/" + product.id}>
                     <img
                       className="default-img img-fluid"
-                      src={process.env.PUBLIC_URL + product.image[0]}
+                      src={ product.image}
                       alt=""
                     />
                     {product.image.length > 1 ? (
                       <img
                         className="hover-img img-fluid"
-                        src={process.env.PUBLIC_URL + product.image[1]}
+                        src={ product.image}
                         alt=""
                       />
                     ) : (
@@ -238,14 +253,14 @@ const ProductGridListSingle = ({
                   {discountedPrice !== null ? (
                     <Fragment>
                       <span>
-                        {currency.currencySymbol + finalDiscountedPrice}
+                        { finalDiscountedPrice + "F CFA"}
                       </span>{" "}
                       <span className="old">
-                        {currency.currencySymbol + finalProductPrice}
+                        { finalProductPrice + "F CFA"}
                       </span>
                     </Fragment>
                   ) : (
-                    <span>{currency.currencySymbol + finalProductPrice} </span>
+                    <span>{ finalProductPrice + "F CFA"} </span>
                   )}
                 </div>
                 {product.rating && product.rating > 0 ? (
@@ -258,7 +273,7 @@ const ProductGridListSingle = ({
                   ""
                 )}
                 {product.shortDescription ? (
-                  <p>{product.shortDescription}</p>
+                  <p>{product.description}</p>
                 ) : (
                   ""
                 )}
@@ -286,34 +301,37 @@ const ProductGridListSingle = ({
                     //   </Link>
                     // ) : 
                     
-                    product.stock && product.stock > 0 ? (
+                    // product.stock && product.stock > 0 ? (
                       <button
-                        onClick={() => addToCart(product, addToast)}
+                        onClick={() => addToGift(product, addToast)}
+
                         className={
-                          cartItem !== undefined && cartItem.quantity > 0
+                          giftItem !== undefined && giftItem.quantity > 0
                             ? "active"
                             : ""
                         }
                         disabled={
-                          cartItem !== undefined && cartItem.quantity > 0
+                          giftItem !== undefined && giftItem.quantity > 0
                         }
                         title={
-                          cartItem !== undefined
+                          giftItem !== undefined
                             ? "Ajouté au panier"
                             : "Ajouter au panier"
                         }
                       >
                         {" "}
                         <i className="pe-7s-cart"></i>{" "}
-                        {cartItem !== undefined && cartItem.quantity > 0
+                        {giftItem !== undefined && giftItem.quantity > 0
                           ? "Ajouté au panier"
                           : "Ajouter au panier"}
                       </button>
-                    ) : (
-                      <button disabled className="active">
-                        Indisponible
-                      </button>
-                    )}
+                    // ) : (
+                    //   <button disabled className="active">
+                    //     Indisponible
+                    //   </button>
+                    // )
+                    
+                    }
                   </div>
 
                   <div className="shop-list-wishlist ml-10">
@@ -375,9 +393,11 @@ const ProductGridListSingle = ({
 
 ProductGridListSingle.propTypes = {
   addToCart: PropTypes.func,
+  addToGift: PropTypes.func,
   addToCompare: PropTypes.func,
   addToWishlist: PropTypes.func,
   cartItem: PropTypes.object,
+  giftItem: PropTypes.object,
   compareItem: PropTypes.object,
   currency: PropTypes.object,
   product: PropTypes.object,

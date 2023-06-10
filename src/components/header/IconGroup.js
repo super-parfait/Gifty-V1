@@ -13,6 +13,7 @@ import { useSelector } from "react-redux";
 const IconGroup = ({
   currency,
   cartData,
+  giftData,
   wishlistData,
   compareData,
   deleteFromCart,
@@ -33,6 +34,17 @@ const IconGroup = ({
     );
     offcanvasMobileMenu.classList.add("active");
   };
+  var quantityCart;
+  // Recuperation de la quantité de cadeau dans le panier
+    if(cartData && giftData ){
+      quantityCart = cartData.length + giftData.length
+    }else if(giftData){
+      quantityCart = giftData.length
+    }else{
+      quantityCart = cartData.length
+    }
+
+    console.log(quantityCart)
 
   return (
     <div
@@ -150,7 +162,10 @@ const IconGroup = ({
         <button className="icon-cart " onClick={e => handleClick(e)}>
           <i className="pe-7s-shopbag myicon" />
           <span className="count-style">
-            {cartData && cartData.length ? cartData.length : 0}
+            {
+              quantityCart ? quantityCart : 0
+              
+            }
           </span>
         </button>
         
@@ -158,6 +173,7 @@ const IconGroup = ({
         
         <MenuCart
           cartData={cartData}
+          giftData={giftData}
           currency={currency}
           deleteFromCart={deleteFromCart}
         />
@@ -179,6 +195,7 @@ const IconGroup = ({
 
 IconGroup.propTypes = {
   cartData: PropTypes.array,
+  giftData: PropTypes.array,
   compareData: PropTypes.array,
   currency: PropTypes.object,
   iconWhiteClass: PropTypes.string,
@@ -190,6 +207,7 @@ const mapStateToProps = state => {
   return {
     currency: state.currencyData,
     cartData: state.cartData,
+    giftData: state.giftData,
     wishlistData: state.wishlistData,
     compareData: state.compareData
   };

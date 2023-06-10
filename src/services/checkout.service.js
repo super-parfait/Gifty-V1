@@ -10,9 +10,6 @@ const API_URL = "https://dev-mks.com:9000/api/v1/srv-core"
 
 const functionCheckout = (credentials)=>{
 
-
-        
-
         console.log("Je suis la fonction de test")
         console.log(credentials)
         console.log(authID())

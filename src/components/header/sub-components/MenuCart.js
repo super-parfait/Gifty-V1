@@ -3,9 +3,16 @@ import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
 import { useToasts } from "react-toast-notifications";
 import { getDiscountPrice } from "../../../helpers/product";
+import { decreaseQuantityGift } from "../../../redux/actions/giftActions";
 
-const MenuCart = ({ cartData, deleteFromCart }) => {
+const MenuCart = ({ cartData,giftData, deleteFromCart }) => {
   let cartTotalPrice = 0;
+
+  // var cartDataFinal = cartData.concat(giftData)
+
+  
+  // console.log(cartDataFinal)
+
   const { addToast } = useToasts();
   return (
     <div className="shopping-cart-content">
@@ -64,8 +71,13 @@ const MenuCart = ({ cartData, deleteFromCart }) => {
                       ""
                     )} */}
                   </div>
+
                   <div className="shopping-cart-delete">
-                    <button onClick={() => deleteFromCart(single, addToast)}>
+                    <button onClick={ () => {
+                      deleteFromCart(single, addToast)
+                    decreaseQuantityGift(single)
+                  }
+                    }>
                       <i className="fa fa-times-circle" />
                     </button>
                   </div>
@@ -102,6 +114,7 @@ const MenuCart = ({ cartData, deleteFromCart }) => {
 
 MenuCart.propTypes = {
   cartData: PropTypes.array,
+  giftData: PropTypes.array,
   currency: PropTypes.object,
   deleteFromCart: PropTypes.func
 };

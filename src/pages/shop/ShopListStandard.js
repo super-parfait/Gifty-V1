@@ -61,9 +61,9 @@ const ShopListStandard = ({ location, products }) => {
         />
       </MetaTags>
 
-      <BreadcrumbsItem to={process.env.PUBLIC_URL + "/"}>Home</BreadcrumbsItem>
+      <BreadcrumbsItem to={process.env.PUBLIC_URL + "/"}>Accueil</BreadcrumbsItem>
       <BreadcrumbsItem to={process.env.PUBLIC_URL + pathname}>
-        Shop
+        Mes cadeaux personalisé(s)
       </BreadcrumbsItem>
 
       <LayoutOne headerTop="visible">
@@ -73,15 +73,15 @@ const ShopListStandard = ({ location, products }) => {
         <div className="shop-area pt-95 pb-100">
           <div className="container">
             <div className="row">
-              <div className="col-lg-3 order-2 order-lg-1">
-                {/* shop sidebar */}
+              {/* <div className="col-lg-3 order-2 order-lg-1">
+               
                 <ShopSidebar
                   products={products}
                   getSortParams={getSortParams}
                   sideSpaceClass="mr-30"
                 />
-              </div>
-              <div className="col-lg-9 order-1 order-lg-2">
+              </div> */}
+              <div className="col-lg-12">
                 {/* shop topbar default */}
                 <ShopTopbar
                   getLayout={getLayout}

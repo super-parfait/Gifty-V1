@@ -8,6 +8,8 @@ import { combineReducers } from "redux";
 import { createMultilanguageReducer } from "redux-multilanguage";
 import auth from "./auth";
 import message from "./message";
+import giftReducer from "./giftReducer";
+import newGiftReducer from "./newGiftReducer";
 // import productsSearch from "./productReducer"
 
 const rootReducer = combineReducers({
@@ -15,6 +17,8 @@ const rootReducer = combineReducers({
   currencyData: currencyReducer,
   productData: productReducer,
   cartData: cartReducer,
+  giftData: giftReducer,
+  giftPersonnalized: newGiftReducer,
   wishlistData: wishlistReducer,
   compareData: compareReducer,
   auth,

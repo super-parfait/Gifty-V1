@@ -1,4 +1,4 @@
-import { FETCH_PRODUCTS_SUCCESS, RECEIVE_PRODUCT, REQUEST_PRODUCT } from "../actions/types";
+import {FETCH_PRODUCT_PERSONNALIZED_SUCCESS, FETCH_PRODUCT_PERSONNALIZED_FAIL, FETCH_PRODUCTS_SUCCESS, RECEIVE_PRODUCT, REQUEST_PRODUCT } from "../actions/types";
 
 
 const initState = {
@@ -6,7 +6,8 @@ const initState = {
   query: '',
   isFetching: false,
   data: {},
-  error: ''
+  error: '',
+  products_for_personnalized:[]
 };
 
 // const initialState = {
@@ -24,11 +25,24 @@ const productReducer = (state = initState, action) => {
   //   };
   // }
 
+  console.log(action.type)
+
   switch (action.type) {
+    
+    case FETCH_PRODUCT_PERSONNALIZED_SUCCESS:
+      return{
+        ...state,
+        products_for_personnalized: action.payload
+      }
+    // case FETCH_PRODUCT_PERSONNALIZED_FAIL:
+    //   return {
+
+    // }
     case FETCH_PRODUCTS_SUCCESS:
       return {
         ...state,
         products: action.payload
+        
       }
     case REQUEST_PRODUCT:
       return {

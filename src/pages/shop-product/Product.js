@@ -59,6 +59,7 @@ const Product = ({ location, product }) => {
           category={product.product.category[0]}
         />
       </LayoutOne>
+      
     </Fragment>
   );
 };
