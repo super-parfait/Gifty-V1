@@ -4,7 +4,7 @@ import { SET_MESSAGE_CREATED_GIFT } from "../actions/giftActions";
 
 const initialState = {
   message_login: "",
-  message_register: "" , message_update_info: "", message_update_password: "", message_checkout:"",message_for_created_gift:"" };
+  message_register: "" , message_update_info: "", message_update_password: "", message_checkout:"",message_for_created_gift:"Aucun produits ajouté !" };
 
 export default function (state = initialState, action) {
   const { type, payload } = action;

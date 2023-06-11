@@ -17,7 +17,7 @@ import store from "./redux/store"
 import { ToastProvider } from 'react-toast-notifications';
 // import { fetchOrders } from "./redux/actions/orderActions";
 import { GetOrder } from "./redux/actions/orderActions";
-import { addToCart } from "./redux/actions/cartActions";
+import { GetList } from "./redux/actions/listGiftPersActions";
 
 
 
@@ -29,6 +29,7 @@ store.dispatch(fetchProducts(products));
 store.dispatch(fetchUserData())
 store.dispatch(fetchProductForPersonnalized())
 store.dispatch(GetOrder())
+store.dispatch(GetList())
 
 ReactDOM.render(
   <Router history={history}>

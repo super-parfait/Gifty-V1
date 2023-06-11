@@ -10,6 +10,7 @@ import auth from "./auth";
 import message from "./message";
 import giftReducer from "./giftReducer";
 import newGiftReducer from "./newGiftReducer";
+import listGiftPersReducer from "./listGiftPersReducer";
 // import productsSearch from "./productReducer"
 
 const rootReducer = combineReducers({
@@ -23,7 +24,8 @@ const rootReducer = combineReducers({
   compareData: compareReducer,
   auth,
   message,
-  orderData:orderReducer
+  orderData:orderReducer,
+  allGift:listGiftPersReducer
   // search:productsSearch
 });
 

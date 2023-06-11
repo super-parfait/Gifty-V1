@@ -15,17 +15,18 @@ const newGiftReducer = (state = initState, action) => {
 
                 return [
                         ...state,
-                        product
-                        // {
-                        // cadeau_personnalized: product
-                        // }
+                        // product
+                        {
+                                gift: product,
+                                quantity:1
+                        }
                 ];
         }
 
         if(action.type === GIFT_CREATED_FAIL){
-                return{
-                ...state
-                }
+                return[
+                        ...state
+                ]
         }
 
         return state;

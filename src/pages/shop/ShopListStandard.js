@@ -9,9 +9,11 @@ import LayoutOne from "../../layouts/LayoutOne";
 import Breadcrumb from "../../wrappers/breadcrumb/Breadcrumb";
 import ShopSidebar from "../../wrappers/product/ShopSidebar";
 import ShopTopbar from "../../wrappers/product/ShopTopbar";
-import ShopProducts from "../../wrappers/product/ShopProducts";
+import ShopProducts from "../../wrappers/product/ShopProduct_3";
 
-const ShopListStandard = ({ location, products }) => {
+const ShopListStandard = ({ location,products, giftPersonnalized, allGift }) => {
+
+
   const [layout, setLayout] = useState("list");
   const [sortType, setSortType] = useState("");
   const [sortValue, setSortValue] = useState("");
@@ -24,6 +26,19 @@ const ShopListStandard = ({ location, products }) => {
 
   const pageLimit = 15;
   const { pathname } = location;
+
+  console.log(allGift)
+  console.log(giftPersonnalized)
+
+  if(allGift.length >0 && giftPersonnalized.length > 0){
+    var cadeaux_personnalized = allGift.filter(objet1 =>
+      giftPersonnalized.some(objet2 => objet2.gift.id === objet1.gift.id)
+    );
+  }
+
+  
+  
+  // console.log(tableauCroise);
 
   const getLayout = layout => {
     setLayout(layout);
@@ -51,10 +66,15 @@ const ShopListStandard = ({ location, products }) => {
     setCurrentData(sortedProducts.slice(offset, offset + pageLimit));
   }, [offset, products, sortType, sortValue, filterSortType, filterSortValue]);
 
+
+
+
+
+
   return (
     <Fragment>
       <MetaTags>
-        <title>Gifty | Shop Page</title>
+        <title>Gifty | Mes cadeaux</title>
         <meta
           name="description"
           content="  Votre application de cadeau, qui vous apporte du sourire."
@@ -91,7 +111,7 @@ const ShopListStandard = ({ location, products }) => {
                 />
 
                 {/* shop page content default */}
-                <ShopProducts layout={layout} products={currentData} />
+                <ShopProducts layout={layout} products={cadeaux_personnalized} />
 
                 {/* shop product pagination */}
                 <div className="pro-pagination-style text-center mt-30">
@@ -123,7 +143,9 @@ ShopListStandard.propTypes = {
 
 const mapStateToProps = state => {
   return {
-    products: state.productData.products
+    allGift: state.allGift,
+    products: state.productData.products,
+    giftPersonnalized: state.giftPersonnalized
   };
 };
 
