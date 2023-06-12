@@ -18,15 +18,17 @@ const ProductImageFixed = ({ product }) => {
       )} */}
 
       <div className="product-fixed-image">
-        {product.image ? (
-          <img
-            src={process.env.PUBLIC_URL + product.image[0]}
+        {/* {product.product.map(list_products=>{
+          return( */}
+            <img
+              src={process.env.PUBLIC_URL+ "gift_personnel.jpg"}
+            // src={ list_products.image }
             alt=""
             className="img-fluid"
           />
-        ) : (
-          ""
-        )}
+          {/* )
+        })
+      } */}
       </div>
     </div>
   );

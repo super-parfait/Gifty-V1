@@ -27,7 +27,7 @@ const ProductGridListSingle = ({
     discountedPrice
   );
 
-  console.log(cartItem)
+  console.log(product)
 
   return (
 

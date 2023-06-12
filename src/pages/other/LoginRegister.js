@@ -4,6 +4,7 @@ import React, { Fragment, useState, useRef } from "react";
 import MetaTags from "react-meta-tags";
 import { Link } from "react-router-dom";
 import { Redirect, useHistory   } from 'react-router-dom';
+import { connect } from "react-redux";
 import { BreadcrumbsItem } from "react-breadcrumbs-dynamic";
 import Tab from "react-bootstrap/Tab";
 import Nav from "react-bootstrap/Nav";
@@ -88,7 +89,7 @@ const validPassword = (value) => {
 
 
 
-const LoginRegister = ({ location, props }) => {
+const LoginRegister = ({ location, props, message_register }) => {
   const { pathname } = location;
 
   let history = useHistory();
@@ -119,9 +120,11 @@ const LoginRegister = ({ location, props }) => {
   const {isRegisterIn} = useSelector(state => state.auth);
 
 
-  const { message_register } = useSelector(state => state.message);
+  // const { message_register } = useSelector(state => state.message);
 
   const { message_login } = useSelector(state => state.message);
+
+
 
   const dispatch = useDispatch();
 
@@ -158,6 +161,10 @@ const LoginRegister = ({ location, props }) => {
   };
 
 
+  if (message_login!=="") {
+    addToast(message_login, { appearance: 'error', autoDismiss:true });
+  }
+
   const handleLogin = (e) => {
     e.preventDefault();
 
@@ -168,17 +175,35 @@ const LoginRegister = ({ location, props }) => {
     formLogin.current.validateAll(); 
 
 
+
+
+
     if (checkBtnLogin.current.context._errors.length === 0) {
       dispatch(login(credentials))
         .then(() => {
           history("/my-account");
           window.location.reload();
         })
-        .catch(() => {
-          // toast.error(message_login);
-          addToast(message_login, { appearance: 'error', autoDismiss:true });
+
+
+        // .catch(() => {
+          
+          // if(message_login === "Connexion Impossible car les identifiants ne sont pas correctes..."){
+          //   addToast('Connexion Impossible car les identifiants ne sont pas correctes...', { appearance: 'error', autoDismiss:true });
+          // }
+
+          // if(message_login ==='"telephone" must be a number'){
+          //   addToast('Veuillez entrer un numero de téléphone valide !', { appearance: 'error', autoDismiss:true });
+          // }
+
+          // if(message_login === '"password" length must be at least 8 characters long'){
+          //   addToast('Votre mot de passe doit avoir au moins 8 caractères', { appearance: 'error', autoDismiss:true });
+          // }
+
+          
+          
           setLoading(false);
-        });
+        // });
     } else {
       setLoading(false);
     }
@@ -207,7 +232,6 @@ const LoginRegister = ({ location, props }) => {
         .catch(() => {
           setLoading(false);
           addToast(message_register, { appearance: 'error', autoDismiss:true });
-          
           setSuccessful(false);
         });
     }else{
@@ -301,7 +325,7 @@ const LoginRegister = ({ location, props }) => {
                               </div>
                              
 
-                              {/* {
+                              {
                               message_login && (
                                 <div className="form-group pt-2">
                                   <div className="alert alert-danger" role="alert">
@@ -309,7 +333,9 @@ const LoginRegister = ({ location, props }) => {
                                   </div>
                                 </div>
                               )
-                              } */}
+                              }
+
+                              
 
                               <CheckButton style={{ display: "none" }} ref={checkBtnLogin} />  
 
@@ -385,7 +411,7 @@ const LoginRegister = ({ location, props }) => {
                               </div>
 
 
-                              {
+                              {/* {
                               message_register && (
                                 <div className="form-group pt-2">
                                   <div className={successful ? "alert alert-success" : "alert alert-danger" } role="alert">
@@ -393,7 +419,7 @@ const LoginRegister = ({ location, props }) => {
                                   </div>
                                 </div>
                               )
-                              }
+                              } */}
 
                               <CheckButton style={{ display: "none" }} ref={checkBtnRegister} /> 
 
@@ -418,4 +444,13 @@ LoginRegister.propTypes = {
   location: PropTypes.object
 };
 
-export default LoginRegister;
+const mapStateToProps = (state, ownProps) => {
+
+  return {
+ 
+    message_register: state.message.message_register
+}
+
+};
+
+export default connect(mapStateToProps)(LoginRegister);

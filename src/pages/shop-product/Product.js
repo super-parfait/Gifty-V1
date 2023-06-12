@@ -13,7 +13,7 @@ const Product = ({ location, product }) => {
   const { pathname } = location;
 
 
-  console.log(product)
+  console.log([product])
 
   return (
     <Fragment>
@@ -56,7 +56,7 @@ const Product = ({ location, product }) => {
 
         <RelatedProductSlider
           spaceBottomClass="pb-95"
-          category={product.product.category[0]}
+          category={product.product[0].category}
         />
       </LayoutOne>
       
@@ -71,6 +71,8 @@ Product.propTypes = {
 
 const mapStateToProps = (state, ownProps) => {
   const itemId = ownProps.match.params.id;
+
+
   return {
     product: state.productData.data.filter(
       single => single.gift.id == itemId

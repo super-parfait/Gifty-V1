@@ -4,13 +4,7 @@ export const DELETE_FROM_CART = "DELETE_FROM_CART";
 export const DELETE_ALL_FROM_CART = "DELETE_ALL_FROM_CART";
 
 //add to cart
-export const addToCart = (
-  item,
-  addToast,
-  quantityCount,
-  // selectedProductColor,
-  // selectedProductSize
-) => {
+export const addToCart = (item,addToast,quantityCount) => {
   return dispatch => {
     if (addToast) {
       addToast("Ajouté au Panier", { appearance: "success", autoDismiss: true });

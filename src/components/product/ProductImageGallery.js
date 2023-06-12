@@ -54,89 +54,53 @@ const ProductImageGallery = ({ product }) => {
     )
   };
 
+  product = [product]
+
   return (
     <Fragment>
       <div className="product-large-image-wrapper">
         
-        {/* {product.discount || product.new ? (
-          <div className="product-img-badges">
-            {product.discount ? (
-              <span className="pink">-{product.discount}%</span>
-            ) : (
-              ""
-            )}
-            {product.new ? <span className="purple">New</span> : ""}
-          </div>
-        ) : (
-          ""
-        )} */}
         <LightgalleryProvider>
           <Swiper {...gallerySwiperParams}>
 
-            <div>
-              <LightgalleryItem
-                group="any"
-                src={product.product.image}
-              >
-                <button>
-                  <i className="pe-7s-expand1"></i>
-                </button>
-              </LightgalleryItem>
-              <div className="single-image">
-                <img
-                  src={product.product.image}
-                  className="img-fluid"
-                  alt=""
-                />
+          {
+            product[0].product.map(list_products=>{
+              
+            return(
+              <p> {list_products.image} </p>,
+              <div>
+                <LightgalleryItem
+                  group="any"
+                  src={list_products.image}
+                >
+                  <button>
+                    <i className="pe-7s-expand1"></i>
+                  </button>
+                </LightgalleryItem>
+                <div className="single-image">
+                  <img
+                    src={list_products.image}
+                    className="img-fluid"
+                    alt=""
+                  />
+                </div>
               </div>
-            </div>
-            {/* {
-            product.product.image &&
-              product.product.image.map((single, key) => {
-                return (
-                  <div key={key}>
-                    <LightgalleryItem
-                      group="any"
-                      src={process.env.PUBLIC_URL + single}
-                    >
-                      <button>
-                        <i className="pe-7s-expand1"></i>
-                      </button>
-                    </LightgalleryItem>
-                    <div className="single-image">
-                      <img
-                        src={process.env.PUBLIC_URL + single}
-                        className="img-fluid"
-                        alt=""
-                      />
-                    </div>
-                  </div>
-                );
+                )
               })
-              } */}
+            }
           </Swiper>
         </LightgalleryProvider>
       </div>
       <div className="product-small-image-wrapper mt-15">
         <Swiper {...thumbnailSwiperParams}>
 
-          <div >
-            <div className="single-image">
-              <img
-                src={product.product.image}
-                className="img-fluid"
-                alt=""
-              />
-            </div>
-          </div>
-          {/* {
-          product.image &&
-            product.image.map((single, key) => {
+          {
+            product[0].product.map((single, key) => {
               return (
                 <div key={key}>
                   <div className="single-image">
                     <img
-                      src={process.env.PUBLIC_URL + single}
+                      src={ single.image}
                       className="img-fluid"
                       alt=""
                     />
@@ -144,7 +108,8 @@ const ProductImageGallery = ({ product }) => {
                 </div>
               );
             })
-            } */}
+
+            }
         </Swiper>
       </div>
     </Fragment>

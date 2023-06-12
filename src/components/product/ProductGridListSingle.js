@@ -44,7 +44,7 @@ const ProductGridListSingle = ({
             <Link to={process.env.PUBLIC_URL + "/product/" + product.gift.id}>
               <img
                 className="default-img"
-                src={product.product.image}
+                src={process.env.PUBLIC_URL + "assets/img/gift_personnel.jpg"}
                 alt=""
               />
               {/* {product.image.length > 1 ? (
@@ -74,7 +74,7 @@ const ProductGridListSingle = ({
             {/* debut pour les actions sur les produits */}
 
             <div className="product-action">
-              <div className="pro-same-action pro-wishlist">
+              {/* <div className="pro-same-action pro-wishlist">
 
                 <button
                   className={wishlistItem !== undefined ? "active" : ""}
@@ -89,7 +89,7 @@ const ProductGridListSingle = ({
                   <i className="pe-7s-like" />
                 </button>
 
-              </div>
+              </div> */}
 
               <div className="pro-same-action pro-cart">
                 {
@@ -202,7 +202,7 @@ const ProductGridListSingle = ({
                   <Link to={process.env.PUBLIC_URL + "/product/" + product.gift.id}>
                     <img
                       className="default-img img-fluid"
-                      src={product.gift.image}
+                      src={process.env.PUBLIC_URL + "assets/img/gift_personnel.jpg"}
                       alt={product.gift.title}
                     />
                     {/* {product.image.length > 1 ? (
@@ -325,7 +325,7 @@ const ProductGridListSingle = ({
                     )}
                   </div>
 
-                  <div className="shop-list-wishlist ml-10">
+                  {/* <div className="shop-list-wishlist ml-10">
                     <button
                       className={wishlistItem !== undefined ? "active" : ""}
                       disabled={wishlistItem !== undefined}
@@ -352,7 +352,7 @@ const ProductGridListSingle = ({
                     >
                       <i className="pe-7s-shuffle" />
                     </button>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>

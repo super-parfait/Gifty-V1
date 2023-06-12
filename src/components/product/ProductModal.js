@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 
 function ProductModal(props) {
   const { product } = props;
+  const {cartItem} = props;
   // const { currency } = props;
   const { discountedprice } = props;
   const { finalproductprice } = props;
@@ -102,13 +103,13 @@ function ProductModal(props) {
             <div className="col-md-5 col-sm-12 col-xs-12">
               <div className="product-large-image-wrapper">
                 <Swiper {...gallerySwiperParams}>
-                  {product.image &&
-                    product.image.map((single, key) => {
+                  {product.product &&
+                    product.product.map((single, key) => {
                       return (
                         <div key={key}>
                           <div className="single-image">
                             <img
-                              src={process.env.PUBLIC_URL + single}
+                              src={process.env.PUBLIC_URL + "assets/img/gift_personnel.jpg"}
                               className="img-fluid"
                               alt=""
                             />
@@ -126,7 +127,7 @@ function ProductModal(props) {
                         <div key={key}>
                           <div className="single-image">
                             <img
-                              src={process.env.PUBLIC_URL + single}
+                              src={process.env.PUBLIC_URL + "assets/img/gift_personnel.jpg"}
                               className="img-fluid"
                               alt=""
                             />
@@ -144,14 +145,14 @@ function ProductModal(props) {
                   {discountedprice !== null ? (
                     <Fragment>
                       <span>
-                        { finaldiscountedprice}
+                        { finaldiscountedprice +"F CFA"}
                       </span>{" "}
                       <span className="old">
-                        { finalproductprice}
+                        { finalproductprice +"F CFA"}
                       </span>
                     </Fragment>
                   ) : (
-                    <span>{ finalproductprice} </span>
+                    <span>{ finalproductprice +"F CFA"} </span>
                   )}
                 </div>
                 {product.rating && product.rating > 0 ? (
@@ -164,7 +165,7 @@ function ProductModal(props) {
                   ""
                 )}
                 <div className="pro-details-list">
-                  <p>{product.shortDescription}</p>
+                  <p>{product.gift.description}</p>
                 </div>
 
                 {
@@ -182,7 +183,7 @@ function ProductModal(props) {
 
                       <div className="pro-details-cart btn-hover ml-0" >
                         <Link
-                          to={process.env.PUBLIC_URL + "/product-grid-image"}>
+                          to={process.env.PUBLIC_URL + "/personnaliser-cadeau/"+product.gift.id}>
                           Personnaliser 
                         </Link>
                       </div>
@@ -214,9 +215,10 @@ function ProductModal(props) {
                       <button
                         onClick={() =>
                           setQuantityCount(
-                            quantityCount < productStock - productCartQty
-                              ? quantityCount + 1
-                              : quantityCount
+                            quantityCount + 1
+                            // quantityCount < productStock - productCartQty
+                            //   ? quantityCount + 1
+                            //   : quantityCount
                           )
                         }
                         className="inc qtybutton"
@@ -225,7 +227,8 @@ function ProductModal(props) {
                       </button>
                     </div>
                     <div className="pro-details-cart btn-hover">
-                      {productStock && productStock > 0 ? (
+                      {/* {
+                      productStock && productStock > 0 ? (
                         <button
                           onClick={() =>
                             addToCart(
@@ -243,9 +246,37 @@ function ProductModal(props) {
                         </button>
                       ) : (
                         <button disabled>Indisponible</button>
-                      )}
+                      )
+                      } */}
+                { product.quantity && product.quantity > 0 ? (
+                  <button
+                    onClick={() => addToCart(product, addToast)}
+                    
+                    className={
+                      cartItem !== undefined && cartItem.quantity > 0
+                        ? "active"
+                        : ""
+                    }
+                    disabled={cartItem !== undefined && cartItem.quantity > 0}
+                    title={
+                    cartItem !== undefined ? "Ajouté au panier" : "Ajouter au panier"
+                    }
+                  >
+                    {" "}
+                    <i className="pe-7s-cart"></i>{" "}
+                    {cartItem !== undefined && cartItem.quantity > 0
+                      ? "Ajouté"
+                      : "Ajouter au panier"}
+                  </button>
+                ) : (
+                  <button disabled className="active">
+                    Indisponible
+                  </button>
+                )
+                
+                }
                     </div>
-                    <div className="pro-details-wishlist">
+                    {/* <div className="pro-details-wishlist">
                       <button
                         className={wishlistItem !== undefined ? "active" : ""}
                         disabled={wishlistItem !== undefined}
@@ -272,7 +303,7 @@ function ProductModal(props) {
                       >
                         <i className="pe-7s-shuffle" />
                       </button>
-                    </div>
+                    </div> */}
                   </div>
                   )}
                    

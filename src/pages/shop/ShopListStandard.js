@@ -7,7 +7,7 @@ import { connect } from "react-redux";
 import { getSortedProducts } from "../../helpers/product";
 import LayoutOne from "../../layouts/LayoutOne";
 import Breadcrumb from "../../wrappers/breadcrumb/Breadcrumb";
-import ShopSidebar from "../../wrappers/product/ShopSidebar";
+// import ShopSidebar from "../../wrappers/product/ShopSidebar";
 import ShopTopbar from "../../wrappers/product/ShopTopbar";
 import ShopProducts from "../../wrappers/product/ShopProduct_3";
 
@@ -38,7 +38,7 @@ const ShopListStandard = ({ location,products, giftPersonnalized, allGift }) => 
 
   
   
-  // console.log(tableauCroise);
+  console.log(cadeaux_personnalized);
 
   const getLayout = layout => {
     setLayout(layout);
@@ -131,6 +131,7 @@ const ShopListStandard = ({ location,products, giftPersonnalized, allGift }) => 
             </div>
           </div>
         </div>
+        
       </LayoutOne>
     </Fragment>
   );

@@ -3,6 +3,8 @@ import React from "react";
 import ProductgridList from "./ProductGridList_3";
 
 const ShopProducts = ({ products, layout }) => {
+
+
   return (
     
     <div className="shop-bottom-area mt-35">

@@ -18,6 +18,7 @@ import { ToastProvider } from 'react-toast-notifications';
 // import { fetchOrders } from "./redux/actions/orderActions";
 import { GetOrder } from "./redux/actions/orderActions";
 import { GetList } from "./redux/actions/listGiftPersActions";
+import { clearMessage } from "./redux/actions/message";
 
 
 
@@ -30,6 +31,7 @@ store.dispatch(fetchUserData())
 store.dispatch(fetchProductForPersonnalized())
 store.dispatch(GetOrder())
 store.dispatch(GetList())
+store.dispatch(clearMessage())
 
 ReactDOM.render(
   <Router history={history}>

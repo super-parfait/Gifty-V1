@@ -15,6 +15,7 @@ const IconGroup = ({
   cartData,
   giftData,
   wishlistData,
+  giftPersonnalized,
   compareData,
   deleteFromCart,
   iconWhiteClass
@@ -50,7 +51,7 @@ const IconGroup = ({
     <div
       className={`header-right-wrap ${iconWhiteClass ? iconWhiteClass : ""}`}
     >
-      <div className="same-style header-search d-none d-lg-block">
+      {/* <div className="same-style header-search d-none d-lg-block">
         <button className="search-active" onClick={e => handleClick(e)}>
           <i className="pe-7s-search myicon" />
         </button>
@@ -62,8 +63,10 @@ const IconGroup = ({
             </button>
           </form>
         </div>
-      </div>
+      </div> */}
 
+
+      {/* L'icone pour le user */}
       <div className="same-style account-setting d-none d-lg-block">
         <button
           className="account-setting-active"
@@ -100,16 +103,22 @@ const IconGroup = ({
 
       </div>
 
+      {/* Fin L'icone pour le user */}
+
+
+      {/* La barre de recherche pour les telephone mobile */}
       
-      <div className="same-style mobile-off-canvas d-block d-lg-none">
+      {/* <div className="same-style mobile-off-canvas d-block d-lg-none">
         <button
           className="mobile-aside-button"
           onClick={() => triggerMobileMenu()}
         >
           <i className="pe-7s-search" />
         </button>
-      </div>
+      </div> */}
       
+
+        {/* L'icone des users sur telephone mobile  */}
       <div className="same-style cart-wrap d-block d-lg-none">
         <button
           className="account-setting-active"
@@ -142,7 +151,12 @@ const IconGroup = ({
           </div>
         )}
       </div>
-      <div className="same-style header-compare">
+
+
+
+
+      {/* Les parties de wishList et comparaison des produits */}
+      {/* <div className="same-style header-compare">
         <Link to={process.env.PUBLIC_URL + "/compare"}>
           <i className="pe-7s-shuffle" />
           <span className="count-style">
@@ -157,7 +171,18 @@ const IconGroup = ({
             {wishlistData && wishlistData.length ? wishlistData.length : 0}
           </span>
         </Link>
+      </div> */}
+
+      <div className="same-style header-wishlist">
+        <Link to={process.env.PUBLIC_URL + "/wishlist"}>
+          <i className="pe-7s-box1" />
+          <span className="count-style">
+            {giftPersonnalized && giftPersonnalized.length ? giftPersonnalized.length : 0}
+          </span>
+        </Link>
       </div>
+
+
       <div className="same-style cart-wrap d-none d-lg-block">
         <button className="icon-cart " onClick={e => handleClick(e)}>
           <i className="pe-7s-shopbag myicon" />
@@ -209,7 +234,9 @@ const mapStateToProps = state => {
     cartData: state.cartData,
     giftData: state.giftData,
     wishlistData: state.wishlistData,
-    compareData: state.compareData
+    compareData: state.compareData,
+    giftPersonnalized: state.giftPersonnalized
+
   };
 };
 

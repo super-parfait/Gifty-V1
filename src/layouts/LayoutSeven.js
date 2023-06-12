@@ -1,13 +1,13 @@
 import PropTypes from "prop-types";
 import React, { Fragment } from "react";
 import HeaderSix from "../wrappers/header/HeaderSix";
-import HeaderOne from "../wrappers/header/HeaderOne";
+// import HeaderOne from "../wrappers/header/HeaderOne";
 import FooterOne from "../wrappers/footer/FooterOne";
 
 const LayoutSeven = ({ children }) => {
   return (
     <Fragment>
-      <HeaderSix layout="container-fluid" />
+      {/* <HeaderSix layout="container-fluid" /> */}
       {children}
       <FooterOne spaceTopClass="pt-100" spaceBottomClass="pb-70" />
     </Fragment>

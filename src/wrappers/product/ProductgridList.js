@@ -29,7 +29,12 @@ const ProductGrid = ({
   const {query} = useSelector(state=>state.productData)
 
 
-  console.log(query)
+
+  // if(data.length < 1 ){
+  //   return <Redirect to="/" />;
+  // }
+
+  
 
   // Si aucun theme n'est saisi on le redirige sur la pade d'accueil
   if(query===""){
@@ -40,34 +45,43 @@ const ProductGrid = ({
 
   return (
     <Fragment>
-      {data.map(product => {
+      { 
+      // data ? (
+        data.map(product => {
+          
+          return (
+            <ProductGridListSingle
+              sliderClassName={sliderClassName}
+              spaceBottomClass={spaceBottomClass}
+              product={product}
+              // currency={currency}
+              addToCart={addToCart}
+              addToWishlist={addToWishlist}
+              addToCompare={addToCompare}
+              cartItem={
+                cartItems.filter(cartItem => cartItem.gift.id === product.gift.id)[0]
+              }
+              wishlistItem={
+                wishlistItems.filter(
+                  wishlistItem => wishlistItem.gift.id === product.gift.id
+                )[0]
+              }
+              compareItem={
+                compareItems.filter(
+                  compareItem => compareItem.gift.id === product.gift.id
+                )[0]
+              }
+              key={product.gift.id}
+            />
+          );
+        })
+      // ) :(
+
+      // )
         
-        return (
-          <ProductGridListSingle
-            sliderClassName={sliderClassName}
-            spaceBottomClass={spaceBottomClass}
-            product={product}
-            // currency={currency}
-            addToCart={addToCart}
-            addToWishlist={addToWishlist}
-            addToCompare={addToCompare}
-            cartItem={
-              cartItems.filter(cartItem => cartItem.gift.id === product.gift.id)[0]
-            }
-            wishlistItem={
-              wishlistItems.filter(
-                wishlistItem => wishlistItem.gift.id === product.gift.id
-              )[0]
-            }
-            compareItem={
-              compareItems.filter(
-                compareItem => compareItem.gift.id === product.gift.id
-              )[0]
-            }
-            key={product.gift.id}
-          />
-        );
-      })}
+      }
+
+
     </Fragment>
   );
 };

@@ -3,8 +3,9 @@ import axios from 'axios';
 import { getItem, addItem, removeItem } from './LocalStorage';
 import authHeader from './auth-header';
 import { v4 as uuid } from 'uuid';
+// import { useToasts } from 'react-toast-notifications';
 
-const API_URL = "http://192.168.1.9:4005/api/v1/srv-usr/"
+const API_URL = "http://localhost:4005/api/v1/srv-usr/"
 
 
 export  function functionGetUserData(){  
@@ -61,7 +62,7 @@ const functionLogin = (credentials) =>{
             addItem('user', JSON.stringify({"token":data.token,"refresh_token": data.refreshtoken }));
         //     addItem('userRefeshToken', JSON.stringify({}))
             return data;
-        });
+        })
 
         
 }

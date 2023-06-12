@@ -2,10 +2,10 @@ import React, { Fragment } from "react";
 import MetaTags from "react-meta-tags";
 import LayoutSeven from "../../layouts/LayoutSeven";
 import HeroSliderFourteen from "../../wrappers/hero-slider/HeroSliderFourteen";
-import SectionTitleWithText from "../../components/section-title/SectionTitleWithText";
-import TabProductEight from "../../wrappers/product/TabProductEight";
-import NewsletterTwo from "../../wrappers/newsletter/NewsletterTwo";
-import ImageSliderOne from "../../wrappers/image-slider/ImageSliderOne";
+// import SectionTitleWithText from "../../components/section-title/SectionTitleWithText";
+// import TabProductEight from "../../wrappers/product/TabProductEight";
+// import NewsletterTwo from "../../wrappers/newsletter/NewsletterTwo";
+// import ImageSliderOne from "../../wrappers/image-slider/ImageSliderOne";
 
 const HomeFashionSix = () => {
   return (

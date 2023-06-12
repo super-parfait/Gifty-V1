@@ -75,22 +75,13 @@ const ProductImageGalleryLeftThumb = ({ product, thumbPosition }) => {
           }`}
         >
           <div className="product-large-image-wrapper">
-            {/* {product.discount || product.new ? (
-              <div className="product-img-badges">
-                {product.discount ? (
-                  <span className="pink">-{product.discount}%</span>
-                ) : (
-                  ""
-                )}
-                {product.new ? <span className="purple">New</span> : ""}
-              </div>
-            ) : (
-              ""
-            )} */}
             <LightgalleryProvider>
               <Swiper {...gallerySwiperParams}>
-                {product.product.image &&
-                  product.product.image.map((single, key) => {
+                {product.product &&
+                  product.product.map((single, key) => {
+
+                    console.log(single)
+
                     return (
                       <div key={key}>
                         <LightgalleryItem
@@ -103,7 +94,7 @@ const ProductImageGalleryLeftThumb = ({ product, thumbPosition }) => {
                         </LightgalleryItem>
                         <div className="single-image">
                           <img
-                            src={ single}
+                            src={ single.image}
                             className="img-fluid"
                             alt=""
                           />
@@ -124,13 +115,13 @@ const ProductImageGalleryLeftThumb = ({ product, thumbPosition }) => {
         >
           <div className="product-small-image-wrapper product-small-image-wrapper--side-thumb">
             <Swiper {...thumbnailSwiperParams}>
-              {product.product.image &&
-                product.product.image.map((single, key) => {
+              {product.product &&
+                product.product.map((single, key) => {
                   return (
                     <div key={key}>
                       <div className="single-image">
                         <img
-                          src={single}
+                          src={single.image}
                           className="img-fluid"
                           alt=""
                         />

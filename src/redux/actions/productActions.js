@@ -53,6 +53,8 @@ export const getProducts = (query) => {
       .then(response => response.data)
       .then(data =>{
         console.log(data)
+
+        
         dispatch(receiveProducts({
           status: 'success',
           payload: data

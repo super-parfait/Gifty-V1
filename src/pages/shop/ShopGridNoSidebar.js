@@ -113,7 +113,7 @@ ShopGridNoSidebar.propTypes = {
 
 const mapStateToProps = state => {
   return {
-    products: state.productData.products
+    products: state.productData.data
   };
 };
 

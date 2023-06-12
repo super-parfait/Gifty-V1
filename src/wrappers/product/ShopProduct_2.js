@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import React, {useRef, useState} from "react";
-import { Link } from "react-router-dom/cjs/react-router-dom.min";
+import { Link, useHistory } from "react-router-dom";
 import ProductgridList from "./ProductgridList_2";
 import { useSelector, useDispatch,connect } from "react-redux";
 
@@ -22,12 +22,7 @@ const ShopProducts = ({ products, layout, Gift,quantityGift, message_for_created
   const dispatch = useDispatch();
 
   const { addToast } = useToasts();
-
-  // console.log(Gift)
-
-  // console.log(products)
-
-  // console.log(quantityGift)
+  const history =  useHistory()
 
   const credentials = useSelector(state=>state.giftData[0])
 
@@ -36,8 +31,6 @@ const ShopProducts = ({ products, layout, Gift,quantityGift, message_for_created
   const handleCreateGift = (e) => {
     e.preventDefault();
 
-
-    // const {message_for_created_gift} :state.message
 
     console.log(credentials)
 
@@ -50,15 +43,11 @@ const ShopProducts = ({ products, layout, Gift,quantityGift, message_for_created
     if (checkBtnCreateGift.current.context._errors.length === 0) {
       dispatch(create_gift(credentials))
         .then((response) => {
-          // const id= response.data.id
-          // history("/product/");
-          console.log(response)
-          // window.location.reload();
+          history("/mes-cadeaux");
+          window.location.reload();
         })
         .catch(() => {
-          // toast.error(message_login);
           addToast(message_for_created_gift, { appearance: 'error', autoDismiss:true });
-          console.log('No goooo Erreur ')
           setLoading(false);
         });
     } else {

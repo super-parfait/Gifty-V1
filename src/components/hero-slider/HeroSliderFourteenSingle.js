@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import React from "react";
-import { Link, useHistory, Redirect, useNavigate  } from "react-router-dom";
+import {useHistory  } from "react-router-dom";
 import { connect } from 'react-redux'
 
 import { getProducts } from "../../redux/actions/productActions";
@@ -12,7 +12,7 @@ const HeroSliderFourteenSingle = ({ data, sliderClassName, query, onInputChange 
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
-    history.push("/shop-grid-no-sidebar");
+    history.push("/gift");
   } 
 
 
@@ -21,14 +21,16 @@ const HeroSliderFourteenSingle = ({ data, sliderClassName, query, onInputChange 
       className={`slider-height-5 d-flex align-items-center bg-img ${
         sliderClassName ? sliderClassName : ""
       }`}
-      style={{ backgroundImage: `url(${process.env.PUBLIC_URL + data.image})` }}
+      // style={{ backgroundImage: `url(${process.env.PUBLIC_URL + data.image})` }}
     >
-      <div className="container">
+      <video style={{width:"100%",height:"100vh", objectFit: "cover" }} autoPlay loop muted src={process.env.PUBLIC_URL+ "assets/animation/4.mp4"}></video>
+
+      <div className="container" style={{width:"100%", position: 'absolute'}}>
         <div className="row">
           <div className="col-xl-12 col-lg-12 col-md-12 col-12">
             <div className="slider-content-6 slider-animated-1 text-center">
-              <h2 className="animated" style={{color:"white", fontSize:"20px"}}>Cherchez-vous le cadeau idéal ? </h2>
-              <h1 className="animated">{data.title}</h1>
+              <h2 className="animated" style={{color:"#000", fontSize:"20px"}}>Cherchez-vous le cadeau idéal ? </h2>
+              <h1 style={{color: "#000"}} className="animated">Essayez <span style={{color: "red", fontWeight: "bold"}}>GIFTY</span></h1>
               {/* <p className="animated"></p> */}
 
 

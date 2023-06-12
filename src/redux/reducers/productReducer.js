@@ -5,7 +5,7 @@ const initState = {
   products: [],
   query: '',
   isFetching: false,
-  data: {},
+  data: [],
   error: '',
   products_for_personnalized:[]
 };
@@ -51,10 +51,35 @@ const productReducer = (state = initState, action) => {
         query: action.query
       }
     case RECEIVE_PRODUCT:
+      const list= action.payload
+    // je regroupe tous les cadeaux en associants les produits
+  
+    if (list.length > 1) {
+        const objetsRegroupes = list.reduce((acc, objet) => {
+        const giftId = objet.gift.id;
+        
+        if (!acc.has(giftId)) {
+                acc.set(giftId, {
+                gift: objet.gift,
+                product: [],
+                quantity:1
+                });
+        }
+        
+        acc.get(giftId).product.push(objet.product);
+        
+        return acc;
+        }, new Map());
+        
+        var resultat = Array.from(objetsRegroupes.values());
+    }
+
+    console.log(resultat)
+
       return {
         ...state,
         isFetching: false,
-        data: action.status === 'success' ? action.payload : initState.data,
+        data: action.status === 'success' ? resultat : initState.data,
         error: action.status === 'error' ? action.payload : initState.error
       }
     default:

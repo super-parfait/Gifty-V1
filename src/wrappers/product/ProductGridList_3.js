@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import React, { Fragment } from "react";
-import {Redirect} from "react-router-dom";
+// import {Redirect} from "react-router-dom";
 import { connect, useSelector } from "react-redux";
 import { addToCart } from "../../redux/actions/cartActions";
 import { addToWishlist } from "../../redux/actions/wishlistActions";
@@ -41,7 +41,11 @@ const ProductGrid = ({
 
   return (
     <Fragment>
-      {products.map(product => { 
+      {
+        products &&
+      products.map(product => { 
+
+        
         
         return (
           <ProductGridListSingle

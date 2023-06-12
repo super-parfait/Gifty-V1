@@ -18,6 +18,8 @@ const ProductImageDescription = ({
   wishlistItems,
   compareItems
 }) => {
+
+
   const wishlistItem = wishlistItems.filter(
     wishlistItem => wishlistItem.id === product.id
   )[0];
