@@ -22,7 +22,7 @@ const ShopProducts = ({ products, layout, Gift,quantityGift, message_for_created
   const dispatch = useDispatch();
 
   const { addToast } = useToasts();
-  const history =  useHistory()
+  let history =  useHistory()
 
   const credentials = useSelector(state=>state.giftData[0])
 
@@ -42,14 +42,18 @@ const ShopProducts = ({ products, layout, Gift,quantityGift, message_for_created
 
     if (checkBtnCreateGift.current.context._errors.length === 0) {
       dispatch(create_gift(credentials))
-        .then((response) => {
-          history("/mes-cadeaux");
+        .then(() => {
+          addToast("Bravo votre cadeau est validé !!!", { appearance: 'success', autoDismiss:true });
+
+          history.push("/mes-cadeaux");
           window.location.reload();
         })
         .catch(() => {
-          addToast(message_for_created_gift, { appearance: 'error', autoDismiss:true });
+          addToast("Aucun produit ajouté au cadeau", { appearance: 'error', autoDismiss:true });
           setLoading(false);
         });
+
+        
     } else {
       setLoading(false);
     }
@@ -68,14 +72,13 @@ const ShopProducts = ({ products, layout, Gift,quantityGift, message_for_created
                       <Form onSubmit={handleCreateGift} ref={formCreateGift}>
                         
 
-                          <button type="submit" style={ {border: "none"} } >
-                          {/* {loading && (
-                            <span className="spinner-border spinner-border-sm"></span>
-                          )}   */}
+                          {/* <button type="submit" style={ {border: "none"} } >
                             <span>Voir mon cadeau</span>
-                          </button>
+                          </button> */}
 
-                        
+                      <button type="submit" class="btn btn-labeled btn-success" >
+                        <span class="btn-label"><i class="fa fa-check"></i></span>Valider mon cadeau
+                      </button>
 
                         <CheckButton style={{ display: "none" }} ref={checkBtnCreateGift} /> 
 

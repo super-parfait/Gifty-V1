@@ -34,23 +34,7 @@ const ShopGridNoSidebar = ({ location, products, product, gift }) => {
     setFilterSortValue(sortValue);
   };
 
-  // console.log(products)
-
-  // var newGift = {
-  //   gift: product.gift.id,
-  //   product: [
-  //     ...gift
-  //   ],
-  //   quantity:2
-
-  // }
-
-  // console.log(newGift)
-
-  // const {products_for_personnalized}
-  // = useSelector(state => state.productData);
-
-  // console.log(products_for_personnalized) ;
+  console.log(products)
 
   useEffect(() => {
     let sortedProducts = getSortedProducts(products, sortType, sortValue);

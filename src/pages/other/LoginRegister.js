@@ -181,7 +181,7 @@ const LoginRegister = ({ location, props, message_register }) => {
     if (checkBtnLogin.current.context._errors.length === 0) {
       dispatch(login(credentials))
         .then(() => {
-          history("/my-account");
+          history.push("/my-account");
           window.location.reload();
         })
 

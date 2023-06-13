@@ -10,6 +10,7 @@ import ProductGridListSingle from "../../components/product/ProductGridListSingl
 const ProductGrid = ({
   // data,
   // currency,
+  products,
   addToCart,
   addToWishlist,
   addToCompare,
@@ -47,7 +48,7 @@ const ProductGrid = ({
     <Fragment>
       { 
       // data ? (
-        data.map(product => {
+        products.map(product => {
           
           return (
             <ProductGridListSingle

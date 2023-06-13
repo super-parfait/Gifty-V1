@@ -13,17 +13,27 @@ export const create_gift = (credentials)=>(dispatch) => {
           (response)=>{
       
                   console.log(response)
-                  
                   // var message = ""
                   // if(response ===true){
                   //         message = "Commande crée avec succès !!! "
                   // }
       
-                  dispatch({
+                  dispatch(
+                        {
+                        
                           type: GIFT_CREATED_SUCCESS,
                           payload: response
                           
-                  });
+                  },
+                  
+                  
+                  );
+
+                //   dispatch({
+                //         type: SET_MESSAGE_CREATED_GIFT,
+                //         payload: 'Succes',
+                // });
+
                   dispatch({
                         type: DELETE_GIFT
                   })

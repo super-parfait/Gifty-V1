@@ -74,9 +74,13 @@ const mapStateToProps = (state, ownProps) => {
 
 
   return {
-    product: state.productData.data.filter(
+
+    product: state.allGift.filter(
       single => single.gift.id == itemId
     )[0]
+    // product: state.productData.data.filter(
+    //   single => single.gift.id == itemId
+    // )[0]
   };
   
 };

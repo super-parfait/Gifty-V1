@@ -35,15 +35,15 @@ const IconGroup = ({
     );
     offcanvasMobileMenu.classList.add("active");
   };
-  var quantityCart;
+  var quantityCart = cartData.length;
   // Recuperation de la quantité de cadeau dans le panier
-    if(cartData && giftData ){
-      quantityCart = cartData.length + giftData.length
-    }else if(giftData){
-      quantityCart = giftData.length
-    }else{
-      quantityCart = cartData.length
-    }
+    // if(cartData && giftData ){
+    //   quantityCart = cartData.length + giftData.length
+    // }else if(giftData){
+    //   quantityCart = giftData.length
+    // }else{
+    //   quantityCart = cartData.length
+    // }
 
     console.log(quantityCart)
 
@@ -174,7 +174,7 @@ const IconGroup = ({
       </div> */}
 
       <div className="same-style header-wishlist">
-        <Link to={process.env.PUBLIC_URL + "/wishlist"}>
+        <Link to={process.env.PUBLIC_URL + "/mes-cadeaux"}>
           <i className="pe-7s-box1" />
           <span className="count-style">
             {giftPersonnalized && giftPersonnalized.length ? giftPersonnalized.length : 0}

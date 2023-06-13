@@ -74,9 +74,9 @@ const ProductGridListSingle = ({
             {/* debut pour les actions sur les produits */}
 
             <div className="product-action">
-              <div className="pro-same-action pro-wishlist">
-
-                <button
+              {/* <div className="pro-same-action pro-wishlist"> */}
+              <div className="pro-same-action">
+                {/* <button
                   className={wishlistItem !== undefined ? "active" : ""}
                   disabled={wishlistItem !== undefined}
                   title={
@@ -87,7 +87,7 @@ const ProductGridListSingle = ({
                   onClick={() => addToWishlist(product, addToast)}
                 >
                   <i className="pe-7s-like" />
-                </button>
+                </button> */}
 
               </div>
 

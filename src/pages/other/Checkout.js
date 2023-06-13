@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
-import React, { Fragment, useState, useRef } from "react";
+import React, { Fragment, useState, useRef, useEffect } from "react";
+import axios from "axios";
 import { Link, Redirect } from "react-router-dom";
 import MetaTags from "react-meta-tags";
 import { connect, useDispatch, useSelector } from "react-redux";
@@ -10,6 +11,7 @@ import Breadcrumb from "../../wrappers/breadcrumb/Breadcrumb";
 import { useToasts } from 'react-toast-notifications';
 
 
+
 import { checkout } from "../../redux/actions/checkoutAction";
 
 import Form from "react-validation/build/form";
@@ -17,6 +19,9 @@ import Input from "react-validation/build/input";
 import Select from "react-validation/build/select";
 import CheckButton from "react-validation/build/button";
 import { isEmail } from "validator";
+
+
+
 
 
 
@@ -34,25 +39,36 @@ const required = value => {
 
 
 
-const Checkout = ({ location, cartItems, currency }) => {
+const Checkout = ({ location, cartItems, currency, commande }) => {
   const { pathname } = location;
+
   let cartTotalPrice = 0;
 
 
 
   const formCheckout = useRef();
   const checkBtnCheckout = useRef();
+  const paiementRef = useRef(null);
 
   const [telephone, setTelephone] = useState("");
-  const [commune, setCommune] = useState("");
+  const [adresse, setAdresse] = useState("");
   const [ville, setVille] = useState("")
   const [quartier, setQuartier] =  useState("")
-  const [nom, setNom] = useState("")
+  const [full_name, setFullName] = useState("")
   const [prenom, setPrenom] = useState("")
   const [email, setEmail] = useState("")
   const [successful, setSuccessful] = useState(false);
   const [loading, setLoading] = useState(false);
 
+  const [Apikey, setApikey] = useState('');
+  const [Service, setService] = useState('');
+  const [Custom_data, setCustom_data] = useState('');
+  const [Amount, setAmount] = useState('');
+
+
+
+
+  var credentials = ""
 
   const onChangeTelephone = (e) => {
     const telephone = e.target.value;
@@ -64,16 +80,16 @@ const Checkout = ({ location, cartItems, currency }) => {
     setVille(ville);
   };
 
-  const onChangeCommune = (e)=>{
-    const commune = e.target.value;
-    setCommune(commune)
+  const onChangeAdresse = (e)=>{
+    const adresse = e.target.value;
+    setAdresse(adresse)
   };
 
 
 
-  const onChangeNom = (e) => {
-    const nom = e.target.value;
-    setNom(nom);
+  const onChangeFullName = (e) => {
+    const full_name = e.target.value;
+    setFullName(full_name);
   };
 
   const onChangeEmail = (e) => {
@@ -119,44 +135,59 @@ const Checkout = ({ location, cartItems, currency }) => {
 
     final_gift.push(a)
   }
-  
-
-  // console.log(final_gift)
-  // console.log(gift[0].gift
-    // )
-
-  // if (gift.length>=1) {
-  //   var final_gift = [{
-  //     "id": objet.cartItemId,
-  //     "gift": objet.gift,
-  //     "product": objet.product,
-  //     "quantity": objet.quantity
-  //   }]
-  // }
-
-  // console.log(final_gift)
 
 
+if(commande.payload){
+  var orderID = commande.payload.orderID
+var UserId = commande.payload.UserId
 
+// console.log(orderID)
+// console.log(UserId)
+
+}
+
+const functionCredentialsForPayment = async (orderID, UserId)=>{
+
+          const response1 = await axios
+          .post("https://dev-mks.com:9000/api/v1/srv-core/order/"+orderID+"/payment/",{}, {headers:{"UserId":UserId}}) 
+
+          var credentials = response1.data;
+
+          // Je mets a jour les infos de credentials
+          setAmount(credentials.amount)
+          setApikey(credentials.apikey)
+          setCustom_data(credentials.custom_data)
+          setService(credentials.service)
+
+          setTimeout(() => {
+            paiementRef.current.click();
+          }, 3000);
+
+
+
+}
+
+
+// const validateForm()
 
   const handleCheckout = (e) => {
     e.preventDefault();
 
-    // const credentials = {nom,prenom, telephone, email, commune, quartier, ville }
+    
 
     const credentials = {
-      "customer_first_name": nom,
-      "customer_last_name": prenom,
+      "customer_full_name": full_name,
+      // "customer_last_name": prenom,
       "customer_phone_number": telephone,
-      "customer_city": ville,
-      "customer_neighborhood": quartier,
-      "customer_email": email,
-      "customer_commune": commune,
+      "delivery_address": adresse,
+      // "customer_neighborhood": quartier,
+      // "customer_email": email,
+      // "customer_commune": commune,
       "theme": theme,
       "gifts": final_gift
     }
 
-    // console.log(credentials)
+    console.log(credentials)
 
     setLoading(true);
 
@@ -167,14 +198,13 @@ const Checkout = ({ location, cartItems, currency }) => {
         .then(() => {
           
           setLoading(false)
-          addToast(message_checkout, { appearance: 'success', autoDismiss:true });
           setSuccessful(true);
+
+          // J'effectue la requete de paiement de maniere asyncrone
+          functionCredentialsForPayment(orderID, UserId)
           
         })
         .catch(() => {
-          setLoading(false);
-          addToast(message_checkout, { appearance: 'error', autoDismiss:true });
-          
           setSuccessful(false);
         });
     }else{
@@ -194,7 +224,7 @@ const Checkout = ({ location, cartItems, currency }) => {
           content="Votre application de cadeau, qui vous apporte du sourire."
         />
       </MetaTags>
-      <BreadcrumbsItem to={process.env.PUBLIC_URL + "/"}>Home</BreadcrumbsItem>
+      <BreadcrumbsItem to={process.env.PUBLIC_URL + "/"}>Accueil</BreadcrumbsItem>
       <BreadcrumbsItem to={process.env.PUBLIC_URL + pathname}>
         Commande
       </BreadcrumbsItem>
@@ -212,31 +242,14 @@ const Checkout = ({ location, cartItems, currency }) => {
                       <div className="row">
                         <div className="col-lg-6 col-md-6">
                           <div className="billing-info mb-20">
-                            <label>Nom</label>
-                            <Input type="text" placeholder="Votre Nom"
-                                value={nom}
-                                onChange={onChangeNom}
+                            <label>Nom et Prénom(s)</label>
+                            <Input type="text" placeholder="Votre Nom et Prénoms"
+                                value={full_name}
+                                onChange={onChangeFullName}
                                 validations={[required]} />
                           </div>
                         </div>
-                        <div className="col-lg-6 col-md-6">
-                          <div className="billing-info mb-20">
-                            <label>Prénoms</label>
-                            <Input type="text" placeholder="Votre Prénom"
-                                value={prenom}
-                                onChange={onChangePrenom}
-                                validations={[required]} />
-                          </div>
-                        </div>
-                        <div className="col-lg-6 col-md-6">
-                          <div className="billing-info mb-20">
-                            <label>Email</label>
-                            <Input type="email" placeholder="Votre mail"
-                                value={email}
-                                onChange={onChangeEmail}
-                                validations={[required]} />
-                          </div>
-                        </div>
+
                         <div className="col-lg-6">
                           <div className="billing-info mb-20">
                             <label>Numéro de téléphone</label>
@@ -246,49 +259,21 @@ const Checkout = ({ location, cartItems, currency }) => {
                                 validations={[required]} />
                           </div>
                         </div>
+
                         <div className="col-lg-12">
-                          <div className="billing-select mb-20">
-                            <label>Ville</label> 
-                            <Select name="ville" placeholder="Ville"
-                                value={ville}
-                                onChange={onChangeVille}
-                                validations={[required]}>
-                              <option value={""}>Sélectionnez une Ville</option>
-                              <option value={"Abidjan"}>Abidjan</option>
-                              <option value={"Yamoussoukro"}>Yamoussoukro</option>
-                              <option value={"San Pedro"} >San Pedro</option>
-                              <option value={"Bouake"}>Bouaké</option>
-                              <option value={"Korhogo"}>Korhogo</option>
-                            </Select>
-                          </div>
-                        </div>
-                        <div className="col-lg-6">
                           <div className="billing-info mb-20">
-                            <label>Votre commune</label>
+                            <label>Votre Adresse de Livraison</label>
                             <Input
-                              placeholder="Entrez votre Commune"
-                              name="commune"
-                              value={commune}
-                              onChange={onChangeCommune}
+                              placeholder="Votre Adresse de Livraison"
+                              name="adresse"
+                              value={adresse}
+                              onChange={onChangeAdresse}
                               validations={[required]}
                               type="text"
                             />
                           </div>
                         </div>
-                        <div className="col-lg-6">
-                          <div className="billing-info mb-20">
-                          <label>Votre Quartier</label>
-                            <Input
-                              className="billing-address"
-                              placeholder="Entrez votre Quartier"
-                              type="text"
-                              name="quartier"
-                              value={quartier}
-                              onChange={onChangeQuartier}
-                              validations={[required]}
-                            />
-                          </div>
-                        </div>
+                        
                       </div>
                     </div>
                   </div>
@@ -342,16 +327,6 @@ const Checkout = ({ location, cartItems, currency }) => {
                                           finalProductPrice * cartItem.quantity
                                         ).toFixed(2) + " F CFA"
                                       }
-                                      {/* {discountedPrice !== null
-                                        ? currency.currencySymbol +
-                                          (
-                                            finalDiscountedPrice *
-                                            cartItem.quantity
-                                          ).toFixed(2)
-                                        : currency.currencySymbol +
-                                          (
-                                            finalProductPrice * cartItem.quantity
-                                          ).toFixed(2)} */}
                                     </span>
                                   </li>
                                 );
@@ -380,14 +355,20 @@ const Checkout = ({ location, cartItems, currency }) => {
                         <div className="payment-method"></div>
                       </div>
                       <div className="place-order mt-25">
-                        <button  type="submit" className="btn-hover" disabled={loading}>
-                        {loading && (
-                          <span className="spinner-border spinner-border-sm"></span>
-                        )}
+
+                                    
+                                  
+                      <button  type="submit" className="btn-hover" disabled={loading}>
+                      {loading && (
+                        <span className="spinner-border spinner-border-sm"></span>
+                      )}
+                      
+                        Valider ma commande
                         
-                          Valider
-                          
-                        </button>
+                      </button>
+                                  
+
+
                       </div>
                     </div>
                   </div>
@@ -404,20 +385,10 @@ const Checkout = ({ location, cartItems, currency }) => {
                     </div>
                   )
                 }
-
-                  {/* {
-                    message_checkout && (
-                      <div className="form-group pt-2">
-                        <div className="alert alert-danger" role="alert">
-                          {message_checkout}
-                        </div>
-                      </div>
-                    )
-                  }  */}
-
-
                 <CheckButton style={{ display: "none" }} ref={checkBtnCheckout} />
               </Form>
+
+              
             ) : (
               <div className="row">
                 <div className="col-lg-12">
@@ -435,23 +406,22 @@ const Checkout = ({ location, cartItems, currency }) => {
                 </div>
               </div>
             )}
-            <div className="row">
-                  <div className="col-lg-12">
-                    <div className="cart-shiping-update-wrapper">
-                      <div className="cart-shiping-update">
-                        <Link
-                          to={process.env.PUBLIC_URL + "/history-order"}
-                        >
-                          Mon Historique 
-                        </Link>
-                      </div>
-                      {/* <div className="cart-clear">
-                        <button onClick={() => deleteAllFromCart(addToast)}>
-                          Effacer Panier
-                        </button>
-                      </div> */}
-                    </div>
-                  </div>
+                <div className="row justify-content-center my-auto">
+                  <form action="https://kaliapay.com/request-payment-channels" method="post">
+                      
+                          {/* ApiKEy */}
+                      <input name="apikey" type="text" style={{ display:"none"}} value={ Apikey } onChange={(e)=>setApikey(e.target.value)} />
+                        {/* amount */}
+                      <input name="amount" type="text" style={{ display:"none"}} value={ Amount } onChange={(e)=>setAmount(e.target.value)} />
+
+                      {/* le service */}
+                      <input name="service" type="text" style={{ display:"none"}} value={ Service } onChange={(e)=>setService(e.target.value)} />
+
+                      {/* le custom_data */}
+                      <input name="custom_data" type="text" style={{ display:"none"}} value={ Custom_data } onChange={(e)=>setCustom_data(e.target.value)} />
+                      <button type="submit" ref={paiementRef} class="btn btn-success" style={{marginLeft: 15, display: "none"}} >Valider mon paiement
+                      </button>
+                  </form>
                 </div>
           </div>
         </div>
@@ -463,13 +433,16 @@ const Checkout = ({ location, cartItems, currency }) => {
 Checkout.propTypes = {
   cartItems: PropTypes.array,
   currency: PropTypes.object,
-  location: PropTypes.object
+  location: PropTypes.object,
+  commande: PropTypes.object,
+  functionCredentialsForPayment:PropTypes.func
 };
 
 const mapStateToProps = state => {
   return {
     cartItems: state.cartData,
-    currency: state.currencyData
+    currency: state.currencyData,
+    commande: state.commande
   };
 };
 

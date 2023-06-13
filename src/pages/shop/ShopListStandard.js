@@ -1,34 +1,22 @@
 import PropTypes from "prop-types";
-import React, { Fragment, useState, useEffect } from "react";
+import React, { Fragment, useState, useMemo } from "react";
+import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import MetaTags from "react-meta-tags";
-import Paginator from "react-hooks-paginator";
+// import React, { useState, useMemo } from 'react';
 import { BreadcrumbsItem } from "react-breadcrumbs-dynamic";
 import { connect } from "react-redux";
-import { getSortedProducts } from "../../helpers/product";
+import Pagination from "../../components/pagination/Pagination";
 import LayoutOne from "../../layouts/LayoutOne";
 import Breadcrumb from "../../wrappers/breadcrumb/Breadcrumb";
-// import ShopSidebar from "../../wrappers/product/ShopSidebar";
 import ShopTopbar from "../../wrappers/product/ShopTopbar";
 import ShopProducts from "../../wrappers/product/ShopProduct_3";
 
-const ShopListStandard = ({ location,products, giftPersonnalized, allGift }) => {
 
 
-  const [layout, setLayout] = useState("list");
-  const [sortType, setSortType] = useState("");
-  const [sortValue, setSortValue] = useState("");
-  const [filterSortType, setFilterSortType] = useState("");
-  const [filterSortValue, setFilterSortValue] = useState("");
-  const [offset, setOffset] = useState(0);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [currentData, setCurrentData] = useState([]);
-  const [sortedProducts, setSortedProducts] = useState([]);
+const PageSize = 12;
+const ShopListStandard = ({ location, giftPersonnalized, allGift }) => {
 
-  const pageLimit = 15;
-  const { pathname } = location;
-
-  console.log(allGift)
-  console.log(giftPersonnalized)
+  // Je fais un brassage afin de recuperer les cadeaux avec les differents produits a l'interieur
 
   if(allGift.length >0 && giftPersonnalized.length > 0){
     var cadeaux_personnalized = allGift.filter(objet1 =>
@@ -36,39 +24,36 @@ const ShopListStandard = ({ location,products, giftPersonnalized, allGift }) => 
     );
   }
 
+  const [layout, setLayout] = useState("grid three-column");
+
+
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const products = useMemo(() => {
+    const firstPageIndex = (currentPage - 1) * PageSize;
+    const lastPageIndex = firstPageIndex + PageSize;
+    return cadeaux_personnalized.slice(firstPageIndex, lastPageIndex);
+  }, [currentPage]);
+
+
+
+  // const pageLimit = 15;
+  const { pathname } = location;
+
+  // console.log(allGift)
+  console.log(cadeaux_personnalized)
+  console.log(giftPersonnalized)
+  console.log(products)
+
+
+
   
   
-  console.log(cadeaux_personnalized);
+  // console.log(cadeaux_personnalized);
 
   const getLayout = layout => {
     setLayout(layout);
   };
-
-  const getSortParams = (sortType, sortValue) => {
-    setSortType(sortType);
-    setSortValue(sortValue);
-  };
-
-  const getFilterSortParams = (sortType, sortValue) => {
-    setFilterSortType(sortType);
-    setFilterSortValue(sortValue);
-  };
-
-  useEffect(() => {
-    let sortedProducts = getSortedProducts(products, sortType, sortValue);
-    const filterSortedProducts = getSortedProducts(
-      sortedProducts,
-      filterSortType,
-      filterSortValue
-    );
-    sortedProducts = filterSortedProducts;
-    setSortedProducts(sortedProducts);
-    setCurrentData(sortedProducts.slice(offset, offset + pageLimit));
-  }, [offset, products, sortType, sortValue, filterSortType, filterSortValue]);
-
-
-
-
 
 
   return (
@@ -92,6 +77,7 @@ const ShopListStandard = ({ location,products, giftPersonnalized, allGift }) => 
 
         <div className="shop-area pt-95 pb-100">
           <div className="container">
+          {cadeaux_personnalized && cadeaux_personnalized.length >= 1 ? (
             <div className="row">
               {/* <div className="col-lg-3 order-2 order-lg-1">
                
@@ -105,30 +91,44 @@ const ShopListStandard = ({ location,products, giftPersonnalized, allGift }) => 
                 {/* shop topbar default */}
                 <ShopTopbar
                   getLayout={getLayout}
-                  getFilterSortParams={getFilterSortParams}
+                  // getFilterSortParams={getFilterSortParams}
                   productCount={products.length}
-                  sortedProductCount={currentData.length}
+                  sortedProductCount={cadeaux_personnalized.length}
                 />
 
                 {/* shop page content default */}
-                <ShopProducts layout={layout} products={cadeaux_personnalized} />
+                <ShopProducts layout={layout} products={products} />
 
                 {/* shop product pagination */}
                 <div className="pro-pagination-style text-center mt-30">
-                  <Paginator
-                    totalRecords={sortedProducts.length}
-                    pageLimit={pageLimit}
-                    pageNeighbours={2}
-                    setOffset={setOffset}
-                    currentPage={currentPage}
-                    setCurrentPage={setCurrentPage}
-                    pageContainerClass="mb-0 mt-0"
-                    pagePrevText="«"
-                    pageNextText="»"
-                  />
+
+                <Pagination
+                  className="pagination-bar"
+                  currentPage={currentPage}
+                  totalCount={cadeaux_personnalized.length}
+                  pageSize={PageSize}
+                  onPageChange={page => setCurrentPage(page)}
+                />
                 </div>
               </div>
             </div>
+           ):(
+            <div className="row">
+                <div className="col-lg-12">
+                  <div className="item-empty-area text-center">
+                    <div className="item-empty-area__icon mb-30">
+                      <i className="pe-7s-box1"></i>
+                    </div>
+                    <div className="item-empty-area__text">
+                      Aucun élement dans la boite à cadeaux <br />{" "}
+                      <Link to={process.env.PUBLIC_URL + "/gift"}>
+                        Ajouter
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          )} 
           </div>
         </div>
         
@@ -145,7 +145,7 @@ ShopListStandard.propTypes = {
 const mapStateToProps = state => {
   return {
     allGift: state.allGift,
-    products: state.productData.products,
+    // products: state.productData.products,
     giftPersonnalized: state.giftPersonnalized
   };
 };

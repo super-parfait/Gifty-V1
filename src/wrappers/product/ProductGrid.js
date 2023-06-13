@@ -71,7 +71,7 @@ ProductGrid.propTypes = {
 const mapStateToProps = (state, ownProps) => {
   return {
     products: getProducts(
-      state.productData.data,
+      state.allGift,
       ownProps.category,
       ownProps.type,
       ownProps.limit

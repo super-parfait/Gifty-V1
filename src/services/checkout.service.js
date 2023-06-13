@@ -22,17 +22,16 @@ const functionCheckout = (credentials)=>{
 
                 const orderID =data.id
                 const UserId = data.user
-                functionCredentialsForPayment(orderID, UserId)
-                .then(response=>response.data)
-                .then(data =>{
-                        console.log(data)
-                        // return true
-                })
-                return true;
+                const DataForPayment = {
+                        orderID,
+                        UserId
+                }
+                return DataForPayment
+                
         })
-        // .catch(error=>{
-        //         console.log(error)
-        // });
+        .catch(error=>{
+                console.log(error)
+        });
 }
 
 

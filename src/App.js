@@ -112,26 +112,26 @@ const App = (props) => {
                     <Product {...routeProps} key={routeProps.match.params.id} />
                   )}
                 />
-                <Route
+                {/* <Route
                   path={process.env.PUBLIC_URL + "/product-tab-left/:id"}
                   component={ProductTabLeft}
                 />
                 <Route
                   path={process.env.PUBLIC_URL + "/product-tab-right/:id"}
                   component={ProductTabRight}
-                />
-                <Route
+                /> */}
+                {/* <Route
                   path={process.env.PUBLIC_URL + "/product-sticky/:id"}
                   component={ProductSticky}
                 />
                 <Route
                   path={process.env.PUBLIC_URL + "/product-slider/:id"}
                   component={ProductSlider}
-                />
-                <Route
+                /> */}
+                {/* <Route
                   path={process.env.PUBLIC_URL + "/product-fixed-image/:id"}
                   component={ProductFixedImage}
-                />
+                /> */}
 
                 <Route
                   path={process.env.PUBLIC_URL + "/personnaliser-cadeau/:id"}
@@ -140,23 +140,28 @@ const App = (props) => {
                   )}
                 />
 
-                <Route
+                {/* <Route
+                  path={process.env.PUBLIC_URL + "/personnaliser-cadeau"}
+                  component={ProductGridImage}
+                /> */}
+
+                {/* <Route
                   path={process.env.PUBLIC_URL + "/mes-cadeaux"}
                   render={(routeProps) => (
                     <ProductGridImage {...routeProps} key={routeProps.match.params.id} />
                   )}
-                />
+                /> */}
 
 
                 {/* Other pages */}
-                <Route
+                {/* <Route
                   path={process.env.PUBLIC_URL + "/about"}
                   component={About}
                 />
                 <Route
                   path={process.env.PUBLIC_URL + "/contact"}
                   component={Contact}
-                />
+                /> */}
                 {/* <PrivateRoute path={process.env.PUBLIC_URL + "/contact"}>
                     <Contact/>
                 </PrivateRoute> */}
@@ -190,14 +195,14 @@ const App = (props) => {
                   path={process.env.PUBLIC_URL + "/history-order"}
                   component={HistoryOrder}
                 />
-                <Route
+                {/* <Route
                   path={process.env.PUBLIC_URL + "/wishlist"}
                   component={Wishlist}
                 />
                 <Route
                   path={process.env.PUBLIC_URL + "/compare"}
                   component={Compare}
-                />
+                /> */}
                 <Route
                   path={process.env.PUBLIC_URL + "/checkout"}
                   component={Checkout}

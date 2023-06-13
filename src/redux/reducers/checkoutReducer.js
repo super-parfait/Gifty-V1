@@ -2,10 +2,10 @@ import {
         SET_MESSAGE_CHECKOUT,
         CHECKOUT_FAIL,
         CHECKOUT_SUCCESS
-} from "./type";
+} from "../actions/types";
 
 
-const initialState = {}
+const initialState = []
 
 export default function (state  = initialState, action){
         const {type, payload} = action
@@ -17,7 +17,7 @@ export default function (state  = initialState, action){
                 case CHECKOUT_SUCCESS:
                         return{
                                 ...state,
-                                commande: payload
+                                payload
                         }
                 case CHECKOUT_FAIL:
                         return{

@@ -25,7 +25,7 @@ const HeroSliderFourteenSingle = ({ data, sliderClassName, query, onInputChange 
     >
       <video style={{width:"100%",height:"100vh", objectFit: "cover" }} autoPlay loop muted src={process.env.PUBLIC_URL+ "assets/animation/4.mp4"}></video>
 
-      <div className="container" style={{width:"100%", position: 'absolute'}}>
+      <div className="container" style={{ maxWidth:"1500px !important", position: 'absolute'}}>
         <div className="row">
           <div className="col-xl-12 col-lg-12 col-md-12 col-12">
             <div className="slider-content-6 slider-animated-1 text-center">
@@ -38,7 +38,7 @@ const HeroSliderFourteenSingle = ({ data, sliderClassName, query, onInputChange 
 
               <div className="row justify-content-center">
                   <div className="col-12 col-md-12 col-lg-12">
-                      <form className="card card-sm" onSubmit={handleOnSubmit} >
+                      <form className="card card-lg" onSubmit={handleOnSubmit} >
                           <div className="card-body row no-gutters align-items-center">
                               {/* <div className="col-auto">
                                   <i className="fas fa-search h4 text-body"></i>

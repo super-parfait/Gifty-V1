@@ -22,7 +22,7 @@ const MenuCart = ({ cartData,giftData, deleteFromCart }) => {
             {cartData.map((single, key) => {
               const discountedPrice = getDiscountPrice(
                 single.gift.price,
-                // single.discount
+                
               );
               const finalProductPrice = (
                 single.gift.price
@@ -39,11 +39,21 @@ const MenuCart = ({ cartData,giftData, deleteFromCart }) => {
                 <li className="single-shopping-cart" key={key}>
                   <div className="shopping-cart-img">
                     <Link to={process.env.PUBLIC_URL + "/product/" + single.gift.id}>
-                      <img
-                        alt=""
-                        src={single.product.image}
-                        className="img-fluid"
-                      />
+                      {
+                        single.product.image  ? (
+                          <img
+                            alt=""
+                            src={single.product.image}
+                            className="img-fluid"
+                          />
+                        ):(
+                          <img
+                            alt=""
+                            src={process.env.PUBLIC_URL + "assets/img/gifty_animated.gif"}
+                            className="img-fluid"
+                          />
+                        )
+                      }
                     </Link>
                   </div>
                   <div className="shopping-cart-title">

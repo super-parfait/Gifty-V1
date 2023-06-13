@@ -10,6 +10,7 @@ const orderReducer = (state = initState, action) => {
 
 
   switch (action.type) {
+        
         case FETCH_ORDER_SUCCESS:
                 return {
                         ...state,

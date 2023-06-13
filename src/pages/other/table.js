@@ -13,14 +13,40 @@ import Box from '@mui/material/Box';
 import { useSelector } from "react-redux";
 import { right } from '@popperjs/core';
 import { Fragment } from 'react-is';
-import { Link } from 'react-router-dom';
+import { Link as RouterLink , useHistory } from 'react-router-dom';
+import {makeStyles} from '@mui/styles';
+import { Button } from '@mui/material';
+// import useHistor
 
+
+
+
+const useStyles = makeStyles({
+  tableContainer: {
+    marginBottom: '20px',
+  },
+  tableHeadCell: {
+    fontWeight: 'bold',
+    backgroundColor: '#f5f5f5',
+  },
+  imageCell: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  image: {
+    maxWidth: '100px',
+    maxHeight: '100px',
+    borderRadius: '50%',
+  },
+});
 
 
 const columns = [
-  { id: 'id', label: 'Numero de commande', minWidth: 170 },
-  { id: 'date', label: 'Date', minWidth: 170 },
-  { id: 'last_name', label: 'Proprietaire', minWidth: 100 },
+  { id: 'image', label: 'Image', align: 'left', isImageColumn: true, align:'center' },
+  { id: 'id', label: 'Numero de commande', minWidth: 170, align:'center' },
+  { id: 'date', label: 'Date', minWidth: 170, align:'center' },
+  { id: 'full_name', label: 'Proprietaire', minWidth: 100, align:'center' },
   // {
   //   id: 'qty',
   //   label: 'Quantité',
@@ -31,27 +57,27 @@ const columns = [
     id: 'prix',
     label: 'Prix',
     minWidth: 100,
-    align: 'right',
+    align: 'center',
     format: (value) => value.toLocaleString('fr-FR'),
   },
   {
-    id: 'commune',
+    id: 'adresse',
     label: 'Localisation',
     minWidth: 170,
-    align: 'right',
+    align: 'center',
   },
   {
     id: 'status',
     label: 'Statut',
     minWidth: 170,
-    align: 'right',
+    align: 'center',
   },
-  // {
-  //   id: "action",
-  //   label:"Actions",
-  //   minWidth:300,
-  //   align:'right'
-  // }
+  {
+    id: "actions",
+    label:"Actions",
+    minWidth:120,
+    align:'right'
+  }
 ];
 
 // function createData(id, date, name, qty, price, localisation, status) {
@@ -64,10 +90,14 @@ const columns = [
 
 export default function StickyHeadTable() {
 
+  const classes = useStyles();
+
+
 
   const {order} = useSelector(state=>state.orderData)
 
-
+console.log(order)
+console.log(objet)
 
   var objet;
   var final_orders=[];
@@ -75,13 +105,16 @@ export default function StickyHeadTable() {
   for(let i=0; i<order.length; i++){
     objet= order[i];
 
+    const date = new Date(objet.date_created);
+    const formattedDate = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
     const a = {
+      "image": objet.gift[0].image,
       "id": objet.id,
       "status": objet.status,
-      "last_name": objet.customer_last_name,
+      "full_name": objet.customer_full_name,
       "telephone": objet.customer_phone_number,
-      "date": objet.date_created,
-      "commune": objet.customer_neighborhood,
+      "date": formattedDate,
+      "adresse": objet.delivery_address,
       "prix": objet.price,
     }
     final_orders.push(a)
@@ -134,9 +167,9 @@ export default function StickyHeadTable() {
                     </div>
                     <div className="item-empty-area__text">
                       Aucun Historique<br />{" "}
-                      <Link to={process.env.PUBLIC_URL + "/"}>
+                      <RouterLink to={process.env.PUBLIC_URL + "/"}>
                         Faire une commande
-                      </Link>
+                      </RouterLink>
                     </div>
                   </div>
                 </div>
@@ -147,7 +180,7 @@ export default function StickyHeadTable() {
               <h3 className="cart-page-title" >Mes historiques de commande</h3>
             <Card>
               <CardContent>
-                <TableContainer>
+                <TableContainer className={classes.tableContainer}>
                   <Table stickyHeader aria-label="sticky table">
                     <TableHead>
                       <TableRow>
@@ -155,7 +188,7 @@ export default function StickyHeadTable() {
                           <TableCell
                             key={column.id}
                             align={column.align}
-                            style={{ minWidth: column.minWidth }}
+                            style={{ minWidth: column.minWidth }} className={classes.tableHeadCell}
                           >
                             {column.label}
                           </TableCell>
@@ -163,7 +196,7 @@ export default function StickyHeadTable() {
                       </TableRow>
                     </TableHead>
                     <TableBody>
-                      {rows
+                      {final_orders
                         .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                         .map((row) => {
                           return (
@@ -177,10 +210,22 @@ export default function StickyHeadTable() {
                                 columns.map((column) => {
                                   const value = row[column.id];
                                   return (
-                                    <TableCell key={column.id} align={column.align}>
-                                      {column.format && typeof value === 'number'
-                                        ? column.format(value)
-                                        : value}
+                                    <TableCell key={column.id} align={column.align} className={column.id === 'image' ? classes.imageCell : null} >
+                                      {
+                                      
+                                      column.isImageColumn ? (
+                                          <img src={value} alt='Img' style={{ maxWidth: '100px', maxHeight: '100px' }} />
+                                      ) : (
+                                        column.format && typeof value === 'number'
+                                        ? column.format(value) : column.id === 'actions' ? (
+                                          <Button variant="contained" color="primary" component={RouterLink} to={`/product/${row.id}`}
+                                          >
+                                            Voir
+                                          </Button>)
+                                        :  value
+                                      ) 
+
+                                      }
                                     </TableCell>
                                   );
                                 })
@@ -201,6 +246,7 @@ export default function StickyHeadTable() {
                   page={page}
                   onPageChange={handleChangePage}
                   onRowsPerPageChange={handleChangeRowsPerPage}
+                  labelRowsPerPage="Nombre d'éléments par page"
                 />
               </CardContent>
             </Card>

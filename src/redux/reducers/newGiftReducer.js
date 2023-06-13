@@ -5,14 +5,13 @@ import {
 
 
 const initState = [];
-
 const newGiftReducer = (state = initState, action) => {
 
         
           const product = action.payload;
 
         if(action.type === GIFT_CREATED_SUCCESS){
-
+                
                 return [
                         ...state,
                         // product

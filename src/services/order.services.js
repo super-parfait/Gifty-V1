@@ -14,12 +14,13 @@ const functionGetOrder = ()=>{
         })
 }
 
-export const functionCredentialsForPayment = (orderID, UserId)=>{
+export function functionCredentialsForPayment (orderID, UserId){
 
         return axios
                 .post(API_URL+"/order/"+orderID+"/payment/", {headers:{"UserId":UserId}})
                 .then(response=> response.data)
                 .then(data=>{
+                        return data
                         console.log(data)
                 })
 }

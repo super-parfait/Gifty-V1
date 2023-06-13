@@ -13,12 +13,13 @@ export const checkout = (credentials) =>(dispatch) =>{
                         console.log(response)
                         
                         var message = ""
-                        if(response ===true){
+                        if(response){
                                 message = "Commande crée avec succès !!! "
                         }
 
                         dispatch({
                                 type: CHECKOUT_SUCCESS,
+                                payload: response
                                 
                         });
 
@@ -35,8 +36,8 @@ export const checkout = (credentials) =>(dispatch) =>{
                         console.log(error.message)
                         var message = error.message
 
-                        if(error.message==="Request failed with status code 406"){
-                                message= "Vous avez une commande en cours de validation"
+                        if(error.message==="Request failed with status code 500"){
+                                message= "Désolé Erreur lors de la creation de la commande! "
                         }
 
 

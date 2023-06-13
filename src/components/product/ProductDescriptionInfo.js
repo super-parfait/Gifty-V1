@@ -232,6 +232,7 @@ const ProductDescriptionInfo = ({
 
             {/* Le bouton pour ajouter le cadeau au panier */}
               <button
+                // style={{ borderRadius: 20 }}
                 onClick={() =>
                   addToCart(
                     product,
@@ -283,7 +284,7 @@ const ProductDescriptionInfo = ({
             )
             } */}
           </div>
-          <div className="pro-details-wishlist">
+          {/* <div className="pro-details-wishlist">
             <button
               className={wishlistItem !== undefined ? "active" : ""}
               disabled={wishlistItem !== undefined}
@@ -310,7 +311,7 @@ const ProductDescriptionInfo = ({
             >
               <i className="pe-7s-shuffle" />
             </button>
-          </div>
+          </div> */}
         </div>
       )}
       {/* {product.category ? (

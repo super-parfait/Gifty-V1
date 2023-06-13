@@ -1,50 +1,41 @@
 import PropTypes from "prop-types";
-import React, { Fragment, useState, useEffect } from "react";
+import React, { Fragment, useState, useMemo, Link } from "react";
 import MetaTags from "react-meta-tags";
-import Paginator from "react-hooks-paginator";
 import { BreadcrumbsItem } from "react-breadcrumbs-dynamic";
 import { connect } from "react-redux";
-import { getSortedProducts } from "../../helpers/product";
 import LayoutOne from "../../layouts/LayoutOne";
-
+import Pagination from "../../components/pagination/Pagination";
 import Breadcrumb from "../../wrappers/breadcrumb/Breadcrumb";
 import ShopTopbar from "../../wrappers/product/ShopTopbar";
 import ShopProducts from "../../wrappers/product/ShopProducts";
 
-const ShopGridNoSidebar = ({ location, products }) => {
-  const [layout, setLayout] = useState("grid three-column");
-  const sortType = "";
-  const sortValue = "";
-  const [filterSortType, setFilterSortType] = useState("");
-  const [filterSortValue, setFilterSortValue] = useState("");
-  const [offset, setOffset] = useState(0);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [currentData, setCurrentData] = useState([]);
-  const [sortedProducts, setSortedProducts] = useState([]);
 
-  const pageLimit = 15;
+const PageSize = 12;
+const ShopGridNoSidebar = ({ location, recommandation }) => {
+
+
+
+ 
+  const [layout, setLayout] = useState("grid three-column");
+
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const products = useMemo(() => {
+    const firstPageIndex = (currentPage - 1) * PageSize;
+    const lastPageIndex = firstPageIndex + PageSize;
+    return recommandation.slice(firstPageIndex, lastPageIndex);
+  }, [currentPage]);
+
+
+
+  console.log(products)
+
   const { pathname } = location;
 
   const getLayout = layout => {
     setLayout(layout);
   };
 
-  const getFilterSortParams = (sortType, sortValue) => {
-    setFilterSortType(sortType);
-    setFilterSortValue(sortValue);
-  };
-
-  useEffect(() => {
-    let sortedProducts = getSortedProducts(products, sortType, sortValue);
-    const filterSortedProducts = getSortedProducts(
-      sortedProducts,
-      filterSortType,
-      filterSortValue
-    );
-    sortedProducts = filterSortedProducts;
-    setSortedProducts(sortedProducts);
-    setCurrentData(sortedProducts.slice(offset, offset + pageLimit));
-  }, [offset, products, sortType, sortValue, filterSortType, filterSortValue]);
 
   return (
     <Fragment>
@@ -67,6 +58,8 @@ const ShopGridNoSidebar = ({ location, products }) => {
 
         <div className="shop-area pt-95 pb-100">
           <div className="container">
+          {recommandation && recommandation.length >= 1 ? (
+
             <div className="row">
               <div className="col-lg-12">
               
@@ -75,30 +68,43 @@ const ShopGridNoSidebar = ({ location, products }) => {
                 {/* shop topbar default */}
                 <ShopTopbar
                   getLayout={getLayout}
-                  getFilterSortParams={getFilterSortParams}
+                  // getFilterSortParams={getFilterSortParams}
                   productCount={products.length}
-                  sortedProductCount={currentData.length}
+                  sortedProductCount={products.length}
                 />
 
                 {/* shop page content default */}
-                <ShopProducts layout={layout} products={currentData} />
+                <ShopProducts layout={layout} products={products} />
 
                 {/* shop product pagination */}
                 <div className="pro-pagination-style text-center mt-30">
-                  <Paginator
-                    totalRecords={sortedProducts.length}
-                    pageLimit={pageLimit}
-                    pageNeighbours={2}
-                    setOffset={setOffset}
-                    currentPage={currentPage}
-                    setCurrentPage={setCurrentPage}
-                    pageContainerClass="mb-0 mt-0"
-                    pagePrevText="«"
-                    pageNextText="»"
-                  />
+                <Pagination
+                  className="pagination-bar"
+                  currentPage={currentPage}
+                  totalCount={recommandation.length}
+                  pageSize={PageSize}
+                  onPageChange={page => setCurrentPage(page)}
+                />
                 </div>
               </div>
             </div>
+          ):(
+            <div className="row">
+                <div className="col-lg-12">
+                  <div className="item-empty-area text-center">
+                    <div className="item-empty-area__icon mb-30">
+                      <i className="pe-7s-box1"></i>
+                    </div>
+                    <div className="item-empty-area__text">
+                      Veuillez recommancer la recherche de votre cadeau <br />{" "}
+                      <Link to={process.env.PUBLIC_URL + "/gift"}>
+                        Ajouter
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          )} 
           </div>
         </div>
       </LayoutOne>
@@ -108,12 +114,12 @@ const ShopGridNoSidebar = ({ location, products }) => {
 
 ShopGridNoSidebar.propTypes = {
   location: PropTypes.object,
-  products: PropTypes.array
+  recommandation: PropTypes.array
 };
 
 const mapStateToProps = state => {
   return {
-    products: state.productData.data
+    recommandation: state.productData.data
   };
 };
 

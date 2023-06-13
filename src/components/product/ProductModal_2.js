@@ -8,7 +8,9 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
 function ProductModal(props) {
+
   const { product } = props;
+  const {cartItem} = props;
   const { currency } = props;
   const { discountedprice } = props;
   const { finalproductprice } = props;
@@ -112,42 +114,10 @@ function ProductModal(props) {
                         />
                       </div>
                     </div>
-                  {/* {
-                  product.image &&
-                    product.image.map((single, key) => {
-                      return (
-                        <div key={key}>
-                          <div className="single-image">
-                            <img
-                              src={process.env.PUBLIC_URL + single}
-                              className="img-fluid"
-                              alt=""
-                            />
-                          </div>
-                        </div>
-                      );
-                    })
-                    } */}
+                 
                 </Swiper>
               </div>
-              {/* <div className="product-small-image-wrapper mt-15">
-                <Swiper {...thumbnailSwiperParams}>
-                  {product.image &&
-                    product.image.map((single, key) => {
-                      return (
-                        <div key={key}>
-                          <div className="single-image">
-                            <img
-                              src={process.env.PUBLIC_URL + single}
-                              className="img-fluid"
-                              alt=""
-                            />
-                          </div>
-                        </div>
-                      );
-                    })}
-                </Swiper>
-              </div> */}
+              
             </div>
             <div className="col-md-7 col-sm-12 col-xs-12">
               <div className="product-details-content quickview-content">
@@ -156,59 +126,14 @@ function ProductModal(props) {
                 <div className="product-details-price">
 
                   {finalproductprice+" F CFA"}
-                  {/* {
-                  discountedprice !== null ? (
-                    <Fragment>
-                      <span>
-                        {currency.currencySymbol + finaldiscountedprice}
-                      </span>{" "}
-                      <span className="old">
-                        {currency.currencySymbol + finalproductprice}
-                      </span>
-                    </Fragment>
-                  ) : (
-                    <span>{currency.currencySymbol + finalproductprice} </span>
-                  )
-                  } */}
+                 
                 </div>
-                {/* {
-                product.rating && product.rating > 0 ? (
-                  <div className="pro-details-rating-wrap">
-                    <div className="pro-details-rating">
-                      <Rating ratingValue={product.rating} />
-                    </div>
-                  </div>
-                ) : (
-                  ""
-                )
-                } */}
+               
                 <div className="pro-details-list">
                   <p>{product.description}</p>
                 </div>
 
-                {/* {
-                  (
-                      
-                    // le product signifie que dès que l'user appuie sur le btn il est renvoyer sur la page qui affiche des produits,
-                    // il va donc falloir définir le véritable chemin plutard
-                    
-                    <div className="pro-details-quality">
-
-                      <div className="cart-plus-minus ml-4" style={{borderColor: 'transparent'}}>
-                        
-                      </div>
-
-
-                      <div className="pro-details-cart btn-hover ml-0" >
-                        <Link
-                          to={process.env.PUBLIC_URL + "/product-grid-image"}>
-                          Personnaliser 
-                        </Link>
-                      </div>
-                    </div>
-                  )
-                } */}
-
+               
                 {
                 (
                   <div className="pro-details-quality">
@@ -233,9 +158,11 @@ function ProductModal(props) {
                       <button
                         onClick={() =>
                           setQuantityCount(
-                            quantityCount < productStock - productCartQty
-                              ? quantityCount + 1
-                              : quantityCount
+                            quantityCount + 1
+                          // setQuantityCount(
+                          //   quantityCount < productStock - productCartQty
+                          //     ? quantityCount + 1
+                          //     : quantityCount
                           )
                         }
                         className="inc qtybutton"
@@ -244,7 +171,7 @@ function ProductModal(props) {
                       </button>
                     </div>
                     <div className="pro-details-cart btn-hover">
-                      {productStock && productStock > 0 ? (
+                      {/* {product.quantity && product.quantity > 0 ? ( */}
                         <button
                           onClick={() =>
                             addToCart(
@@ -255,16 +182,16 @@ function ProductModal(props) {
                               selectedProductSize
                             )
                           }
-                          disabled={productCartQty >= productStock}
+                          // disabled={productCartQty >= productStock}
                         >
                           {" "}
                           Ajouter au cadeau{" "}
                         </button>
-                      ) : (
+                      {/* ) : (
                         <button disabled>Indisponible</button>
-                      )}
+                      )} */}
                     </div>
-                    <div className="pro-details-wishlist">
+                    {/* <div className="pro-details-wishlist">
                       <button
                         className={wishlistItem !== undefined ? "active" : ""}
                         disabled={wishlistItem !== undefined}
@@ -291,7 +218,7 @@ function ProductModal(props) {
                       >
                         <i className="pe-7s-shuffle" />
                       </button>
-                    </div>
+                    </div> */}
                   </div>
                   )}
                    

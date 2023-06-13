@@ -102,7 +102,7 @@ console.log(cartItems)
         />
       </MetaTags>
 
-      <BreadcrumbsItem to={process.env.PUBLIC_URL + "/"}>Home</BreadcrumbsItem>
+      <BreadcrumbsItem to={process.env.PUBLIC_URL + "/"}>Accueil</BreadcrumbsItem>
       <BreadcrumbsItem to={process.env.PUBLIC_URL + pathname}>
         Mon Panier
       </BreadcrumbsItem>
@@ -317,7 +317,7 @@ console.log(cartItems)
                     <div className="cart-shiping-update-wrapper">
                       <div className="cart-shiping-update">
                         <Link
-                          to={process.env.PUBLIC_URL + "/shop-grid-no-sidebar"}
+                          to={process.env.PUBLIC_URL + "/gift"}
                         >
                           Ajouter 
                         </Link>

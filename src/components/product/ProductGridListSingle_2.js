@@ -25,7 +25,7 @@ const ProductGridListSingle = ({
 
 
   // console.log(Gift)
-  // console.log(product)
+  console.log(product)
   // console.log(quantityGift)
 
 
@@ -53,13 +53,15 @@ const ProductGridListSingle = ({
 
           {/* L'affichage de l'image */}
           <div className="product-img">
-            <Link to={process.env.PUBLIC_URL + "/product-fixed-image/" + product.id}>
+            <Link 
+            // to={process.env.PUBLIC_URL + "/product-fixed-image/" + product.id}
+            >
               <img
                 className="default-img"
                 src={product.image}
                 alt=""
               />
-              {product.image.length > 1 ? (
+              {[product].length > 1 ? (
                 <img
                   className="hover-img"
                   src={product.image}
@@ -86,21 +88,7 @@ const ProductGridListSingle = ({
             {/* debut pour les actions sur les produits */}
 
             <div className="product-action">
-              <div className="pro-same-action pro-wishlist">
-
-                <button
-                  className={wishlistItem !== undefined ? "active" : ""}
-                  disabled={wishlistItem !== undefined}
-                  title={
-                    wishlistItem !== undefined
-                      ? "Ajouté aux favoris"
-                      : "Ajouter aux favoris"
-                  }
-                  onClick={() => addToWishlist(product, addToast)}
-                >
-                  <i className="pe-7s-like" />
-                </button>
-
+              <div className="pro-same-action">
               </div>
 
               <div className="pro-same-action pro-cart">
@@ -171,7 +159,9 @@ const ProductGridListSingle = ({
             {/* L'affichage du nom et detail du produits */}
           <div className="product-content text-center">
             <h3>
-              <Link to={process.env.PUBLIC_URL + "/product-fixed-image/" + product.id}>
+              <Link
+              //  to={process.env.PUBLIC_URL + "/product-fixed-image/" + product.id}
+               >
                 {product.title}
               </Link>
             </h3>
@@ -208,13 +198,13 @@ const ProductGridListSingle = ({
               <div className="product-list-image-wrap">
                 <div className="product-img">
                   
-                  <Link to={process.env.PUBLIC_URL + "/product-fixed-image/" + product.id}>
+                  <Link>
                     <img
                       className="default-img img-fluid"
                       src={ product.image}
                       alt=""
                     />
-                    {product.image.length > 1 ? (
+                    {[product].length > 1 ? (
                       <img
                         className="hover-img img-fluid"
                         src={ product.image}
@@ -245,7 +235,10 @@ const ProductGridListSingle = ({
             <div className="col-xl-8 col-md-7 col-sm-6">
               <div className="shop-list-content">
                 <h3>
-                  <Link to={process.env.PUBLIC_URL + "/product-fixed-image/" + product.id}>
+                  <Link 
+                  // to={
+                  //   process.env.PUBLIC_URL + "/product-fixed-image/" + product.id}
+                    >
                     {product.name}
                   </Link>
                 </h3>
@@ -272,7 +265,7 @@ const ProductGridListSingle = ({
                 ) : (
                   ""
                 )}
-                {product.shortDescription ? (
+                {product.description ? (
                   <p>{product.description}</p>
                 ) : (
                   ""
@@ -334,7 +327,7 @@ const ProductGridListSingle = ({
                     }
                   </div>
 
-                  <div className="shop-list-wishlist ml-10">
+                  {/* <div className="shop-list-wishlist ml-10">
                     <button
                       className={wishlistItem !== undefined ? "active" : ""}
                       disabled={wishlistItem !== undefined}
@@ -361,7 +354,7 @@ const ProductGridListSingle = ({
                     >
                       <i className="pe-7s-shuffle" />
                     </button>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>

@@ -27,7 +27,7 @@ const ProductGridListSingle = ({
     discountedPrice
   );
 
-  console.log(cartItem)
+  console.log(product)
 
   return (
 
@@ -44,7 +44,8 @@ const ProductGridListSingle = ({
             <Link to={process.env.PUBLIC_URL + "/product/" + product.gift.id}>
               <img
                 className="default-img"
-                src={process.env.PUBLIC_URL + "assets/img/gift_personnel.jpg"}
+                // src={process.env.PUBLIC_URL + "assets/img/gift_personnel.jpg"}
+                src={product.gift.image}
                 alt=""
               />
               {/* {product.image.length > 1 ? (
@@ -74,9 +75,9 @@ const ProductGridListSingle = ({
             {/* debut pour les actions sur les produits */}
 
             <div className="product-action">
-              {/* <div className="pro-same-action pro-wishlist">
+              {/* <div className="pro-same-action pro-wishlist"> */}
 
-                <button
+                {/* <button
                   className={wishlistItem !== undefined ? "active" : ""}
                   disabled={wishlistItem !== undefined}
                   title={
@@ -87,9 +88,10 @@ const ProductGridListSingle = ({
                   onClick={() => addToWishlist(product, addToast)}
                 >
                   <i className="pe-7s-like" />
-                </button>
-
-              </div> */}
+                </button> */}
+              <div className="pro-same-action">
+                
+              </div>
 
               <div className="pro-same-action pro-cart">
                 {
@@ -202,7 +204,7 @@ const ProductGridListSingle = ({
                   <Link to={process.env.PUBLIC_URL + "/product/" + product.gift.id}>
                     <img
                       className="default-img img-fluid"
-                      src={process.env.PUBLIC_URL + "assets/img/gift_personnel.jpg"}
+                      src={product.gift.image}
                       alt={product.gift.title}
                     />
                     {/* {product.image.length > 1 ? (
