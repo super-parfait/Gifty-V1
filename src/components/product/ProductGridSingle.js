@@ -43,12 +43,12 @@ const ProductGridSingle = ({
             <Link to={process.env.PUBLIC_URL + "/product/" + product.gift.id}>
               <img
                 className="default-img"
-                src={product.product.image}
+                src={product.gift.image}
                 alt=""
               />
               <img
                   className="hover-img"
-                  src={product.product.image}
+                  src={product.gift.image}
                   alt=""
                 />
               {/* {

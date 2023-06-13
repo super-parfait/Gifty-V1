@@ -86,7 +86,7 @@ const ProductImageGalleryLeftThumb = ({ product, thumbPosition }) => {
                       <div key={key}>
                         <LightgalleryItem
                           group="any"
-                          src={ single}
+                          src={ single.image}
                         >
                           <button>
                             <i className="pe-7s-expand1"></i>
@@ -94,7 +94,7 @@ const ProductImageGalleryLeftThumb = ({ product, thumbPosition }) => {
                         </LightgalleryItem>
                         <div className="single-image">
                           <img
-                            src={ single.image}
+                            src={"https://dev-mks.com:9000/api/v1/srv-core"+single.image}
                             className="img-fluid"
                             alt=""
                           />
@@ -121,7 +121,7 @@ const ProductImageGalleryLeftThumb = ({ product, thumbPosition }) => {
                     <div key={key}>
                       <div className="single-image">
                         <img
-                          src={single.image}
+                          src={"https://dev-mks.com:9000/api/v1/srv-core"+single.image}
                           className="img-fluid"
                           alt=""
                         />

@@ -33,6 +33,7 @@ function ProductModal(props) {
   const compareItem = props.compareitem;
 
   const addToCart = props.addtocart;
+  const addToGift = props.addToGift;
   const addToWishlist = props.addtowishlist;
   const addToCompare = props.addtocompare;
 
@@ -108,7 +109,7 @@ function ProductModal(props) {
                     <div>
                       <div className="single-image">
                         <img
-                          src={product.image}
+                          src={"https://dev-mks.com:9000/api/v1/srv-core"+product.image}
                           className="img-fluid"
                           alt=""
                         />
@@ -174,7 +175,7 @@ function ProductModal(props) {
                       {/* {product.quantity && product.quantity > 0 ? ( */}
                         <button
                           onClick={() =>
-                            addToCart(
+                            addToGift(
                               product,
                               addToast,
                               quantityCount,
@@ -236,6 +237,7 @@ function ProductModal(props) {
 ProductModal.propTypes = {
   addtoast: PropTypes.func,
   addtocart: PropTypes.func,
+  addToGift: PropTypes.func,
   addtocompare: PropTypes.func,
   addtowishlist: PropTypes.func,
   cartitems: PropTypes.array,

@@ -8,7 +8,7 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
 function ProductModal(props) {
-  const { product } = props;
+  const { product } = props; //Ce product designe un tableau de cadeau
   const {cartItem} = props;
   // const { currency } = props;
   const { discountedprice } = props;
@@ -109,7 +109,7 @@ function ProductModal(props) {
                         <div key={key}>
                           <div className="single-image">
                             <img
-                              src={process.env.PUBLIC_URL + "assets/img/gift_personnel.jpg"}
+                              src={"https://dev-mks.com:9000/api/v1/srv-core"+single.image}
                               className="img-fluid"
                               alt=""
                             />
@@ -127,7 +127,7 @@ function ProductModal(props) {
                         <div key={key}>
                           <div className="single-image">
                             <img
-                              src={process.env.PUBLIC_URL + "assets/img/gift_personnel.jpg"}
+                              src={"https://dev-mks.com:9000/api/v1/srv-core"+single.image}
                               className="img-fluid"
                               alt=""
                             />

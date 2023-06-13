@@ -48,47 +48,15 @@ const ProductGridListSingle = ({
                 src={product.gift.image}
                 alt=""
               />
-              {/* {product.image.length > 1 ? (
-                <img
-                  className="hover-img"
-                  src={process.env.PUBLIC_URL + product.image}
-                  alt=""
-                />
-              ) : (
-                ""
-              )} */}
+
             </Link>
-            {/* {product.discount || product.new ? (
-              <div className="product-img-badges">
-                {product.discount ? (
-                  <span className="pink">-{product.discount}%</span>
-                ) : (
-                  ""
-                )}
-                {product.new ? <span className="purple">Nouveau</span> : ""}
-              </div>
-            ) : (
-              ""
-            )} */}
+
 
 
             {/* debut pour les actions sur les produits */}
 
             <div className="product-action">
-              {/* <div className="pro-same-action pro-wishlist"> */}
 
-                {/* <button
-                  className={wishlistItem !== undefined ? "active" : ""}
-                  disabled={wishlistItem !== undefined}
-                  title={
-                    wishlistItem !== undefined
-                      ? "Ajouté aux favoris"
-                      : "Ajouter aux favoris"
-                  }
-                  onClick={() => addToWishlist(product, addToast)}
-                >
-                  <i className="pe-7s-like" />
-                </button> */}
               <div className="pro-same-action">
                 
               </div>
@@ -98,23 +66,6 @@ const ProductGridListSingle = ({
                 
                 // Le lient pour aller sur Amazon
 
-                // product.affiliateLink ? (
-                //   <a
-                //     href={product.affiliateLink}
-                //     rel="noopener noreferrer"
-                //     target="_blank"
-                //   >
-                //     {" "}
-                //     Buy now{" "}
-                //   </a>
-                // ) :
-
-
-                //  product.variation && product.variation.length >= 1 ? (
-                //   <Link to={`${process.env.PUBLIC_URL}/product/${product.id}`}>
-                //     Select Option
-                //   </Link>
-                // ) : 
                 
                 product.quantity && product.quantity > 0 ? (
                   <button
@@ -165,15 +116,6 @@ const ProductGridListSingle = ({
               </Link>
             </h3>
 
-            {/* Les notes des cadeaux */}
-            {/* {product.rating && product.rating > 0 ? (
-              <div className="product-rating">
-                <Rating ratingValue={product.rating} />
-              </div>
-            ) : (
-              ""
-            )} */}
-
 
             <div className="product-price">
               {discountedPrice !== null ? (
@@ -207,30 +149,8 @@ const ProductGridListSingle = ({
                       src={product.gift.image}
                       alt={product.gift.title}
                     />
-                    {/* {product.image.length > 1 ? (
-                      <img
-                        className="hover-img img-fluid"
-                        src={process.env.PUBLIC_URL + product.image}
-                        alt=""
-                      />
-                    ) : (
-                      ""
-                    )} */}
+
                   </Link>
-
-
-                  {/* {product.discount || product.new ? (
-                    <div className="product-img-badges">
-                      {product.discount ? (
-                        <span className="pink">-{product.discount}%</span>
-                      ) : (
-                        ""
-                      )}
-                      {product.new ? <span className="purple">New</span> : ""}
-                    </div>
-                  ) : (
-                    ""
-                  )} */}
                   
                 </div>
               </div>
@@ -257,17 +177,6 @@ const ProductGridListSingle = ({
                   )}
                 </div>
 
-                {/* La note des details */}
-                
-                {/* {product.rating && product.rating > 0 ? (
-                  <div className="rating-review">
-                    <div className="product-list-rating">
-                      <Rating ratingValue={product.rating} />
-                    </div>
-                  </div>
-                ) : (
-                  ""
-                )} */}
                 {product.gift.description ? (
                   <p>{product.gift.description}</p>
                 ) : (
@@ -277,26 +186,6 @@ const ProductGridListSingle = ({
                 <div className="shop-list-actions d-flex align-items-center">
                   <div className="shop-list-btn btn-hover">
                     {
-                    
-                    // product.affiliateLink ? (
-                    //   <a
-                    //     href={product.affiliateLink}
-                    //     rel="noopener noreferrer"
-                    //     target="_blank"
-                    //   >
-                    //     {" "}
-                    //    Acheter le pack cadeau{" "}
-                    //   </a>
-                    // ) : 
-                    
-                    // product.variation && product.variation.length >= 1 ? (
-                    //   <Link
-                    //     to={`${process.env.PUBLIC_URL}/product/${product.id}`}
-                    //   >
-                    //     Voir le pack cadeau
-                    //   </Link>
-                    // ) : 
-                    
                     product.quantity && product.quantity > 0 ? (
                       <button
                         onClick={() => addToCart(product, addToast)}
@@ -326,35 +215,6 @@ const ProductGridListSingle = ({
                       </button>
                     )}
                   </div>
-
-                  {/* <div className="shop-list-wishlist ml-10">
-                    <button
-                      className={wishlistItem !== undefined ? "active" : ""}
-                      disabled={wishlistItem !== undefined}
-                      title={
-                        wishlistItem !== undefined
-                          ? "Ajouté aux favoris"
-                          : "Ajouter aux favoris"
-                      }
-                      onClick={() => addToWishlist(product, addToast)}
-                    >
-                      <i className="pe-7s-like" />
-                    </button>
-                  </div>
-                  <div className="shop-list-compare ml-10">
-                    <button
-                      className={compareItem !== undefined ? "active" : ""}
-                      disabled={compareItem !== undefined}
-                      title={
-                        compareItem !== undefined
-                          ? "Comparé"
-                          : "Ajouter pour comparer"
-                      }
-                      onClick={() => addToCompare(product, addToast)}
-                    >
-                      <i className="pe-7s-shuffle" />
-                    </button>
-                  </div> */}
                 </div>
               </div>
             </div>

@@ -58,13 +58,13 @@ const ProductGridListSingle = ({
             >
               <img
                 className="default-img"
-                src={product.image}
+                src={"https://dev-mks.com:9000/api/v1/srv-core"+product.image}
                 alt=""
               />
               {[product].length > 1 ? (
                 <img
                   className="hover-img"
-                  src={product.image}
+                  src={"https://dev-mks.com:9000/api/v1/srv-core"+product.image}
                   alt=""
                 />
               ) : (
@@ -201,13 +201,13 @@ const ProductGridListSingle = ({
                   <Link>
                     <img
                       className="default-img img-fluid"
-                      src={ product.image}
+                      src={ "https://dev-mks.com:9000/api/v1/srv-core"+product.image}
                       alt=""
                     />
                     {[product].length > 1 ? (
                       <img
                         className="hover-img img-fluid"
-                        src={ product.image}
+                        src={"https://dev-mks.com:9000/api/v1/srv-core"+product.image}
                         alt=""
                       />
                     ) : (
@@ -376,6 +376,7 @@ const ProductGridListSingle = ({
         wishlistitem={wishlistItem}
         compareitem={compareItem}
         addtocart={addToCart}
+        addToGift={addToGift}
         addtowishlist={addToWishlist}
         addtocompare={addToCompare}
         addtoast={addToast}

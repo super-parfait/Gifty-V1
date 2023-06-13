@@ -71,7 +71,7 @@ const ProductImageGallery = ({ product }) => {
               <div>
                 <LightgalleryItem
                   group="any"
-                  src={list_products.image}
+                  src={"https://dev-mks.com:9000/api/v1/srv-core"+list_products.image}
                 >
                   <button>
                     <i className="pe-7s-expand1"></i>
@@ -79,7 +79,7 @@ const ProductImageGallery = ({ product }) => {
                 </LightgalleryItem>
                 <div className="single-image">
                   <img
-                    src={list_products.image}
+                    src={"https://dev-mks.com:9000/api/v1/srv-core"+list_products.image}
                     className="img-fluid"
                     alt=""
                   />
@@ -100,7 +100,7 @@ const ProductImageGallery = ({ product }) => {
                 <div key={key}>
                   <div className="single-image">
                     <img
-                      src={ single.image}
+                      src={"https://dev-mks.com:9000/api/v1/srv-core"+single.image}
                       className="img-fluid"
                       alt=""
                     />

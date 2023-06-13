@@ -44,7 +44,7 @@ const ProductGridListSingle = ({
             <Link to={process.env.PUBLIC_URL + "/product/" + product.gift.id}>
               <img
                 className="default-img"
-                src={process.env.PUBLIC_URL +"/assets/img/gift_personnel.jpg"}
+                src={product.gift.image}
                 alt=""
               />
               {/* {product.image.length > 1 ? (
@@ -202,7 +202,7 @@ const ProductGridListSingle = ({
                   <Link to={process.env.PUBLIC_URL + "/product/" + product.gift.id}>
                     <img
                       className="default-img img-fluid"
-                      src={process.env.PUBLIC_URL +"/assets/img/gift_personnel.jpg"}
+                      src={product.gift.image}
                       alt={product.gift.title}
                     />
                     {/* {product.image.length > 1 ? (

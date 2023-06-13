@@ -18,17 +18,17 @@ const ProductImageFixed = ({ product }) => {
       )} */}
 
       <div className="product-fixed-image">
-        {/* {product.product.map(list_products=>{
-          return( */}
+        {product.product.map(list_products=>{
+          return(
             <img
-              src={process.env.PUBLIC_URL+ "gift_personnel.jpg"}
+              src={"https://dev-mks.com:9000/api/v1/srv-core"+list_products.image}
             // src={ list_products.image }
             alt=""
             className="img-fluid"
           />
-          {/* )
+         )
         })
-      } */}
+      }
       </div>
     </div>
   );
